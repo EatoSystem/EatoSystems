@@ -98,6 +98,10 @@ const nextConfig = {
     
     return config
   },
+  // Add basePath for preview deployments
+  basePath: process.env.VERCEL_ENV === 'preview' ? '' : '',
+  // Add output configuration for better optimization
+  output: 'standalone',
 }
 
 export default nextConfig
