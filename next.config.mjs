@@ -10,7 +10,7 @@ const nextConfig = {
     domains: ['blob.v0.dev'],
     remotePatterns: [
       {
-        protocol: /https/,
+        protocol: 'https',
         hostname: 'blob.v0.dev',
         port: '',
         pathname: '/**',
@@ -78,18 +78,7 @@ const nextConfig = {
   },
   swcMinify: true,
   experimental: {
-    optimizeFonts: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-    // Disable service worker generation in next.config.mjs
-    serviceWorker: false,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
+    optimizePackageImports: ['lucide-react'],
   },
   // Bundle analyzer and optimization
   webpack: (config, { dev, isServer }) => {
