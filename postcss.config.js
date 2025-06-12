@@ -1,6 +1,7 @@
 module.exports = {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {},
+    // Disable autoprefixer completely to avoid the stack overflow
+    // autoprefixer: {},
   },
 }
