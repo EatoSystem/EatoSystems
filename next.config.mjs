@@ -16,92 +16,13 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    formats: ['image/webp', 'image/avif'],
-    minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Enable static optimization
+  // Simplified configuration for debugging
   trailingSlash: false,
   poweredByHeader: false,
-  compress: true,
-  // Redirects from old paths to new paths
-  async redirects() {
-    return [
-      {
-        source: '/eato-systems',
-        destination: '/eatosystems',
-        permanent: true,
-      },
-      {
-        source: '/eato-systems/:path*',
-        destination: '/eatosystems/:path*',
-        permanent: true,
-      },
-    ]
-  },
-  // Headers for better performance and caching
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-        ],
-      },
-      // Cache static assets
-      {
-        source: '/images/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ]
-  },
-  swcMinify: true,
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
-  // Bundle analyzer and optimization
-  webpack: (config, { dev, isServer }) => {
-    // Optimize bundle size
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      }
-    }
-    
-    return config
-  },
-  // Add basePath for preview deployments
-  basePath: process.env.VERCEL_ENV === 'preview' ? '' : '',
-  // Add output configuration for better optimization
-  output: 'standalone',
+  // Remove complex webpack and optimization configs that might cause issues
 }
 
 export default nextConfig
