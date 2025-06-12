@@ -23,19 +23,12 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  // Performance optimizations
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-  // Compression
+  // Safe performance optimizations only
   compress: true,
-  // Static optimization
   trailingSlash: false,
   poweredByHeader: false,
-  // Bundle analyzer for production builds
+  // Simplified webpack config without experimental features
   webpack: (config, { dev, isServer }) => {
-    // Optimize bundle size
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
