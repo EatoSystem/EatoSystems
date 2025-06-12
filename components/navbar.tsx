@@ -13,9 +13,9 @@ export default memo(function Navbar() {
   const [systemsDropdownOpen, setSystemsDropdownOpen] = useState(false)
   const [labsDropdownOpen, setLabsDropdownOpen] = useState(false)
   const [supportDropdownOpen, setSupportDropdownOpen] = useState(false)
-  const systemsDropdownRef = useRef<HTMLDivElement>(null)
-  const labsDropdownRef = useRef<HTMLDivElement>(null)
-  const supportDropdownRef = useRef<HTMLDivElement>(null)
+  const [systemsDropdownRef] = useState(useRef<HTMLDivElement>(null))
+  const [labsDropdownRef] = useState(useRef<HTMLDivElement>(null))
+  const [supportDropdownRef] = useState(useRef<HTMLDivElement>(null))
 
   const handleLogout = () => {
     // Clear the authentication cookie
@@ -132,6 +132,15 @@ export default memo(function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              {/* Roadmap Link */}
+              <Link
+                href="/roadmap"
+                className="text-sm lg:text-base text-gray-800 hover:text-primary transition-colors font-medium transform hover:scale-105 active:scale-95 transition-transform break-words"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Roadmap
+              </Link>
+
               {/* Systems Dropdown */}
               <div className="relative" ref={systemsDropdownRef}>
                 <button
@@ -364,6 +373,18 @@ export default memo(function Navbar() {
           {/* Mobile Menu Content */}
           <nav className="flex-1 overflow-y-auto p-4">
             <div className="space-y-4">
+              {/* Mobile Roadmap Link */}
+              <Link
+                href="/roadmap"
+                className="block text-gray-800 hover:text-primary transition-colors font-medium py-3 text-base border-b border-gray-100 break-words"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  window.scrollTo(0, 0)
+                }}
+              >
+                Roadmap
+              </Link>
+
               {/* Mobile Systems Dropdown */}
               <div className="relative">
                 <button
