@@ -1,3 +1,5 @@
+"use client"
+
 import { systemsData } from "@/lib/systems-data"
 import { Button } from "@/components/ui/button"
 import { ScrollToTop } from "@/components/scroll-to-top"
