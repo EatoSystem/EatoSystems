@@ -334,16 +334,28 @@ function RoadmapTimeline({
                             <Circle className="w-4 h-4 text-orange-500 mr-2" />
                             <span className="text-sm text-gray-600 capitalize">{item.status}</span>
                           </div>
-                          <Link
-                            href={`/${item.slug}`}
-                            className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline`}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              window.scrollTo(0, 0)
-                            }}
-                          >
-                            Learn more <ArrowRight className="ml-1 h-3 w-3" />
-                          </Link>
+                          <div className="flex gap-2 items-center">
+                            <Link
+                              href={`/${item.slug}`}
+                              className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline`}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                window.scrollTo(0, 0)
+                              }}
+                            >
+                              System Details <ArrowRight className="ml-1 h-3 w-3" />
+                            </Link>
+                            <Link
+                              href={`/roadmap/${item.slug}`}
+                              className={`inline-flex items-center text-sm text-blue-600 hover:underline`}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                window.scrollTo(0, 0)
+                              }}
+                            >
+                              Roadmap <Calendar className="ml-1 h-3 w-3" />
+                            </Link>
+                          </div>
                         </div>
 
                         {/* Expanded content */}
@@ -368,6 +380,11 @@ function RoadmapTimeline({
                               <Link href={`/${item.slug.toLowerCase()}-lab`} onClick={() => window.scrollTo(0, 0)}>
                                 <Button size="sm" variant="outline">
                                   Developer Lab
+                                </Button>
+                              </Link>
+                              <Link href={`/roadmap/${item.slug}`} onClick={() => window.scrollTo(0, 0)}>
+                                <Button size="sm" variant="outline">
+                                  System Roadmap
                                 </Button>
                               </Link>
                             </div>
