@@ -75,7 +75,7 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
       onHoverEnd={() => setIsHovered(false)}
     >
       <div
-        className="relative h-80 w-full perspective-1000 cursor-pointer group"
+        className="relative h-96 w-full perspective-1000 cursor-pointer group"
         onClick={() => setIsFlipped(!isFlipped)}
       >
         <motion.div
@@ -95,11 +95,21 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
               />
 
               {/* Content overlay */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-black/40">
+              <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-black/50">
                 <div>
                   <div className="text-sm font-mono opacity-90 mb-2">{version}</div>
                   <h3 className="text-2xl font-bold mb-2 leading-tight">{name}</h3>
-                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium">{layer}</div>
+                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium mb-3">
+                    {layer}
+                  </div>
+                  <p className="text-sm leading-relaxed opacity-90 line-clamp-3">{description}</p>
+                  <Link
+                    href={`/roadmap/${slug}`}
+                    className="inline-flex items-center gap-1 text-xs text-white/80 hover:text-white mt-2 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Roadmap <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -114,28 +124,152 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
 
           {/* Back of card */}
           <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-lg rotate-y-180">
-            <div
-              className={`h-full bg-gradient-to-br ${getLayerColor(layer)} p-6 flex flex-col justify-between text-white`}
-            >
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Zap className="w-5 h-5" />
-                  <span className="font-semibold">{layer} Layer</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4">{name}</h3>
-                <p className="text-sm leading-relaxed opacity-90 mb-6">{description}</p>
-              </div>
+            <div className="relative h-full">
+              {/* Background image */}
+              <Image
+                src={getSystemImage(slug) || "/placeholder.svg"}
+                alt={`${name} - ${layer} layer`}
+                fill
+                className="object-cover"
+              />
 
-              <div className="space-y-3">
-                <Link
-                  href={`/${slug}`}
-                  className="block w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg px-4 py-3 text-center font-medium transition-all duration-300"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Learn More <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
+              {/* Enhanced gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${getLayerColor(layer)} opacity-90`}></div>
+
+              {/* Content */}
+              <div className="absolute inset-0 p-7 flex flex-col justify-between text-white">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Zap className="w-5 h-5" />
+                    <span className="font-semibold text-sm uppercase tracking-wide">{layer} Layer</span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 leading-tight">{name}</h3>
+                  <div className="text-xs font-mono opacity-80 mb-4">{version}</div>
+                  <p className="text-sm leading-relaxed opacity-95 mb-6">{description}</p>
+
+                  {/* Key features or benefits */}
+                  <div className="mb-4">
+                    <div className="text-xs uppercase tracking-wide opacity-80 mb-2">Key Focus</div>
+                    <div className="flex flex-wrap gap-2">
+                      {layer === "SOIL" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Foundation</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Global Scale</span>
+                        </>
+                      )}
+                      {layer === "SEED" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">AI Agents</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Automation</span>
+                        </>
+                      )}
+                      {layer === "POLLINATION" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Data Index</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Analytics</span>
+                        </>
+                      )}
+                      {layer === "ROOT" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Metaverse</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Virtual Reality</span>
+                        </>
+                      )}
+                      {layer === "SPROUT" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Robotics</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Automation</span>
+                        </>
+                      )}
+                      {layer === "FLOW" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Logistics</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Supply Chain</span>
+                        </>
+                      )}
+                      {layer === "MYCELIUM" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">AI/ML</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Intelligence</span>
+                        </>
+                      )}
+                      {layer === "CROP" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Funding</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Investment</span>
+                        </>
+                      )}
+                      {layer === "HARVEST" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Integration</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Ecosystem</span>
+                        </>
+                      )}
+                      {layer === "REGENERATION" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Governance</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Policy</span>
+                        </>
+                      )}
+                      {layer === "CANOPY" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Security</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Protection</span>
+                        </>
+                      )}
+                      {layer === "SANCTUARY" && (
+                        <>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Foundation</span>
+                          <span className="px-2 py-1 bg-white/20 rounded text-xs">Support</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Primary action buttons */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <Link
+                      href={`/${slug}`}
+                      className="block bg-white/25 backdrop-blur-sm hover:bg-white/35 rounded-lg px-3 py-2.5 text-center font-medium transition-all duration-300 text-sm"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className="flex items-center justify-center gap-1">
+                        <Sparkles className="w-3 h-3" />
+                        System
+                      </span>
+                    </Link>
+                    <Link
+                      href={`/eatosystems/${slug}-lab`}
+                      className="block bg-white/25 backdrop-blur-sm hover:bg-white/35 rounded-lg px-3 py-2.5 text-center font-medium transition-all duration-300 text-sm"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className="flex items-center justify-center gap-1">
+                        <Zap className="w-3 h-3" />
+                        Lab
+                      </span>
+                    </Link>
+                  </div>
+
+                  {/* Secondary links */}
+                  <div className="flex justify-between items-center text-xs opacity-80">
+                    <Link
+                      href={`/roadmap/${slug}`}
+                      className="flex items-center gap-1 hover:opacity-100 transition-opacity"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Roadmap <ArrowRight className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href={`/partners/${slug}`}
+                      className="flex items-center gap-1 hover:opacity-100 transition-opacity"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Partners <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -187,6 +321,7 @@ export default function SystemsSection() {
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
+      {/* rest of code here */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -217,19 +352,39 @@ export default function SystemsSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-          {systems.map((system, index) => (
-            <InteractiveSystemCard
-              key={system.slug}
-              version={system.version}
-              name={system.name}
-              layer={system.layer}
-              description={system.description}
-              slug={system.slug}
-              index={index}
-              isVisible={isVisible}
-            />
-          ))}
+        {/* Timeline Layout */}
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
+
+            {systems.map((system, index) => {
+              const isLeft = index % 2 === 0
+
+              return (
+                <motion.div
+                  key={system.slug}
+                  className={`relative flex items-center mb-20 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10"></div>
+
+                  {/* Content card */}
+                  <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
+                    <InteractiveSystemCard
+                      version={system.version}
+                      name={system.name}
+                      layer={system.layer}
+                      description={system.description}
+                      slug={system.slug}
+                      index={index}
+                      isVisible={isVisible}
+                    />
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
 
         <motion.div
