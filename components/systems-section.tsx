@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { systemsData } from "@/lib/systems-data"
-import { ArrowRight, Sparkles, Zap, Calendar, Eye, Circle } from "lucide-react"
+import { ArrowRight, Sparkles, Zap, Calendar, Eye } from "lucide-react"
 
 interface SystemProps {
   version: string
@@ -13,11 +13,10 @@ interface SystemProps {
   description: string
   slug: string
   index: number
-  isVisible: boolean
 }
 
-function SystemCard({ version, name, layer, description, slug, index, isVisible }: SystemProps) {
-  const [selectedSystem, setSelectedSystem] = useState<string | null>(null)
+function SystemCard({ version, name, layer, description, slug, index }: SystemProps) {
+  const [isFlipped, setIsFlipped] = useState(false)
   const [imageError, setImageError] = useState(false)
 
   const getSystemImage = (slug: string) => {
@@ -39,222 +38,152 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
     return imageMap[slug] || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
   }
 
-  const getLayerStyles = (layer: string) => {
-    const layerStyleMap: Record<string, any> = {
-      SOIL: {
-        bgLight: "bg-green-50",
-        textAccent: "text-green-600",
-        gradientText: "from-green-600 to-emerald-500",
-        bgGradientImage: "bg-gradient-to-r from-green-500/10 to-emerald-500/10",
-      },
-      SEED: {
-        bgLight: "bg-yellow-50",
-        textAccent: "text-yellow-600",
-        gradientText: "from-yellow-600 to-amber-500",
-        bgGradientImage: "bg-gradient-to-r from-yellow-500/10 to-amber-500/10",
-      },
-      POLLINATION: {
-        bgLight: "bg-pink-50",
-        textAccent: "text-pink-600",
-        gradientText: "from-pink-600 to-rose-500",
-        bgGradientImage: "bg-gradient-to-r from-pink-500/10 to-rose-500/10",
-      },
-      ROOT: {
-        bgLight: "bg-purple-50",
-        textAccent: "text-purple-600",
-        gradientText: "from-purple-600 to-indigo-500",
-        bgGradientImage: "bg-gradient-to-r from-purple-500/10 to-indigo-500/10",
-      },
-      SPROUT: {
-        bgLight: "bg-blue-50",
-        textAccent: "text-blue-600",
-        gradientText: "from-blue-600 to-sky-500",
-        bgGradientImage: "bg-gradient-to-r from-blue-500/10 to-sky-500/10",
-      },
-      FLOW: {
-        bgLight: "bg-teal-50",
-        textAccent: "text-teal-600",
-        gradientText: "from-teal-600 to-cyan-500",
-        bgGradientImage: "bg-gradient-to-r from-teal-500/10 to-cyan-500/10",
-      },
-      MYCELIUM: {
-        bgLight: "bg-violet-50",
-        textAccent: "text-violet-600",
-        gradientText: "from-violet-600 to-purple-500",
-        bgGradientImage: "bg-gradient-to-r from-violet-500/10 to-purple-500/10",
-      },
-      CROP: {
-        bgLight: "bg-amber-50",
-        textAccent: "text-amber-600",
-        gradientText: "from-amber-600 to-orange-500",
-        bgGradientImage: "bg-gradient-to-r from-amber-500/10 to-orange-500/10",
-      },
-      HARVEST: {
-        bgLight: "bg-orange-50",
-        textAccent: "text-orange-600",
-        gradientText: "from-orange-600 to-amber-500",
-        bgGradientImage: "bg-gradient-to-r from-orange-500/10 to-amber-500/10",
-      },
-      REGENERATION: {
-        bgLight: "bg-emerald-50",
-        textAccent: "text-emerald-600",
-        gradientText: "from-emerald-600 to-green-500",
-        bgGradientImage: "bg-gradient-to-r from-emerald-500/10 to-green-500/10",
-      },
-      CANOPY: {
-        bgLight: "bg-red-50",
-        textAccent: "text-red-600",
-        gradientText: "from-red-600 to-rose-500",
-        bgGradientImage: "bg-gradient-to-r from-red-500/10 to-rose-500/10",
-      },
-      SANCTUARY: {
-        bgLight: "bg-indigo-50",
-        textAccent: "text-indigo-600",
-        gradientText: "from-indigo-600 to-blue-500",
-        bgGradientImage: "bg-gradient-to-r from-indigo-500/10 to-blue-500/10",
-      },
+  const getLayerColor = (layer: string) => {
+    const colorMap: Record<string, string> = {
+      SOIL: "bg-gradient-to-br from-green-500 to-emerald-600",
+      SEED: "bg-gradient-to-br from-yellow-500 to-amber-600",
+      POLLINATION: "bg-gradient-to-br from-pink-500 to-rose-600",
+      ROOT: "bg-gradient-to-br from-purple-500 to-indigo-600",
+      SPROUT: "bg-gradient-to-br from-blue-500 to-sky-600",
+      FLOW: "bg-gradient-to-br from-teal-500 to-cyan-600",
+      MYCELIUM: "bg-gradient-to-br from-violet-500 to-purple-600",
+      CROP: "bg-gradient-to-br from-amber-500 to-orange-600",
+      HARVEST: "bg-gradient-to-br from-orange-500 to-red-600",
+      REGENERATION: "bg-gradient-to-br from-emerald-500 to-green-600",
+      CANOPY: "bg-gradient-to-br from-red-500 to-rose-600",
+      SANCTUARY: "bg-gradient-to-br from-indigo-500 to-blue-600",
     }
-
-    return layerStyleMap[layer] || layerStyleMap["SOIL"]
+    return colorMap[layer] || "bg-gradient-to-br from-green-500 to-emerald-600"
   }
 
-  const layerStyles = getLayerStyles(layer)
-  const isLeft = index % 2 === 0
+  const getKeyFocus = (layer: string) => {
+    const focusMap: Record<string, string[]> = {
+      SOIL: ["Foundation", "Global Scale"],
+      SEED: ["AI Agents", "Automation"],
+      POLLINATION: ["Data Index", "Analytics"],
+      ROOT: ["Metaverse", "Virtual Reality"],
+      SPROUT: ["Robotics", "Automation"],
+      FLOW: ["Logistics", "Supply Chain"],
+      MYCELIUM: ["AI/ML", "Intelligence"],
+      CROP: ["Funding", "Investment"],
+      HARVEST: ["Integration", "Ecosystem"],
+      REGENERATION: ["Governance", "Policy"],
+      CANOPY: ["Security", "Protection"],
+      SANCTUARY: ["Foundation", "Support"],
+    }
+    return focusMap[layer] || ["Innovation", "Technology"]
+  }
 
   return (
-    <div
-      className={`relative flex items-center mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} transition-all duration-600 ${
-        isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${isLeft ? "-translate-x-12" : "translate-x-12"}`
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      {/* Timeline dot */}
-      <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10"></div>
-
-      {/* Content card */}
-      <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
-        <div
-          className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105 ${
-            selectedSystem === slug ? "ring-2 ring-blue-500" : ""
-          }`}
-          onClick={() => setSelectedSystem(selectedSystem === slug ? null : slug)}
-        >
-          {/* System image */}
-          <div className="relative h-48 overflow-hidden">
-            <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`}></div>
-            {!imageError ? (
-              <Image
-                src={getSystemImage(slug) || "/placeholder.svg"}
-                alt={name}
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-105 relative z-10"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center relative z-10">
-                <div className="text-center">
-                  <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" />
-                  <p className="text-gray-600 font-medium">{name}</p>
+    <div className="w-full max-w-md mx-auto">
+      <div
+        className="relative h-[28rem] w-full cursor-pointer group transition-all duration-300 hover:scale-105"
+        onClick={() => setIsFlipped(!isFlipped)}
+      >
+        {!isFlipped ? (
+          // Front of card
+          <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white">
+            <div className="relative h-full">
+              {!imageError ? (
+                <Image
+                  src={getSystemImage(slug) || "/placeholder.svg"}
+                  alt={`${name} - ${layer} layer`}
+                  fill
+                  className="object-cover"
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="text-center">
+                    <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" />
+                    <p className="text-gray-600 font-medium">{name}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className="absolute top-4 left-4 z-20">
-              <div className={`inline-flex items-center px-3 py-1 rounded-full ${layerStyles.bgLight} gap-2`}>
-                <span className={`text-sm font-medium ${layerStyles.textAccent}`}>{layer}</span>
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 z-20">
-              <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                <span className="text-sm font-mono font-semibold text-gray-800">{version}</span>
+              )}
+
+              {/* Content overlay */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-black/50">
+                <div>
+                  <div className="text-sm font-mono opacity-90 mb-2">{version}</div>
+                  <h3 className="text-2xl font-bold mb-2 leading-tight">{name}</h3>
+                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium mb-3">
+                    {layer}
+                  </div>
+                  <p className="text-sm leading-relaxed opacity-90 line-clamp-4">{description}</p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <Sparkles className="w-6 h-6" />
+                  <div className="text-sm opacity-75">Click to explore</div>
+                </div>
               </div>
             </div>
           </div>
+        ) : (
+          // Back of card
+          <div
+            className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-lg ${getLayerColor(layer)}`}
+          >
+            <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Zap className="w-5 h-5" />
+                  <span className="font-semibold text-sm uppercase tracking-wide">{layer} Layer</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 leading-tight">{name}</h3>
+                <div className="text-xs font-mono opacity-80 mb-4">{version}</div>
 
-          {/* Content */}
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3
-                className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${layerStyles.gradientText}`}
-              >
-                {name}
-              </h3>
-              <div className="flex items-center text-sm text-gray-500">
-                <Calendar className="w-4 h-4 mr-1" />
-                <span>2025-2028</span>
+                {/* Key features */}
+                <div className="mb-6">
+                  <div className="text-xs uppercase tracking-wide opacity-80 mb-2">Key Focus</div>
+                  <div className="flex flex-wrap gap-2">
+                    {getKeyFocus(layer).map((focus, i) => (
+                      <span key={i} className="px-2 py-1 bg-white/20 rounded text-xs">
+                        {focus}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="mb-4">
-              <p className="text-gray-600">{description}</p>
-            </div>
+              <div className="space-y-3">
+                {/* Action buttons */}
+                <div className="grid grid-cols-2 gap-2">
+                  <Link
+                    href={`/${slug}`}
+                    className="block bg-white/25 hover:bg-white/35 rounded-lg px-3 py-2 text-center font-medium transition-all duration-300 text-sm"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span className="flex items-center justify-center gap-1">
+                      <Sparkles className="w-3 h-3" />
+                      System
+                    </span>
+                  </Link>
+                  <Link
+                    href={`/eatosystems/${slug}-lab`}
+                    className="block bg-white/25 hover:bg-white/35 rounded-lg px-3 py-2 text-center font-medium transition-all duration-300 text-sm"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span className="flex items-center justify-center gap-1">
+                      <Zap className="w-3 h-3" />
+                      Lab
+                    </span>
+                  </Link>
+                </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Circle className="w-4 h-4 text-orange-500 mr-2" />
-                <span className="text-sm text-gray-600">Active Development</span>
-              </div>
-              <div className="flex gap-2 items-center">
-                <Link
-                  href={`/${slug}`}
-                  className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline`}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    window.scrollTo(0, 0)
-                  }}
-                >
-                  System Details <ArrowRight className="ml-1 h-3 w-3" />
-                </Link>
+                {/* Roadmap link */}
                 <Link
                   href={`/roadmap/${slug}`}
-                  className={`inline-flex items-center text-sm text-blue-600 hover:underline`}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    window.scrollTo(0, 0)
-                  }}
+                  className="flex items-center justify-center gap-2 bg-white/30 hover:bg-white/40 rounded-full px-4 py-2 font-semibold transition-all duration-300 text-sm"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  Roadmap <Calendar className="ml-1 h-3 w-3" />
+                  <Calendar className="w-4 h-4" />
+                  View Roadmap <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
-
-            {/* Expanded content */}
-            {selectedSystem === slug && (
-              <div className="mt-4 pt-4 border-t border-gray-200 transition-all duration-300">
-                <p className="text-gray-600 mb-4">
-                  Explore the comprehensive capabilities and development roadmap for {name}.
-                </p>
-                <div className="flex gap-2 flex-wrap">
-                  <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)}>
-                    <button
-                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText.replace("from-", "from-").replace("to-", "to-")} hover:shadow-lg`}
-                    >
-                      <span className="flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" />
-                        View Details
-                      </span>
-                    </button>
-                  </Link>
-                  <Link href={`/eatosystems/${slug}-lab`} onClick={() => window.scrollTo(0, 0)}>
-                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
-                      <span className="flex items-center gap-1">
-                        <Zap className="w-3 h-3" />
-                        Developer Lab
-                      </span>
-                    </button>
-                  </Link>
-                  <Link href={`/roadmap/${slug}`} onClick={() => window.scrollTo(0, 0)}>
-                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        System Roadmap
-                      </span>
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            )}
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
@@ -286,9 +215,15 @@ export default function SystemsSection() {
     slug,
   }))
 
+  console.log("Systems data:", systems) // Debug log
+
   return (
-    <section ref={sectionRef} id="systems" className="py-16 md:py-24 lg:py-32 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section
+      ref={sectionRef}
+      id="systems"
+      className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-6 py-3 mb-8 border border-green-200">
@@ -296,47 +231,52 @@ export default function SystemsSection() {
             <span className="text-gray-800 font-semibold">Interactive Systems</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600">
               12 EatoSystems
             </span>
           </h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            From Soil to Sanctuary — Click each card to explore our interconnected ecosystem of regenerative food
-            systems.
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-600 leading-relaxed">
+            From Soil to Sanctuary — Click each card to explore our interconnected ecosystem
           </p>
+
+          <div className="inline-flex items-center gap-2 text-gray-500 text-sm">
+            <span className="animate-pulse">👆</span>
+            <span>Click cards to flip and explore</span>
+          </div>
         </div>
 
-        {/* Timeline Layout */}
-        <div className="max-w-6xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
-
-            {systems.length > 0 ? (
-              systems.map((system, index) => (
+        {/* Systems Grid */}
+        {systems.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+            {systems.map((system, index) => (
+              <div
+                key={system.slug}
+                className={`transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
                 <SystemCard
-                  key={system.slug}
                   version={system.version}
                   name={system.name}
                   layer={system.layer}
                   description={system.description}
                   slug={system.slug}
                   index={index}
-                  isVisible={isVisible}
                 />
-              ))
-            ) : (
-              <div className="text-center py-16">
-                <p className="text-gray-500 text-lg">Loading systems...</p>
               </div>
-            )}
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-lg">Loading systems...</p>
+          </div>
+        )}
 
         {/* CTA Button */}
-        <div className="text-center mt-16">
+        <div className="text-center">
           <Link href="/eatosystems">
             <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               <span className="flex items-center gap-2">
