@@ -91,6 +91,10 @@ function EatoSystemsHero() {
           fill
           className="object-cover opacity-20"
           priority
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.src = `/placeholder.svg?height=800&width=1200&text=Global%20Network`
+          }}
         />
       </div>
 
@@ -284,7 +288,7 @@ function SystemsList() {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
                       target.onerror = null
-                      target.src = `/placeholder_image.png?height=160&width=320&text=${system.name}`
+                      target.src = `/placeholder.svg?height=160&width=320&text=${encodeURIComponent(system.name)}`
                     }}
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">

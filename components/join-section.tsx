@@ -74,8 +74,7 @@ export default function JoinSection() {
             </span>
             <br />
             <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-light text-white/90 break-words">
-              With EatoSystems
-            </span>
+              EatoSystems            </span>
           </h2>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">

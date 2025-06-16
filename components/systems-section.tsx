@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { systemsData } from "@/lib/systems-data"
-import { ArrowRight, Sparkles, Zap } from "lucide-react"
+import { ArrowRight, Sparkles, Zap, Calendar } from "lucide-react"
 
 interface SystemProps {
   version: string
@@ -17,7 +17,7 @@ interface SystemProps {
   isVisible: boolean
 }
 
-// Interactive System Card with flip animation
+// Interactive System Card with flip animation and slide-in effects
 const InteractiveSystemCard = memo(function InteractiveSystemCard({
   version,
   name,
@@ -46,7 +46,9 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
       eatosecure: "/images/systems/eatosecure-canopy.png",
       eatofoundation: "/images/systems/eatofoundation-sanctuary.png",
     }
-    return imageMap[slug] || `/placeholder.svg?height=200&width=300&text=${name}`
+
+    // Return the mapped image or a safe fallback
+    return imageMap[slug] || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name || slug)}`
   }
 
   const getLayerColor = (layer: string) => {
@@ -67,15 +69,19 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
     return colorMap[layer] || "from-green-500 to-emerald-600"
   }
 
+  // Determine if card should slide from left or right
+  const isLeft = index % 2 === 0
+
   return (
     <motion.div
-      className={`transition-all duration-600 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-30"}`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: isLeft ? -50 : 50 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
       <div
-        className="relative h-96 w-full perspective-1000 cursor-pointer group"
+        className="relative h-[28rem] w-full perspective-1000 cursor-pointer group"
         onClick={() => setIsFlipped(!isFlipped)}
       >
         <motion.div
@@ -92,10 +98,14 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
                 fill
                 className="object-cover"
                 loading={index < 6 ? "eager" : "lazy"}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.src = `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
+                }}
               />
 
               {/* Content overlay */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-black/50">
+              <div className="absolute inset-0 p-8 flex flex-col justify-between text-white bg-black/50">
                 <div>
                   <div className="text-sm font-mono opacity-90 mb-2">{version}</div>
                   <h3 className="text-2xl font-bold mb-2 leading-tight">{name}</h3>
@@ -103,11 +113,14 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
                     {layer}
                   </div>
                   <p className="text-sm leading-relaxed opacity-90 line-clamp-3">{description}</p>
+
+                  {/* Prominent Roadmap Link */}
                   <Link
                     href={`/roadmap/${slug}`}
-                    className="inline-flex items-center gap-1 text-xs text-white/80 hover:text-white mt-2 transition-colors"
+                    className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full px-4 py-2 mt-4 transition-all duration-300 text-sm font-medium"
                     onClick={(e) => e.stopPropagation()}
                   >
+                    <Calendar className="w-4 h-4" />
                     View Roadmap <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -131,13 +144,17 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
                 alt={`${name} - ${layer} layer`}
                 fill
                 className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.src = `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
+                }}
               />
 
               {/* Enhanced gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${getLayerColor(layer)} opacity-90`}></div>
 
               {/* Content */}
-              <div className="absolute inset-0 p-7 flex flex-col justify-between text-white">
+              <div className="absolute inset-0 p-8 flex flex-col justify-between text-white">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="w-5 h-5" />
@@ -227,7 +244,7 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
                   </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {/* Primary action buttons */}
                   <div className="grid grid-cols-2 gap-3">
                     <Link
@@ -252,21 +269,15 @@ const InteractiveSystemCard = memo(function InteractiveSystemCard({
                     </Link>
                   </div>
 
-                  {/* Secondary links */}
-                  <div className="flex justify-between items-center text-xs opacity-80">
+                  {/* Prominent Roadmap Link - Centered and larger */}
+                  <div className="flex justify-center">
                     <Link
                       href={`/roadmap/${slug}`}
-                      className="flex items-center gap-1 hover:opacity-100 transition-opacity"
+                      className="inline-flex items-center gap-2 bg-white/30 backdrop-blur-sm hover:bg-white/40 rounded-full px-6 py-3 font-semibold transition-all duration-300 text-sm transform hover:scale-105"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      Roadmap <ArrowRight className="w-3 h-3" />
-                    </Link>
-                    <Link
-                      href={`/partners/${slug}`}
-                      className="flex items-center gap-1 hover:opacity-100 transition-opacity"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Partners <ArrowRight className="w-3 h-3" />
+                      <Calendar className="w-4 h-4" />
+                      View Roadmap <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -364,7 +375,7 @@ export default function SystemsSection() {
               return (
                 <motion.div
                   key={system.slug}
-                  className={`relative flex items-center mb-20 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  className={`relative flex items-center mb-24 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10"></div>

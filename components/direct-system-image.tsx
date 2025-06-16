@@ -31,8 +31,9 @@ export function DirectSystemImage({ slug, className = "w-full h-full object-cove
       alt={`${slug} system`}
       className={className}
       onError={(e) => {
+        const target = e.currentTarget as HTMLImageElement
         // Fallback if image doesn't load
-        e.currentTarget.src = `/placeholder.svg?height=400&width=400&text=${slug}`
+        target.src = `/placeholder.svg?height=400&width=400&text=${encodeURIComponent(slug)}`
       }}
     />
   )
