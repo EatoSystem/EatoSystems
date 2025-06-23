@@ -1,24 +1,40 @@
 {
   "name": "eatosystems",
   "version": "1.0.0",
-  "description": "Building the world's first full-stack sustainable food system",
   "private": true,
+  "description": "Building the world's first full-stack sustainable food system",
+  "keywords": [
+    "sustainable-food",
+    "agriculture",
+    "food-systems",
+    "regenerative",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
+  "homepage": "https://eatosystems.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/eatosystems.git"
+  },
+  "license": "MIT",
+  "author": "EatoSystems Team",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
+    "start": "next start",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
-    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "latest",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
-    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-label": "latest",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-progress": "^1.0.3",
@@ -26,7 +42,7 @@
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-select": "latest",
     "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-slot": "latest",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "latest",
     "@radix-ui/react-toast": "^1.1.5",
@@ -37,7 +53,7 @@
     "fs": "latest",
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
-    "next-themes": "^0.2.1",
+    "next-themes": "latest",
     "path": "latest",
     "react": "^19",
     "react-dom": "^19",
@@ -54,21 +70,5 @@
     "postcss": "^8.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
-  },
-  "keywords": [
-    "sustainable-food",
-    "agriculture",
-    "food-systems",
-    "regenerative",
-    "nextjs",
-    "react",
-    "typescript"
-  ],
-  "author": "EatoSystems Team",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/your-username/eatosystems.git"
-  },
-  "homepage": "https://eatosystems.vercel.app"
+  }
 }
