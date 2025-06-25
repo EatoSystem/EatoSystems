@@ -34,7 +34,6 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
       eatosecure: "/images/systems/eatosecure-canopy.png",
       eatofoundation: "/images/systems/eatofoundation-sanctuary.png",
     }
-
     return imageMap[slug] || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
   }
 
@@ -113,7 +112,6 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
         bgGradientImage: "bg-gradient-to-r from-indigo-500/10 to-blue-500/10",
       },
     }
-
     return layerStyleMap[layer] || layerStyleMap["SOIL"]
   }
 
@@ -127,10 +125,7 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      {/* Timeline dot */}
       <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10"></div>
-
-      {/* Content card */}
       <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
         <div
           className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105 ${
@@ -138,7 +133,6 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
           }`}
           onClick={() => setSelectedSystem(selectedSystem === slug ? null : slug)}
         >
-          {/* System image */}
           <div className="relative h-48 overflow-hidden">
             <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`}></div>
             {!imageError ? (
@@ -168,8 +162,6 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
               </div>
             </div>
           </div>
-
-          {/* Content */}
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
               <h3
@@ -182,11 +174,9 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
                 <span>2025-2028</span>
               </div>
             </div>
-
             <div className="mb-4">
               <p className="text-gray-600">{description}</p>
             </div>
-
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <Circle className="w-4 h-4 text-orange-500 mr-2" />
@@ -205,7 +195,7 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
                 </Link>
                 <Link
                   href={`/roadmap/${slug}`}
-                  className={`inline-flex items-center text-sm text-blue-600 hover:underline`}
+                  className="inline-flex items-center text-sm text-blue-600 hover:underline"
                   onClick={(e) => {
                     e.stopPropagation()
                     window.scrollTo(0, 0)
@@ -215,8 +205,6 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
                 </Link>
               </div>
             </div>
-
-            {/* Expanded content */}
             {selectedSystem === slug && (
               <div className="mt-4 pt-4 border-t border-gray-200 transition-all duration-300">
                 <p className="text-gray-600 mb-4">
@@ -225,7 +213,7 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
                 <div className="flex gap-2 flex-wrap">
                   <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)}>
                     <button
-                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText.replace("from-", "from-").replace("to-", "to-")} hover:shadow-lg`}
+                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText} hover:shadow-lg`}
                     >
                       <span className="flex items-center gap-1">
                         <Sparkles className="w-3 h-3" />
@@ -379,61 +367,41 @@ export default function SystemsSection() {
     },
   ]
 
-  // Debug log to check if systems are loading
-  console.log("SystemsSection - Systems loaded:", systems.length, systems)
-
   return (
     <section ref={sectionRef} id="systems" className="py-16 md:py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-6 py-3 mb-8 border border-green-200">
             <Sparkles className="w-5 h-5 mr-2 text-green-600" />
             <span className="text-gray-800 font-semibold">Interactive Systems</span>
           </div>
-
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600">
               12 EatoSystems
             </span>
           </h2>
-
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             From Soil to Sanctuary — Click each card to explore our interconnected ecosystem of regenerative food
             systems.
           </p>
         </div>
-
-        {/* Timeline Layout */}
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
-
-            {systems && systems.length > 0 ? (
-              systems.map((system, index) => (
-                <SystemCard
-                  key={system.slug}
-                  version={system.version}
-                  name={system.name}
-                  layer={system.layer}
-                  description={system.description}
-                  slug={system.slug}
-                  index={index}
-                  isVisible={isVisible}
-                />
-              ))
-            ) : (
-              <div className="text-center py-16">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-                <p className="text-gray-500 text-lg">Loading EatoSystems...</p>
-                <p className="text-gray-400 text-sm mt-2">If this persists, please refresh the page</p>
-              </div>
-            )}
+            {systems.map((system, index) => (
+              <SystemCard
+                key={system.slug}
+                version={system.version}
+                name={system.name}
+                layer={system.layer}
+                description={system.description}
+                slug={system.slug}
+                index={index}
+                isVisible={isVisible}
+              />
+            ))}
           </div>
         </div>
-
-        {/* CTA Button */}
         <div className="text-center mt-16">
           <Link href="/eatosystems">
             <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
