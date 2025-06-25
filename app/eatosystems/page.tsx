@@ -98,31 +98,35 @@ function EatoSystemsHero() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-32 text-center text-white">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center text-white">
         <div
           className={`transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
           }`}
         >
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-8 py-4 mb-12 border border-white/30">
-            <Network className="w-6 h-6 mr-3 text-blue-200" />
-            <span className="text-white font-semibold text-lg">Comprehensive System Architecture</span>
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
+            <Network className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-blue-200 flex-shrink-0" />
+            <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
+              Comprehensive System Architecture
+            </span>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight tracking-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-green-300">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-green-300 break-words">
               EatoSystems
             </span>
             <br />
-            <span className="text-4xl md:text-5xl lg:text-6xl font-light text-white/90">Complete Ecosystem</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white/90 break-words">
+              Complete Ecosystem
+            </span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
             Explore our comprehensive suite of 12 interconnected systems designed to transform the global food ecosystem
             — from cultural foundations to regenerative governance.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 md:mb-20 px-4 sm:px-0">
             <div className="transform hover:scale-105 active:scale-95 transition-transform">
               <Button
                 size="lg"
@@ -148,15 +152,19 @@ function EatoSystemsHero() {
           </div>
 
           {/* System Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
             {systemStats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
                   {stat.icon}
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-3">{stat.number}</div>
-                <div className="text-lg font-semibold text-white mb-2">{stat.label}</div>
-                <div className="text-sm text-white/80">{stat.description}</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
+                  {stat.number}
+                </div>
+                <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
+                  {stat.label}
+                </div>
+                <div className="text-xs sm:text-sm text-white/80 break-words">{stat.description}</div>
               </div>
             ))}
           </div>
@@ -168,19 +176,19 @@ function EatoSystemsHero() {
 
 function SystemsListSection() {
   return (
-    <section id="systems-grid" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="systems-grid" className="py-16 sm:py-20 md:py-24 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-            <span className="gradient-text from-primary to-accent-orange">System Architecture</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0">
+            <span className="gradient-text from-primary to-accent-orange break-words">System Architecture</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0 break-words">
             Each system represents a critical layer in our regenerative food ecosystem, working together to create
             sustainable transformation.
           </p>
@@ -189,7 +197,7 @@ function SystemsListSection() {
         <SystemsList />
 
         <motion.div
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center px-4 sm:px-0"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -197,10 +205,10 @@ function SystemsListSection() {
         >
           <Link
             href="/eatosystems/compare"
-            className="inline-block bg-brand-600 hover:bg-brand-700 text-white rounded-full px-8 py-3 font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+            className="inline-block bg-brand-600 hover:bg-brand-700 text-white rounded-full px-6 sm:px-8 py-3 font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none"
             onClick={() => window.scrollTo(0, 0)}
           >
-            Compare All Systems
+            <span className="break-words">Compare All Systems</span>
           </Link>
         </motion.div>
       </div>
@@ -232,7 +240,7 @@ function SystemsList() {
 
   return (
     <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-0"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -255,15 +263,15 @@ function SystemsList() {
               boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
             }}
           >
-            <div className="p-6 md:p-8 relative">
-              <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-                <div className={`text-xl font-mono ${layerStyles.textAccent} font-semibold`}>{system.version}</div>
-                <div className="text-2xl font-bold text-gray-800">
-                  <span
-                    className={`gradient-text ${layerStyles.gradientText} text-lg sm:text-xl md:text-2xl break-words`}
-                  >
-                    {system.name}
-                  </span>
+            <div className="p-4 sm:p-6 md:p-8 relative">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+                <div
+                  className={`text-base sm:text-lg md:text-xl font-mono ${layerStyles.textAccent} font-semibold break-words`}
+                >
+                  {system.version}
+                </div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
+                  <span className={`gradient-text ${layerStyles.gradientText} break-words`}>{system.name}</span>
                 </div>
               </div>
 
@@ -284,7 +292,7 @@ function SystemsList() {
                     alt={system.name}
                     width={320}
                     height={160}
-                    className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105 relative z-10"
+                    className="w-full h-32 sm:h-40 object-cover transition-transform duration-500 group-hover:scale-105 relative z-10"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
                       target.onerror = null
@@ -292,19 +300,21 @@ function SystemsList() {
                     }}
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                    <span className="text-white bg-accent-orange px-4 py-2 rounded-full text-sm font-medium">
+                    <span className="text-white bg-accent-orange px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium break-words">
                       View Details
                     </span>
                   </div>
                 </div>
               </Link>
 
-              <p className="text-slate-600 leading-relaxed">{system.description}</p>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base break-words mb-4">
+                {system.description}
+              </p>
 
-              <div className="mt-4 flex justify-between items-center">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                 <Link
                   href={`/${system.slug}`}
-                  className={`${layerStyles.textAccent} hover:${layerStyles.textAccent} font-medium inline-flex items-center text-xs sm:text-sm`}
+                  className={`${layerStyles.textAccent} hover:${layerStyles.textAccent} font-medium inline-flex items-center text-xs sm:text-sm break-words`}
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   <span className="break-words">Learn more</span>
@@ -313,11 +323,11 @@ function SystemsList() {
 
                 <Link
                   href={`/eatosystems/${system.slug.toLowerCase()}-lab`}
-                  className={`inline-flex items-center text-sm px-3 py-1 rounded-full ${layerStyles.bgLight} hover:${layerStyles.bgLightHover} transition-colors duration-300`}
+                  className={`inline-flex items-center text-xs sm:text-sm px-3 py-1 rounded-full ${layerStyles.bgLight} hover:${layerStyles.bgLightHover} transition-colors duration-300 w-full sm:w-auto justify-center sm:justify-start`}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  <Code className={`mr-1 h-3 w-3 ${layerStyles.textAccent}`} />
-                  <span className={layerStyles.textAccent}>Developer Lab</span>
+                  <Code className={`mr-1 h-3 w-3 ${layerStyles.textAccent} flex-shrink-0`} />
+                  <span className={`${layerStyles.textAccent} break-words`}>Developer Lab</span>
                 </Link>
               </div>
             </div>

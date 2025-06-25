@@ -120,20 +120,20 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
 
   return (
     <div
-      className={`relative flex items-center mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} transition-all duration-600 ${
+      className={`relative flex flex-col md:flex-row items-center mb-12 sm:mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} transition-all duration-600 ${
         isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${isLeft ? "-translate-x-12" : "translate-x-12"}`
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10"></div>
-      <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
+      <div className="absolute left-4 sm:left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10 top-4 md:top-auto"></div>
+      <div className={`w-full md:w-5/12 ml-8 sm:ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"} px-4 sm:px-0`}>
         <div
           className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105 ${
             selectedSystem === slug ? "ring-2 ring-blue-500" : ""
           }`}
           onClick={() => setSelectedSystem(selectedSystem === slug ? null : slug)}
         >
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-40 sm:h-48 overflow-hidden">
             <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`}></div>
             {!imageError ? (
               <Image
@@ -162,77 +162,82 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
               </div>
             </div>
           </div>
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-4">
+          <div className="p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
               <h3
-                className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${layerStyles.gradientText}`}
+                className={`text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${layerStyles.gradientText} break-words`}
               >
                 {name}
               </h3>
               <div className="flex items-center text-sm text-gray-500">
-                <Calendar className="w-4 h-4 mr-1" />
-                <span>2025-2028</span>
+                <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
+                <span className="break-words">2025-2028</span>
               </div>
             </div>
             <div className="mb-4">
               <p className="text-gray-600">{description}</p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="flex items-center">
-                <Circle className="w-4 h-4 text-orange-500 mr-2" />
-                <span className="text-sm text-gray-600">Active Development</span>
+                <Circle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
+                <span className="text-sm text-gray-600 break-words">Active Development</span>
               </div>
-              <div className="flex gap-2 items-center">
+              <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
                 <Link
                   href={`/${slug}`}
-                  className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline`}
+                  className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline break-words`}
                   onClick={(e) => {
                     e.stopPropagation()
                     window.scrollTo(0, 0)
                   }}
                 >
-                  System Details <ArrowRight className="ml-1 h-3 w-3" />
+                  <span className="break-words">System Details</span>{" "}
+                  <ArrowRight className="ml-1 h-3 w-3 flex-shrink-0" />
                 </Link>
                 <Link
                   href={`/roadmap/${slug}`}
-                  className="inline-flex items-center text-sm text-blue-600 hover:underline"
+                  className="inline-flex items-center text-sm text-blue-600 hover:underline break-words"
                   onClick={(e) => {
                     e.stopPropagation()
                     window.scrollTo(0, 0)
                   }}
                 >
-                  Roadmap <Calendar className="ml-1 h-3 w-3" />
+                  <span className="break-words">Roadmap</span> <Calendar className="ml-1 h-3 w-3 flex-shrink-0" />
                 </Link>
               </div>
             </div>
             {selectedSystem === slug && (
               <div className="mt-4 pt-4 border-t border-gray-200 transition-all duration-300">
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 break-words">
                   Explore the comprehensive capabilities and development roadmap for {name}.
                 </p>
-                <div className="flex gap-2 flex-wrap">
-                  <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)}>
+                <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+                  <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
                     <button
-                      className={`px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText} hover:shadow-lg`}
+                      className={`w-full sm:w-auto px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText} hover:shadow-lg`}
                     >
-                      <span className="flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" />
+                      <span className="flex items-center justify-center gap-1 break-words">
+                        <Sparkles className="w-3 h-3 flex-shrink-0" />
                         View Details
                       </span>
                     </button>
                   </Link>
-                  <Link href={`/eatosystems/${slug}-lab`} onClick={() => window.scrollTo(0, 0)}>
-                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
-                      <span className="flex items-center gap-1">
-                        <Zap className="w-3 h-3" />
+                  <Link
+                    href={`/eatosystems/${slug}-lab`}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="w-full sm:w-auto"
+                  >
+                    <button className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
+                      <span className="flex items-center justify-center gap-1 break-words">
+                        <Zap className="w-3 h-3 flex-shrink-0" />
                         Developer Lab
                       </span>
                     </button>
                   </Link>
-                  <Link href={`/roadmap/${slug}`} onClick={() => window.scrollTo(0, 0)}>
-                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
+                  <Link href={`/roadmap/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
+                      <span className="flex items-center justify-center gap-1 break-words">
+                        <Calendar className="w-3 h-3 flex-shrink-0" />
                         System Roadmap
                       </span>
                     </button>
@@ -368,26 +373,26 @@ export default function SystemsSection() {
   ]
 
   return (
-    <section ref={sectionRef} id="systems" className="py-16 md:py-24 lg:py-32 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-6 py-3 mb-8 border border-green-200">
-            <Sparkles className="w-5 h-5 mr-2 text-green-600" />
-            <span className="text-gray-800 font-semibold">Interactive Systems</span>
+    <section ref={sectionRef} id="systems" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 border border-green-200">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-600 flex-shrink-0" />
+            <span className="text-gray-800 font-semibold text-sm sm:text-base break-words">Interactive Systems</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600 break-words">
               12 EatoSystems
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0 break-words">
             From Soil to Sanctuary — Click each card to explore our interconnected ecosystem of regenerative food
             systems.
           </p>
         </div>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4 sm:px-0">
           <div className="relative">
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
+            <div className="absolute left-4 sm:left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
             {systems.map((system, index) => (
               <SystemCard
                 key={system.slug}
@@ -402,11 +407,11 @@ export default function SystemsSection() {
             ))}
           </div>
         </div>
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16 px-4 sm:px-0">
           <Link href="/eatosystems">
-            <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              <span className="flex items-center gap-2">
-                Explore All Systems <ArrowRight className="w-5 h-5" />
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto">
+              <span className="flex items-center justify-center gap-2 break-words">
+                Explore All Systems <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
               </span>
             </button>
           </Link>

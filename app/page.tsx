@@ -37,7 +37,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen fade-in">
+    <main className="min-h-screen fade-in overflow-x-hidden">
       <HeroSection />
       <SectionDivider />
       <AboutSection />
