@@ -44,10 +44,7 @@ export default function Footer() {
   }
 
   return (
-    <footer
-      ref={footerRef}
-      className="relative bg-gradient-to-r from-primary to-accent-orange text-white overflow-hidden"
-    >
+    <footer ref={footerRef} className="relative bg-white text-gray-800 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 z-0">
         <div
@@ -59,9 +56,9 @@ export default function Footer() {
         ></div>
 
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent-orange to-primary"></div>
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-accent-orange/10 to-transparent rounded-tr-full"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-gray-200/10 to-transparent rounded-bl-full"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-gray-200/10 to-transparent rounded-tr-full"></div>
       </div>
 
       {/* Scroll to top button */}
@@ -83,7 +80,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="text-center lg:text-left"
           >
-            <p className="text-white mb-4 sm:mb-6 max-w-md mx-auto lg:mx-0 text-sm sm:text-base break-words">
+            <p className="text-gray-800 mb-4 sm:mb-6 max-w-md mx-auto lg:mx-0 text-sm sm:text-base break-words">
               EatoSystems is a regenerative operating system for food, community, and planet. Spanning from individual
               behavior to global infrastructure.
             </p>
@@ -91,7 +88,7 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +103,7 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Twitter"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +118,7 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +133,7 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="LinkedIn"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +148,7 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="GitHub"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,23 +171,23 @@ export default function Footer() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">Contact</h3>
-                <p className="text-white mb-1 sm:mb-2 text-sm sm:text-base break-words">info@eatosystems.com</p>
-                <p className="text-white text-sm sm:text-base">+1 (555) 123-4567</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800">Contact</h3>
+                <p className="text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base break-words">info@eatosystems.com</p>
+                <p className="text-gray-800 text-sm sm:text-base">+1 (555) 123-4567</p>
               </div>
 
               <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">Legal</h3>
+                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800">Legal</h3>
                 <div className="flex flex-col space-y-1 sm:space-y-2">
                   <Link
                     href="/privacy"
-                    className="text-white hover:text-white transition-colors text-sm sm:text-base break-words"
+                    className="text-gray-800 hover:text-orange-500 transition-colors text-sm sm:text-base break-words"
                   >
                     Privacy Policy
                   </Link>
                   <Link
                     href="/terms"
-                    className="text-white hover:text-white transition-colors text-sm sm:text-base break-words"
+                    className="text-gray-800 hover:text-orange-500 transition-colors text-sm sm:text-base break-words"
                   >
                     Terms of Service
                   </Link>
@@ -204,7 +201,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-gray-800 text-white flex flex-col sm:flex-row justify-between items-center text-center sm:text-left"
+          className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-gray-300 text-gray-800 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left"
         >
           <div className="mb-2 sm:mb-0">
             <p className="text-xs sm:text-sm md:text-base break-words">
