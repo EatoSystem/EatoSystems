@@ -10,6 +10,8 @@ const systemsData = {
     number: "v0.1",
     name: "EatoMe",
     tagline: "Personal Action & Daily Eating",
+    launchDate: "September 2025",
+    quarter: "Q3 2025",
     description:
       "EatoMe focuses on personal action and daily eating choices, empowering individuals to make conscious decisions about their food. Led by René Redzepi through Noma Projects, this system explores how individual choices can collectively transform our food systems.",
     tags: ["Personal Nutrition", "Daily Choices", "Sustainable Eating", "Food Education"],
@@ -35,6 +37,8 @@ const systemsData = {
     number: "v1.0",
     name: "EatoAgent",
     tagline: "AI & System Optimization",
+    launchDate: "December 2025",
+    quarter: "Q4 2025",
     description:
       "EatoAgent leverages artificial intelligence to optimize food systems, creating more efficient and sustainable processes. Led by Gaggan Anand, this system explores how technology can enhance every aspect of our food ecosystem.",
     tags: ["Artificial Intelligence", "System Optimization", "Food Technology", "Data Analytics"],
@@ -60,6 +64,8 @@ const systemsData = {
     number: "v2.0",
     name: "EatoIndex",
     tagline: "Global Food Quality Ranking",
+    launchDate: "March 2026",
+    quarter: "Q1 2026",
     description:
       "EatoIndex establishes global standards for food quality, creating transparent ranking systems that promote excellence and sustainability. Led by Virgilio Martínez through Central and Mater Iniciativa, this system connects biodiversity with culinary innovation.",
     tags: ["Food Quality", "Global Standards", "Transparency", "Certification"],
@@ -85,6 +91,8 @@ const systemsData = {
     number: "v3.0",
     name: "EatoVerse",
     tagline: "Virtual Food System Training",
+    launchDate: "June 2026",
+    quarter: "Q2 2026",
     description:
       "EatoVerse creates immersive virtual environments for food system training and education. Led by Dan Barber through Blue Hill and Stone Barns Center, this system bridges the gap between theory and practice in sustainable agriculture.",
     tags: ["Virtual Training", "Digital Education", "Simulation", "Knowledge Transfer"],
@@ -110,6 +118,8 @@ const systemsData = {
     number: "v4.0",
     name: "EatoBotics",
     tagline: "Robotics & Automation",
+    launchDate: "September 2026",
+    quarter: "Q3 2026",
     description:
       "EatoBotics develops robotic and automated solutions for sustainable food production and processing. Led by Andoni Luis Aduriz through Mugaritz, this system explores how technology can enhance precision, efficiency, and creativity in food systems.",
     tags: ["Robotics", "Automation", "Precision Agriculture", "Food Technology"],
@@ -135,6 +145,8 @@ const systemsData = {
     number: "v5.0",
     name: "EatoTransit",
     tagline: "Sustainable Food Logistics",
+    launchDate: "December 2026",
+    quarter: "Q4 2026",
     description:
       "EatoTransit focuses on sustainable food logistics and transportation systems. Led by Bertrand Grébaut of Septime, this system develops efficient, low-impact methods for moving food from farm to table while minimizing waste and environmental impact.",
     tags: ["Logistics", "Supply Chain", "Transportation", "Distribution"],
@@ -160,6 +172,8 @@ const systemsData = {
     number: "v6.0",
     name: "EatoAI",
     tagline: "Artificial Intelligence & Food Innovation",
+    launchDate: "March 2027",
+    quarter: "Q1 2027",
     description:
       "EatoAI explores the intersection of artificial intelligence and culinary innovation, led by Chef Ben Shewry of Attica. This system pioneers new approaches to flavor prediction, recipe development, and sustainable food practices through advanced AI technologies.",
     tags: ["AI Innovation", "Food Science", "Culinary Research", "Flavor Prediction"],
@@ -185,6 +199,8 @@ const systemsData = {
     number: "v7.0",
     name: "EatoFund",
     tagline: "Sustainable Food Investment & Financing",
+    launchDate: "June 2027",
+    quarter: "Q2 2027",
     description:
       "EatoFund focuses on sustainable food investment and financing, led by Chef Enrique Olvera of Pujol. This system creates innovative financial models to support sustainable food businesses, culinary entrepreneurs, and community food initiatives.",
     tags: ["Impact Investing", "Food Startups", "Sustainable Finance", "Culinary Ventures"],
@@ -210,6 +226,8 @@ const systemsData = {
     number: "v8.0",
     name: "EatoSystem",
     tagline: "Food Waste Reduction & Circular Economy",
+    launchDate: "September 2027",
+    quarter: "Q3 2027",
     description:
       "EatoSystem focuses on food waste reduction and circular economy principles, led by Chef Massimo Bottura through Food for Soul. This system pioneers innovative approaches to food recovery, waste reduction, and creating value from underutilized ingredients.",
     tags: ["Food Recovery", "Circular Economy", "Waste Reduction", "Upcycled Food"],
@@ -235,6 +253,8 @@ const systemsData = {
     number: "v9.0",
     name: "EatoGov",
     tagline: "Food Policy & Governance",
+    launchDate: "December 2027",
+    quarter: "Q4 2027",
     description:
       "EatoGov focuses on food policy and governance, led by Chef Kobus van der Merwe of Wolfgat. This system works to develop and implement effective food policies that support sustainable, equitable, and resilient food systems at local, regional, and global levels.",
     tags: ["Food Policy", "Governance", "Regulation", "Local Food Systems"],
@@ -260,6 +280,8 @@ const systemsData = {
     number: "v10.0",
     name: "EatoSecure",
     tagline: "Global Food Security & Disaster Response",
+    launchDate: "March 2028",
+    quarter: "Q1 2028",
     description:
       "EatoSecure focuses on global food security and disaster response, led by Chef José Andrés through his work with World Central Kitchen. This system has pioneered innovative approaches to emergency food relief and community resilience.",
     tags: ["Disaster Response", "Food Security", "Emergency Relief", "Community Resilience"],
@@ -285,6 +307,8 @@ const systemsData = {
     number: "v11.0",
     name: "EatoFoundation",
     tagline: "Biodiversity Conservation & Culinary Heritage",
+    launchDate: "June 2028",
+    quarter: "Q2 2028",
     description:
       "EatoFoundation focuses on biodiversity conservation and culinary heritage preservation, led by Chef Eelke Plasmeijer of Locavore. This system works to protect and celebrate the rich diversity of food cultures, ingredients, and traditional knowledge that form the foundation of sustainable food systems.",
     tags: ["Biodiversity", "Conservation", "Culinary Heritage", "Indigenous Knowledge"],

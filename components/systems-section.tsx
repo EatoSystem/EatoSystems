@@ -13,9 +13,11 @@ interface SystemProps {
   slug: string
   index: number
   isVisible: boolean
+  launchDate: string
+  quarter: string
 }
 
-function SystemCard({ version, name, layer, description, slug, index, isVisible }: SystemProps) {
+function SystemCard({ version, name, layer, description, slug, index, isVisible, launchDate, quarter }: SystemProps) {
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null)
   const [imageError, setImageError] = useState(false)
 
@@ -171,7 +173,7 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
               </h3>
               <div className="flex items-center text-sm text-gray-500">
                 <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
-                <span className="break-words">2025-2028</span>
+                <span className="break-words">{quarter}</span>
               </div>
             </div>
             <div className="mb-4">
@@ -223,7 +225,7 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible 
                     </button>
                   </Link>
                   <Link
-                    href={`/eatosystems/${slug}-lab`}
+                    href={slug === "eatoagent" ? "/eatoagent-lab" : `/eatosystems/${slug}-lab`}
                     onClick={() => window.scrollTo(0, 0)}
                     className="w-full sm:w-auto"
                   >
@@ -281,6 +283,8 @@ export default function SystemsSection() {
       description:
         "The knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.",
       slug: "eatoglobal",
+      launchDate: "September 2025",
+      quarter: "Q3 2025",
     },
     {
       version: "v1.0",
@@ -289,6 +293,8 @@ export default function SystemsSection() {
       description:
         "Modular AI agents designed to support individuals, enterprises, and communities in optimizing food and process decisions.",
       slug: "eatoagent",
+      launchDate: "December 2025",
+      quarter: "Q4 2025",
     },
     {
       version: "v2.0",
@@ -297,6 +303,8 @@ export default function SystemsSection() {
       description:
         "A real-time financial index that ranks and funds food based on health, community, and environmental value — aligning capital with regeneration.",
       slug: "eatoindex",
+      launchDate: "March 2026",
+      quarter: "Q1 2026",
     },
     {
       version: "v3.0",
@@ -305,6 +313,8 @@ export default function SystemsSection() {
       description:
         "The digital twin of our food future — where national systems are prototyped in virtual environments before real-world rollout.",
       slug: "eatoverse",
+      launchDate: "June 2026",
+      quarter: "Q2 2026",
     },
     {
       version: "v4.0",
@@ -313,6 +323,8 @@ export default function SystemsSection() {
       description:
         "Regenerative robotics and intelligent tools built to support soil health, food production, and planetary restoration.",
       slug: "eatobotics",
+      launchDate: "September 2026",
+      quarter: "Q3 2026",
     },
     {
       version: "v5.0",
@@ -321,6 +333,8 @@ export default function SystemsSection() {
       description:
         "A clean energy-powered logistics and traceability system moving food with integrity across the Eatosystem.",
       slug: "eatotransit",
+      launchDate: "December 2026",
+      quarter: "Q4 2026",
     },
     {
       version: "v6.0",
@@ -329,6 +343,8 @@ export default function SystemsSection() {
       description:
         "The decentralized intelligence layer — learning, adapting, and coordinating the global food system in real time.",
       slug: "eatoai",
+      launchDate: "March 2027",
+      quarter: "Q1 2027",
     },
     {
       version: "v7.0",
@@ -337,6 +353,8 @@ export default function SystemsSection() {
       description:
         "The regenerative capital engine that finances farms, food systems, and Eato-powered innovation around the world.",
       slug: "eatofund",
+      launchDate: "June 2027",
+      quarter: "Q2 2027",
     },
     {
       version: "v8.0",
@@ -345,6 +363,8 @@ export default function SystemsSection() {
       description:
         "The full-stack rollout of Eato-powered food systems at the national level, connecting all layers into a living infrastructure.",
       slug: "eatosystem",
+      launchDate: "September 2027",
+      quarter: "Q3 2027",
     },
     {
       version: "v9.0",
@@ -353,6 +373,8 @@ export default function SystemsSection() {
       description:
         "The governance and licensing layer that enables governments to adopt EatoSystems as public food infrastructure.",
       slug: "eatogov",
+      launchDate: "December 2027",
+      quarter: "Q4 2027",
     },
     {
       version: "v10.0",
@@ -361,6 +383,8 @@ export default function SystemsSection() {
       description:
         "The global food security program that ensures every individual on earth will have secure, sustained access to food.",
       slug: "eatosecure",
+      launchDate: "March 2028",
+      quarter: "Q1 2028",
     },
     {
       version: "v11.0",
@@ -369,6 +393,8 @@ export default function SystemsSection() {
       description:
         "The global trust that safeguards the mission, model, and long-term integrity of the Eatosystem for future generations.",
       slug: "eatofoundation",
+      launchDate: "June 2028",
+      quarter: "Q2 2028",
     },
   ]
 
@@ -403,6 +429,8 @@ export default function SystemsSection() {
                 slug={system.slug}
                 index={index}
                 isVisible={isVisible}
+                launchDate={system.launchDate}
+                quarter={system.quarter}
               />
             ))}
           </div>

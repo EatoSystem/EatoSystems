@@ -3,6 +3,8 @@ export const systemsData = {
     version: "v0.1",
     name: "EatoGlobal",
     layer: "SOIL",
+    launchDate: "September 2025",
+    quarter: "Q3 2025",
     description:
       "The knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.",
     content: {
@@ -50,13 +52,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoGlobal is currently in early development phase, with pilot programs running in selected communities worldwide. Full implementation is expected within the next 1-2 years.",
+        "EatoGlobal is currently in early development phase, with pilot programs running in selected communities worldwide. Launch scheduled for September 2025.",
     },
   },
   eatoagent: {
     version: "v1.0",
     name: "EatoAgent",
     layer: "SEED",
+    launchDate: "December 2025",
+    quarter: "Q4 2025",
     description:
       "Modular AI agents designed to support individuals, enterprises, and communities in optimizing food and process decisions.",
     content: {
@@ -108,13 +112,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoAgent is currently in active development with beta versions being tested with select partners. Full implementation is expected within the next 2-3 years.",
+        "EatoAgent is currently in active development with beta versions being tested with select partners. Launch scheduled for December 2025.",
     },
   },
   eatoindex: {
     version: "v2.0",
     name: "EatoIndex",
     layer: "POLLINATION",
+    launchDate: "March 2026",
+    quarter: "Q1 2026",
     description:
       "A real-time financial index that ranks and funds food based on health, community, and environmental value — aligning capital with regeneration.",
     content: {
@@ -166,13 +172,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoIndex is currently in development with pilot programs testing impact metrics in select markets. Full implementation is expected within the next 3-4 years.",
+        "EatoIndex is currently in development with pilot programs testing impact metrics in select markets. Launch scheduled for March 2026.",
     },
   },
   eatoverse: {
     version: "v3.0",
     name: "EatoVerse",
     layer: "ROOT",
+    launchDate: "June 2026",
+    quarter: "Q2 2026",
     description:
       "The digital twin of our food future — where national systems are prototyped in virtual environments before real-world rollout.",
     content: {
@@ -223,13 +231,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoVerse is currently in development with early prototypes being tested in select regions. Full implementation is expected within the next 3-5 years.",
+        "EatoVerse is currently in development with early prototypes being tested in select regions. Launch scheduled for June 2026.",
     },
   },
   eatobotics: {
     version: "v4.0",
     name: "EatoBotics",
     layer: "SPROUT",
+    launchDate: "September 2026",
+    quarter: "Q3 2026",
     description:
       "Regenerative robotics and intelligent tools built to support soil health, food production, and planetary restoration.",
     content: {
@@ -281,13 +291,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoBotics is currently in active development with prototypes being tested in various agricultural settings. Full implementation is expected within the next 4-6 years.",
+        "EatoBotics is currently in active development with prototypes being tested in various agricultural settings. Launch scheduled for September 2026.",
     },
   },
   eatotransit: {
     version: "v5.0",
     name: "EatoTransit",
     layer: "FLOW",
+    launchDate: "December 2026",
+    quarter: "Q4 2026",
     description:
       "A clean energy-powered logistics and traceability system moving food with integrity across the Eatosystem.",
     content: {
@@ -339,13 +351,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoTransit is currently in development with pilot programs testing clean logistics and traceability systems. Full implementation is expected within the next 4-7 years.",
+        "EatoTransit is currently in development with pilot programs testing clean logistics and traceability systems. Launch scheduled for December 2026.",
     },
   },
   eatoai: {
     version: "v6.0",
     name: "EatoAI",
     layer: "MYCELIUM",
+    launchDate: "March 2027",
+    quarter: "Q1 2027",
     description:
       "The decentralized intelligence layer — learning, adapting, and coordinating the global food system in real time.",
     content: {
@@ -397,13 +411,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoAI is currently in development with early prototypes being tested in controlled environments. Full implementation is expected within the next 5-7 years.",
+        "EatoAI is currently in development with early prototypes being tested in controlled environments. Launch scheduled for March 2027.",
     },
   },
   eatofund: {
     version: "v7.0",
     name: "EatoFund",
     layer: "CROP",
+    launchDate: "June 2027",
+    quarter: "Q2 2027",
     description:
       "The regenerative capital engine that finances farms, food systems, and Eato-powered innovation around the world.",
     content: {
@@ -455,13 +471,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoFund is currently in development with pilot funding mechanisms being tested in select markets. Full implementation is expected within the next 5-7 years.",
+        "EatoFund is currently in development with pilot funding mechanisms being tested in select markets. Launch scheduled for June 2027.",
     },
   },
   eatosystem: {
     version: "v8.0",
     name: "EatoSystem",
     layer: "HARVEST",
+    launchDate: "September 2027",
+    quarter: "Q3 2027",
     description:
       "The full-stack rollout of Eato-powered food systems at the national level, connecting all layers into a living infrastructure.",
     content: {
@@ -513,13 +531,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoSystem is currently in planning phase with conceptual frameworks being developed. Full implementation is expected within the next 6-8 years.",
+        "EatoSystem is currently in planning phase with conceptual frameworks being developed. Launch scheduled for September 2027.",
     },
   },
   eatogov: {
     version: "v9.0",
     name: "EatoGov",
     layer: "REGENERATION",
+    launchDate: "December 2027",
+    quarter: "Q4 2027",
     description:
       "The governance and licensing layer that enables governments to adopt EatoSystems as public food infrastructure.",
     content: {
@@ -569,13 +589,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoGov is currently in conceptual development with early discussions with select government partners. Full implementation is expected within the next 7-10 years.",
+        "EatoGov is currently in conceptual development with early discussions with select government partners. Launch scheduled for December 2027.",
     },
   },
   eatosecure: {
     version: "v10.0",
     name: "EatoSecure",
     layer: "CANOPY",
+    launchDate: "March 2028",
+    quarter: "Q1 2028",
     description:
       "The global food security program that ensures every individual on earth will have secure, sustained access to food.",
     content: {
@@ -627,13 +649,15 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoSecure is currently in early development with pilot programs being designed for implementation in high-need regions. Full implementation is expected within the next 8-10 years.",
+        "EatoSecure is currently in early development with pilot programs being designed for implementation in high-need regions. Launch scheduled for March 2028.",
     },
   },
   eatofoundation: {
     version: "v11.0",
     name: "EatoFoundation",
     layer: "SANCTUARY",
+    launchDate: "June 2028",
+    quarter: "Q2 2028",
     description:
       "The global trust that safeguards the mission, model, and long-term integrity of the Eatosystem for future generations.",
     content: {
@@ -684,7 +708,7 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoFoundation is currently in early conceptual development. Full implementation is expected within the next 10-15 years, as other EatoSystems components mature.",
+        "EatoFoundation is currently in early conceptual development. Launch scheduled for June 2028, as other EatoSystems components mature.",
     },
   },
 }

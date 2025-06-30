@@ -223,8 +223,8 @@ export default function EatoFoundationPage() {
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                   <Calendar className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Q1</div>
-                <div className="text-base sm:text-lg text-white/90 mb-1">2025</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Q2</div>
+                <div className="text-base sm:text-lg text-white/90 mb-1">2028</div>
                 <div className="text-sm sm:text-base text-white/80">Launch Date</div>
               </div>
 
@@ -421,7 +421,7 @@ export default function EatoFoundationPage() {
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${
@@ -539,7 +539,7 @@ export default function EatoFoundationPage() {
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       className={`relative flex items-start mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
@@ -761,8 +761,8 @@ export default function EatoFoundationPage() {
               Ready to Create Global Impact?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Join the EatoFoundation community and help create lasting change in global food systems. Your contribution
-              can transform communities worldwide.
+              Join the EatoFoundation community and help create lasting change in global food systems. Together, we can
+              build a more sustainable and equitable future for all.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/start-building">
@@ -770,14 +770,14 @@ export default function EatoFoundationPage() {
                   size="lg"
                   className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
-                  Start Contributing <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Involved <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/eatosystems">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
+                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full bg-transparent"
                 >
                   Explore All Systems
                 </Button>

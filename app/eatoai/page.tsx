@@ -226,7 +226,7 @@ export default function EatoAIPage() {
                   <Calendar className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Q1</div>
-                <div className="text-base sm:text-lg text-white/90 mb-1">2025</div>
+                <div className="text-base sm:text-lg text-white/90 mb-1">2027</div>
                 <div className="text-sm sm:text-base text-white/80">Launch Date</div>
               </div>
 
@@ -779,7 +779,7 @@ export default function EatoAIPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
+                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full bg-transparent"
                 >
                   Explore All Systems
                 </Button>

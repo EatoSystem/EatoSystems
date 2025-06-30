@@ -173,7 +173,7 @@ export default function EatoBoticsPage() {
             {/* Main Title */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
               <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-2">
-                <Bot className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-orange-300 flex-shrink-0" />
+                <Bot className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:w-12 text-orange-300 flex-shrink-0" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 via-red-200 to-pink-300">
                   EatoBotics
                 </span>
@@ -222,8 +222,8 @@ export default function EatoBoticsPage() {
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                   <Calendar className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Q2</div>
-                <div className="text-base sm:text-lg text-white/90 mb-1">2025</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Q3</div>
+                <div className="text-base sm:text-lg text-white/90 mb-1">2026</div>
                 <div className="text-sm sm:text-base text-white/80">Launch Date</div>
               </div>
 
@@ -778,7 +778,7 @@ export default function EatoBoticsPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
+                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full bg-transparent"
                 >
                   Explore All Systems
                 </Button>
