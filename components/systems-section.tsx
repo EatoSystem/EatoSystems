@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Sparkles, Zap, Calendar, Eye, Circle } from "lucide-react"
+import { motion } from "framer-motion"
 
 interface SystemProps {
   version: string
@@ -37,6 +38,30 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
       eatofoundation: "/images/systems/eatofoundation-sanctuary.png",
     }
     return imageMap[slug] || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
+  }
+
+  const getSystemAltText = (name: string, layer: string) => {
+    const altTextMap: Record<string, string> = {
+      eatoglobal: "Rich fertile soil representing the foundational knowledge and cultural layer of EatoGlobal system",
+      eatoagent: "Sprouting seed symbolizing the AI agent technology that grows intelligent food decisions",
+      eatoindex:
+        "Bee pollination process illustrating the financial index that connects and funds regenerative food systems",
+      eatoverse: "Deep root network showing the digital twin infrastructure connecting virtual and real food systems",
+      eatobotics:
+        "Green sprout emerging from soil representing regenerative robotics supporting sustainable agriculture",
+      eatotransit: "Flowing water stream depicting clean energy logistics moving food with integrity across systems",
+      eatoai: "Mycelium network underground showing the decentralized AI intelligence coordinating global food systems",
+      eatofund: "Mature crop field representing the regenerative capital engine financing sustainable food innovation",
+      eatosystem: "Abundant harvest scene showing the full-stack national food system implementation",
+      eatogov: "Forest regeneration landscape illustrating governance systems enabling public food infrastructure",
+      eatosecure: "Protective forest canopy representing global food security ensuring sustained access to nutrition",
+      eatofoundation:
+        "Pristine natural sanctuary symbolizing the trust safeguarding EatoSystem integrity for future generations",
+    }
+    return (
+      altTextMap[name.toLowerCase().replace("eato", "eato")] ||
+      `${name} - ${layer} layer system visualization representing sustainable food technology`
+    )
   }
 
   const getLayerStyles = (layer: string) => {
@@ -119,69 +144,104 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
 
   const layerStyles = getLayerStyles(layer)
   const isLeft = index % 2 === 0
+  const systemAltText = getSystemAltText(name, layer)
 
   return (
-    <div
-      className={`relative flex flex-col md:flex-row items-center mb-12 sm:mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} transition-all duration-600 ${
-        isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${isLeft ? "-translate-x-12" : "translate-x-12"}`
+    <motion.div
+      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className={`relative flex flex-col md:flex-row items-center mb-12 sm:mb-16 ${
+        isLeft ? "md:flex-row" : "md:flex-row-reverse"
       }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      role="article"
+      aria-labelledby={`system-${slug}-title`}
+      aria-describedby={`system-${slug}-description`}
     >
-      <div className="absolute left-4 sm:left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10 top-4 md:top-auto"></div>
+      <div
+        className="absolute left-4 sm:left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10 top-4 md:top-auto"
+        aria-hidden="true"
+      ></div>
       <div className={`w-full md:w-5/12 ml-8 sm:ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"} px-4 sm:px-0`}>
         <div
           className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105 ${
             selectedSystem === slug ? "ring-2 ring-blue-500" : ""
           }`}
           onClick={() => setSelectedSystem(selectedSystem === slug ? null : slug)}
+          role="button"
+          tabIndex={0}
+          aria-expanded={selectedSystem === slug}
+          aria-controls={`system-${slug}-details`}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault()
+              setSelectedSystem(selectedSystem === slug ? null : slug)
+            }
+          }}
         >
           <div className="relative h-40 sm:h-48 overflow-hidden">
-            <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`}></div>
+            <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`} aria-hidden="true"></div>
             {!imageError ? (
               <Image
                 src={getSystemImage(slug) || "/placeholder.svg"}
-                alt={name}
+                alt={systemAltText}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105 relative z-10"
                 onError={() => setImageError(true)}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={index < 3}
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center relative z-10">
+              <div
+                className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center relative z-10"
+                role="img"
+                aria-label={`Placeholder image for ${name} system`}
+              >
                 <div className="text-center">
-                  <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" />
+                  <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" aria-hidden="true" />
                   <p className="text-gray-600 font-medium">{name}</p>
                 </div>
               </div>
             )}
             <div className="absolute top-4 left-4 z-20">
               <div className={`inline-flex items-center px-3 py-1 rounded-full ${layerStyles.bgLight} gap-2`}>
-                <span className={`text-sm font-medium ${layerStyles.textAccent}`}>{layer}</span>
+                <span className={`text-sm font-medium ${layerStyles.textAccent}`} aria-label={`System layer: ${layer}`}>
+                  {layer}
+                </span>
               </div>
             </div>
             <div className="absolute top-4 right-4 z-20">
               <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                <span className="text-sm font-mono font-semibold text-gray-800">{version}</span>
+                <span className="text-sm font-mono font-semibold text-gray-800" aria-label={`Version ${version}`}>
+                  {version}
+                </span>
               </div>
             </div>
           </div>
           <div className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
               <h3
+                id={`system-${slug}-title`}
                 className={`text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${layerStyles.gradientText} break-words`}
               >
                 {name}
               </h3>
               <div className="flex items-center text-sm text-gray-500">
-                <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
-                <span className="break-words">{quarter}</span>
+                <Calendar className="w-4 h-4 mr-1 flex-shrink-0" aria-hidden="true" />
+                <span className="break-words" aria-label={`Launch quarter: ${quarter}`}>
+                  {quarter}
+                </span>
               </div>
             </div>
             <div className="mb-4">
-              <p className="text-gray-600">{description}</p>
+              <p id={`system-${slug}-description`} className="text-gray-600">
+                {description}
+              </p>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="flex items-center">
-                <Circle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
+                <Circle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm text-gray-600 break-words">Active Development</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
@@ -192,9 +252,10 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
                     e.stopPropagation()
                     window.scrollTo(0, 0)
                   }}
+                  aria-label={`View detailed information about ${name} system`}
                 >
                   <span className="break-words">System Details</span>{" "}
-                  <ArrowRight className="ml-1 h-3 w-3 flex-shrink-0" />
+                  <ArrowRight className="ml-1 h-3 w-3 flex-shrink-0" aria-hidden="true" />
                 </Link>
                 <Link
                   href={`/roadmap/${slug}`}
@@ -203,23 +264,39 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
                     e.stopPropagation()
                     window.scrollTo(0, 0)
                   }}
+                  aria-label={`View development roadmap for ${name} system`}
                 >
-                  <span className="break-words">Roadmap</span> <Calendar className="ml-1 h-3 w-3 flex-shrink-0" />
+                  <span className="break-words">Roadmap</span>{" "}
+                  <Calendar className="ml-1 h-3 w-3 flex-shrink-0" aria-hidden="true" />
                 </Link>
               </div>
             </div>
             {selectedSystem === slug && (
-              <div className="mt-4 pt-4 border-t border-gray-200 transition-all duration-300">
+              <motion.div
+                id={`system-${slug}-details`}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-4 pt-4 border-t border-gray-200"
+                role="region"
+                aria-label={`Expanded details for ${name} system`}
+              >
                 <p className="text-gray-600 mb-4 break-words">
                   Explore the comprehensive capabilities and development roadmap for {name}.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+                <div
+                  className="flex flex-col sm:flex-row gap-2 flex-wrap"
+                  role="group"
+                  aria-label={`Action buttons for ${name} system`}
+                >
                   <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
                     <button
                       className={`w-full sm:w-auto px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText} hover:shadow-lg`}
+                      aria-label={`View detailed information and features of ${name} system`}
                     >
                       <span className="flex items-center justify-center gap-1 break-words">
-                        <Sparkles className="w-3 h-3 flex-shrink-0" />
+                        <Sparkles className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
                         View Details
                       </span>
                     </button>
@@ -229,28 +306,34 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
                     onClick={() => window.scrollTo(0, 0)}
                     className="w-full sm:w-auto"
                   >
-                    <button className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
+                    <button
+                      className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300"
+                      aria-label={`Access developer laboratory and tools for ${name} system`}
+                    >
                       <span className="flex items-center justify-center gap-1 break-words">
-                        <Zap className="w-3 h-3 flex-shrink-0" />
+                        <Zap className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
                         Developer Lab
                       </span>
                     </button>
                   </Link>
                   <Link href={`/roadmap/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
-                    <button className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300">
+                    <button
+                      className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300"
+                      aria-label={`View development timeline and milestones for ${name} system`}
+                    >
                       <span className="flex items-center justify-center gap-1 break-words">
-                        <Calendar className="w-3 h-3 flex-shrink-0" />
+                        <Calendar className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
                         System Roadmap
                       </span>
                     </button>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -399,14 +482,29 @@ export default function SystemsSection() {
   ]
 
   return (
-    <section ref={sectionRef} id="systems" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white overflow-x-hidden">
+    <section
+      ref={sectionRef}
+      id="systems"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white overflow-x-hidden"
+      aria-labelledby="systems-section-title"
+      role="region"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 border border-green-200">
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-600 flex-shrink-0" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-600 flex-shrink-0" aria-hidden="true" />
             <span className="text-gray-800 font-semibold text-sm sm:text-base break-words">Interactive Systems</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0">
+          <h2
+            id="systems-section-title"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0"
+          >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600 break-words">
               12 EatoSystems
             </span>
@@ -415,10 +513,13 @@ export default function SystemsSection() {
             From Soil to Sanctuary — Click each card to explore our interconnected ecosystem of regenerative food
             systems.
           </p>
-        </div>
+        </motion.div>
         <div className="max-w-6xl mx-auto px-4 sm:px-0">
           <div className="relative">
-            <div className="absolute left-4 sm:left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"></div>
+            <div
+              className="absolute left-4 sm:left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"
+              aria-hidden="true"
+            ></div>
             {systems.map((system, index) => (
               <SystemCard
                 key={system.slug}
@@ -435,15 +536,24 @@ export default function SystemsSection() {
             ))}
           </div>
         </div>
-        <div className="text-center mt-12 sm:mt-16 px-4 sm:px-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mt-12 sm:mt-16 px-4 sm:px-0"
+        >
           <Link href="/eatosystems">
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto">
+            <button
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+              aria-label="Navigate to explore all EatoSystems in detail"
+            >
               <span className="flex items-center justify-center gap-2 break-words">
-                Explore All Systems <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                Explore All Systems <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
               </span>
             </button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

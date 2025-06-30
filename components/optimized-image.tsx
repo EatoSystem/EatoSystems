@@ -17,6 +17,8 @@ interface OptimizedImageProps {
   loading?: "lazy" | "eager"
   placeholder?: "blur" | "empty"
   sizes?: string
+  description?: string
+  ariaLabel?: string
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -32,6 +34,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = "lazy",
   placeholder = "empty",
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
+  description,
+  ariaLabel,
 }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
@@ -45,14 +49,32 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setIsLoading(false)
   }
 
+  // Enhanced alt text for accessibility
+  const enhancedAlt = alt || `Image with dimensions ${width}x${height}`
+  const fallbackAlt = `Placeholder image - ${alt || "content not available"}`
+
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ width, height }}>
+    <div
+      className={`relative overflow-hidden ${className}`}
+      style={{ width, height }}
+      role="img"
+      aria-label={ariaLabel || enhancedAlt}
+      {...(description && { "aria-describedby": `img-desc-${src.replace(/[^a-zA-Z0-9]/g, "")}` })}
+    >
+      {/* Loading skeleton with accessibility */}
       {isLoading && !hasError && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-md" style={{ width, height }} />
+        <div
+          className="absolute inset-0 bg-gray-200 animate-pulse rounded-md"
+          style={{ width, height }}
+          role="status"
+          aria-label="Image loading"
+        />
       )}
+
+      {/* Main image */}
       <Image
         src={hasError ? "/placeholder.svg" : src || "/placeholder.svg"}
-        alt={alt}
+        alt={hasError ? fallbackAlt : enhancedAlt}
         width={width}
         height={height}
         priority={priority}
@@ -64,7 +86,22 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         sizes={sizes}
         onLoad={handleLoad}
         onError={handleError}
+        {...(hasError && { "aria-describedby": "image-error-message" })}
       />
+
+      {/* Hidden description for screen readers */}
+      {description && (
+        <span id={`img-desc-${src.replace(/[^a-zA-Z0-9]/g, "")}`} className="sr-only">
+          {description}
+        </span>
+      )}
+
+      {/* Error message for screen readers */}
+      {hasError && (
+        <span id="image-error-message" className="sr-only">
+          Image failed to load. Showing placeholder instead.
+        </span>
+      )}
     </div>
   )
 }
