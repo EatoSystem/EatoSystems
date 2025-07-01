@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, memo } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, ChevronDown, X, Code } from "lucide-react"
+import { Menu, ChevronDown, X, Code, LogOut } from "lucide-react"
 import { systemsData } from "@/lib/systems-data"
 
 // Memoize the navbar component to prevent unnecessary re-renders
@@ -16,6 +16,13 @@ export default memo(function Navbar() {
   const [systemsDropdownRef] = useState(useRef<HTMLDivElement>(null))
   const [labsDropdownRef] = useState(useRef<HTMLDivElement>(null))
   const [supportDropdownRef] = useState(useRef<HTMLDivElement>(null))
+
+  const handleLogout = () => {
+    // Clear the authentication cookie
+    document.cookie = "eato-auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    // Redirect to login page
+    window.location.href = "/auth/login"
+  }
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
@@ -308,6 +315,15 @@ export default memo(function Navbar() {
                   </Button>
                 </Link>
               </div>
+
+              {/* Logout Button */}
+              <button
+                onClick={handleLogout}
+                className="flex items-center text-sm lg:text-base text-gray-600 hover:text-gray-800 transition-colors font-medium transform hover:scale-105 active:scale-95 transition-transform"
+                title="Logout"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
             </nav>
 
             {/* Mobile Menu Button */}
@@ -551,6 +567,18 @@ export default memo(function Navbar() {
               >
                 Contact
               </Link>
+
+              {/* Mobile Logout */}
+              <button
+                onClick={() => {
+                  handleLogout()
+                  setMobileMenuOpen(false)
+                }}
+                className="flex items-center w-full text-gray-800 hover:text-primary transition-colors font-medium py-3 text-base border-b border-gray-100"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </button>
 
               {/* CTA Button */}
               <div className="pt-6">
