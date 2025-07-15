@@ -220,7 +220,7 @@ export default function SystemRoadmapTemplate({
               </h1>
 
               <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
-                {system.description}
+                {system.description} In line with the overall EatoSystems 1-year development timeline.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
@@ -305,7 +305,8 @@ export default function SystemRoadmapTemplate({
                 </span>
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Key milestones in the development and implementation of {system.name}.
+                Key milestones in the development and implementation of {system.name}. Reflecting the accelerated 1-year
+                development cycle.
               </p>
             </motion.div>
 

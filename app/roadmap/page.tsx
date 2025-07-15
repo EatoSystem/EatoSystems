@@ -14,84 +14,84 @@ const roadmapData = [
   {
     slug: "eatoglobal",
     launchDate: "September 2025",
-    quarter: "Q3 2025",
+    quarter: "September 2025",
     status: "upcoming",
     description: "The foundational layer launching our global movement",
   },
   {
     slug: "eatoagent",
-    launchDate: "December 2025",
-    quarter: "Q4 2025",
+    launchDate: "October 2025",
+    quarter: "October 2025",
     status: "upcoming",
     description: "AI agents to support food system decisions",
   },
   {
     slug: "eatoindex",
-    launchDate: "March 2026",
-    quarter: "Q1 2026",
+    launchDate: "November 2025",
+    quarter: "November 2025",
     status: "upcoming",
     description: "Financial index aligning capital with regeneration",
   },
   {
     slug: "eatoverse",
-    launchDate: "June 2026",
-    quarter: "Q2 2026",
+    launchDate: "December 2025",
+    quarter: "December 2025",
     status: "upcoming",
     description: "Digital twin for prototyping food systems",
   },
   {
     slug: "eatobotics",
-    launchDate: "September 2026",
-    quarter: "Q3 2026",
+    launchDate: "January 2026",
+    quarter: "January 2026",
     status: "upcoming",
     description: "Regenerative robotics for soil health",
   },
   {
     slug: "eatotransit",
-    launchDate: "December 2026",
-    quarter: "Q4 2026",
+    launchDate: "February 2026",
+    quarter: "February 2026",
     status: "upcoming",
     description: "Clean energy logistics and traceability",
   },
   {
     slug: "eatoai",
-    launchDate: "March 2027",
-    quarter: "Q1 2027",
+    launchDate: "March 2026",
+    quarter: "March 2026",
     status: "upcoming",
     description: "Decentralized intelligence coordination",
   },
   {
     slug: "eatofund",
-    launchDate: "June 2027",
-    quarter: "Q2 2027",
+    launchDate: "April 2026",
+    quarter: "April 2026",
     status: "upcoming",
     description: "Regenerative capital engine",
   },
   {
     slug: "eatosystem",
-    launchDate: "September 2027",
-    quarter: "Q3 2027",
+    launchDate: "May 2026",
+    quarter: "May 2026",
     status: "upcoming",
     description: "Full-stack national implementation",
   },
   {
     slug: "eatogov",
-    launchDate: "December 2027",
-    quarter: "Q4 2027",
+    launchDate: "June 2026",
+    quarter: "June 2026",
     status: "upcoming",
     description: "Governance and licensing framework",
   },
   {
     slug: "eatosecure",
-    launchDate: "March 2028",
-    quarter: "Q1 2028",
+    launchDate: "July 2026",
+    quarter: "July 2026",
     status: "upcoming",
     description: "Global food security program",
   },
   {
     slug: "eatofoundation",
-    launchDate: "June 2028",
-    quarter: "Q2 2028",
+    launchDate: "September 2026",
+    quarter: "September 2026",
     status: "upcoming",
     description: "Long-term stewardship and governance",
   },
@@ -147,7 +147,7 @@ function RoadmapHero() {
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
             <Calendar className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-blue-200 flex-shrink-0" />
             <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
-              Launch Timeline 2025-2028
+              Launch Timeline 2025-2026
             </span>
           </div>
 
@@ -162,7 +162,7 @@ function RoadmapHero() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
-            Our comprehensive 3-year journey to transform the global food ecosystem — launching 12 interconnected
+            Our comprehensive 1-year journey to transform the global food ecosystem — launching 12 interconnected
             systems starting with EatoGlobal in September 2025.
           </p>
 
@@ -211,15 +211,15 @@ function RoadmapHero() {
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
-                3
+                1
               </div>
               <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
-                Years
+                Year
               </div>
-              <div className="text-xs sm:text-sm text-white/80 break-words">2025-2028</div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">2025-2026</div>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:w-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
@@ -228,7 +228,7 @@ function RoadmapHero() {
               <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
                 Months
               </div>
-              <div className="text-xs sm:text-sm text-white/80 break-words">Between launches</div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Monthly launches</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
@@ -460,7 +460,7 @@ function RoadmapStats() {
       icon: <Rocket className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
-      number: "June 2028",
+      number: "Sept 2026",
       label: "Final Launch",
       description: "EatoFoundation completes the ecosystem",
       icon: <CheckCircle className="w-6 sm:w-8 h-6 sm:h-8" />,
