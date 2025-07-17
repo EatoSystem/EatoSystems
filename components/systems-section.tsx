@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Sparkles, Zap, Calendar, Eye, Circle, ExternalLink } from "lucide-react"
+import { ArrowRight, Calendar, Eye, ExternalLink, MapPin, ChevronDown, ChevronUp } from "lucide-react"
 import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 
 interface SystemProps {
   version: string
@@ -16,11 +19,31 @@ interface SystemProps {
   isVisible: boolean
   launchDate: string
   quarter: string
+  city: string
+  participants: string
+  website: string
 }
 
-function SystemCard({ version, name, layer, description, slug, index, isVisible, launchDate, quarter }: SystemProps) {
-  const [selectedSystem, setSelectedSystem] = useState<string | null>(null)
+function SystemCard({
+  version,
+  name,
+  layer,
+  description,
+  slug,
+  index,
+  isVisible,
+  launchDate,
+  quarter,
+  city,
+  participants,
+  website,
+}: SystemProps) {
+  const [expandedCards, setExpandedCards] = useState<number[]>([])
   const [imageError, setImageError] = useState(false)
+
+  const toggleCard = (id: number) => {
+    setExpandedCards((prev) => (prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]))
+  }
 
   const getSystemImage = (slug: string) => {
     const imageMap: Record<string, string> = {
@@ -64,297 +87,200 @@ function SystemCard({ version, name, layer, description, slug, index, isVisible,
     )
   }
 
-  const getLayerStyles = (layer: string) => {
-    const layerStyleMap: Record<string, any> = {
-      SOIL: {
-        bgLight: "bg-green-50",
-        textAccent: "text-green-600",
-        gradientText: "from-green-600 to-emerald-500",
-        bgGradientImage: "bg-gradient-to-r from-green-500/10 to-emerald-500/10",
-      },
-      SEED: {
-        bgLight: "bg-yellow-50",
-        textAccent: "text-yellow-600",
-        gradientText: "from-yellow-600 to-amber-500",
-        bgGradientImage: "bg-gradient-to-r from-yellow-500/10 to-amber-500/10",
-      },
-      POLLINATION: {
-        bgLight: "bg-pink-50",
-        textAccent: "text-pink-600",
-        gradientText: "from-pink-600 to-rose-500",
-        bgGradientImage: "bg-gradient-to-r from-pink-500/10 to-rose-500/10",
-      },
-      ROOT: {
-        bgLight: "bg-purple-50",
-        textAccent: "text-purple-600",
-        gradientText: "from-purple-600 to-indigo-500",
-        bgGradientImage: "bg-gradient-to-r from-purple-500/10 to-indigo-500/10",
-      },
-      SPROUT: {
-        bgLight: "bg-blue-50",
-        textAccent: "text-blue-600",
-        gradientText: "from-blue-600 to-sky-500",
-        bgGradientImage: "bg-gradient-to-r from-blue-500/10 to-sky-500/10",
-      },
-      FLOW: {
-        bgLight: "bg-teal-50",
-        textAccent: "text-teal-600",
-        gradientText: "from-teal-600 to-cyan-500",
-        bgGradientImage: "bg-gradient-to-r from-teal-500/10 to-cyan-500/10",
-      },
-      MYCELIUM: {
-        bgLight: "bg-violet-50",
-        textAccent: "text-violet-600",
-        gradientText: "from-violet-600 to-purple-500",
-        bgGradientImage: "bg-gradient-to-r from-violet-500/10 to-purple-500/10",
-      },
-      CROP: {
-        bgLight: "bg-amber-50",
-        textAccent: "text-amber-600",
-        gradientText: "from-amber-600 to-orange-500",
-        bgGradientImage: "bg-gradient-to-r from-amber-500/10 to-orange-500/10",
-      },
-      HARVEST: {
-        bgLight: "bg-orange-50",
-        textAccent: "text-orange-600",
-        gradientText: "from-orange-600 to-amber-500",
-        bgGradientImage: "bg-gradient-to-r from-orange-500/10 to-amber-500/10",
-      },
-      REGENERATION: {
-        bgLight: "bg-emerald-50",
-        textAccent: "text-emerald-600",
-        gradientText: "from-emerald-600 to-green-500",
-        bgGradientImage: "bg-gradient-to-r from-emerald-500/10 to-green-500/10",
-      },
-      CANOPY: {
-        bgLight: "bg-red-50",
-        textAccent: "text-red-600",
-        gradientText: "from-red-600 to-rose-500",
-        bgGradientImage: "bg-gradient-to-r from-red-500/10 to-rose-500/10",
-      },
-      SANCTUARY: {
-        bgLight: "bg-indigo-50",
-        textAccent: "text-indigo-600",
-        gradientText: "from-indigo-600 to-blue-500",
-        bgGradientImage: "bg-gradient-to-r from-indigo-500/10 to-blue-500/10",
-      },
-    }
-    return layerStyleMap[layer] || layerStyleMap["SOIL"]
+  const layerColors = {
+    SOIL: "from-green-500/20 to-emerald-500/20",
+    SEED: "from-yellow-500/20 to-amber-500/20",
+    POLLINATION: "from-pink-500/20 to-rose-500/20",
+    ROOT: "from-purple-500/20 to-indigo-500/20",
+    SPROUT: "from-blue-500/20 to-sky-500/20",
+    FLOW: "from-teal-500/20 to-cyan-500/20",
+    MYCELIUM: "from-violet-500/20 to-purple-500/20",
+    CROP: "from-amber-500/20 to-orange-500/20",
+    HARVEST: "from-orange-500/20 to-amber-500",
+    REGENERATION: "from-emerald-500/20 to-green-500/20",
+    CANOPY: "from-red-500/20 to-rose-500/20",
+    SANCTUARY: "from-indigo-500/20 to-blue-500/20",
   }
 
-  const getWebsiteUrl = (slug: string) => {
-    return `https://${slug}.com`
+  const layerTextColors = {
+    SOIL: "text-green-600",
+    SEED: "text-yellow-600",
+    POLLINATION: "text-pink-600",
+    ROOT: "text-purple-600",
+    SPROUT: "text-blue-600",
+    FLOW: "text-teal-600",
+    MYCELIUM: "text-violet-600",
+    CROP: "text-amber-600",
+    HARVEST: "text-orange-600",
+    REGENERATION: "text-emerald-600",
+    CANOPY: "text-red-600",
+    SANCTUARY: "text-indigo-600",
   }
 
-  const layerStyles = getLayerStyles(layer)
-  const isLeft = index % 2 === 0
+  const layerGradients = {
+    SOIL: "from-green-600 to-emerald-500",
+    SEED: "from-yellow-600 to-amber-500",
+    POLLINATION: "from-pink-600 to-rose-500",
+    ROOT: "from-purple-600 to-indigo-500",
+    SPROUT: "from-blue-600 to-sky-500",
+    FLOW: "from-teal-600 to-cyan-500",
+    MYCELIUM: "from-violet-600 to-purple-500",
+    CROP: "from-amber-600 to-orange-500",
+    HARVEST: "from-orange-600 to-amber-500",
+    REGENERATION: "from-emerald-600 to-green-500",
+    CANOPY: "from-red-600 to-rose-500",
+    SANCTUARY: "from-indigo-600 to-blue-500",
+  }
+
   const systemAltText = getSystemAltText(name, layer)
+  const isLeft = index % 2 === 0
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className={`relative flex flex-col md:flex-row items-center mb-12 sm:mb-16 ${
-        isLeft ? "md:flex-row" : "md:flex-row-reverse"
-      }`}
-      role="article"
-      aria-labelledby={`system-${slug}-title`}
-      aria-describedby={`system-${slug}-description`}
-    >
-      <div
-        className="absolute left-4 sm:left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full z-10 top-4 md:top-auto"
-        aria-hidden="true"
-      ></div>
-      <div className={`w-full md:w-5/12 ml-8 sm:ml-16 md:ml-0 ${isLeft ? "md:pr-8" : "md:pl-8"} px-4 sm:px-0`}>
-        <div
-          className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105 ${
-            selectedSystem === slug ? "ring-2 ring-blue-500" : ""
-          }`}
-          onClick={() => setSelectedSystem(selectedSystem === slug ? null : slug)}
-          role="button"
-          tabIndex={0}
-          aria-expanded={selectedSystem === slug}
-          aria-controls={`system-${slug}-details`}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault()
-              setSelectedSystem(selectedSystem === slug ? null : slug)
-            }
-          }}
-        >
-          <div className="relative h-40 sm:h-48 overflow-hidden">
-            <div className={`absolute inset-0 ${layerStyles.bgGradientImage} z-0`} aria-hidden="true"></div>
-            {!imageError ? (
-              <Image
-                src={getSystemImage(slug) || "/placeholder.svg"}
-                alt={systemAltText}
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-105 relative z-10"
-                onError={() => setImageError(true)}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={index < 3}
-              />
-            ) : (
-              <div
-                className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center relative z-10"
-                role="img"
-                aria-label={`Placeholder image for ${name} system`}
-              >
-                <div className="text-center">
-                  <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" aria-hidden="true" />
-                  <p className="text-gray-600 font-medium">{name}</p>
+    <div className={`relative flex items-center mb-16 ${isLeft ? "flex-row" : "flex-row-reverse"}`}>
+      {/* Timeline dot */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full shadow-lg z-10" />
+
+      {/* Content */}
+      <div className={`w-5/12 ${isLeft ? "pr-8" : "pl-8"}`}>
+        <Card className="group cursor-pointer transition-all duration-300 hover:shadow-xl border-0 bg-white shadow-lg">
+          <CardContent className="p-0">
+            {/* Image and System Info */}
+            <div className="relative h-48 overflow-hidden rounded-t-lg">
+              <div className={`absolute inset-0 bg-gradient-to-br ${layerColors[layer as keyof typeof layerColors]}`} />
+              {!imageError ? (
+                <Image
+                  src={getSystemImage(slug) || "/placeholder.svg"}
+                  alt={systemAltText}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={() => setImageError(true)}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={index < 3}
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="text-center">
+                    <Eye className="w-12 h-12 mx-auto mb-2 text-gray-500" />
+                    <p className="text-gray-600 font-medium">{name}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className="absolute top-4 left-4 z-20">
-              <div className={`inline-flex items-center px-3 py-1 rounded-full ${layerStyles.bgLight} gap-2`}>
-                <span className={`text-sm font-medium ${layerStyles.textAccent}`} aria-label={`System layer: ${layer}`}>
+              )}
+              <div className="absolute top-4 left-4">
+                <Badge className={`bg-white/90 ${layerTextColors[layer as keyof typeof layerTextColors]} font-medium`}>
                   {layer}
-                </span>
+                </Badge>
               </div>
-            </div>
-            <div className="absolute top-4 right-4 z-20">
-              <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                <span className="text-sm font-mono font-semibold text-gray-800" aria-label={`Version ${version}`}>
+              <div className="absolute top-4 right-4">
+                <Badge variant="outline" className="bg-white/90 border-gray-200 text-gray-600 font-mono">
                   {version}
-                </span>
+                </Badge>
               </div>
             </div>
-          </div>
-          <div className="p-4 sm:p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
-              <h3
-                id={`system-${slug}-title`}
-                className={`text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${layerStyles.gradientText} break-words`}
-              >
-                {name}
-              </h3>
-              <div className="flex items-center text-sm text-gray-500">
-                <Calendar className="w-4 h-4 mr-1 flex-shrink-0" aria-hidden="true" />
-                <span className="break-words" aria-label={`Launch date: ${quarter}`}>
-                  {quarter}
-                </span>
-              </div>
-            </div>
-            <div className="mb-4">
-              <p id={`system-${slug}-description`} className="text-gray-600">
-                {description}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div className="flex items-center">
-                <Circle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" aria-hidden="true" />
-                <span className="text-sm text-gray-600 break-words">Active Development</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
-                <Link
-                  href={`/${slug}`}
-                  className={`inline-flex items-center text-sm ${layerStyles.textAccent} hover:underline break-words`}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    window.scrollTo(0, 0)
-                  }}
-                  aria-label={`View detailed information about ${name} system`}
+
+            {/* Card Content */}
+            <div className="p-6">
+              <div className="mb-4">
+                <h3
+                  className={`text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]}`}
                 >
-                  <span className="break-words">System Details</span>{" "}
-                  <ArrowRight className="ml-1 h-3 w-3 flex-shrink-0" aria-hidden="true" />
-                </Link>
-                <Link
-                  href={`/roadmap/${slug}`}
-                  className="inline-flex items-center text-sm text-blue-600 hover:underline break-words"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    window.scrollTo(0, 0)
-                  }}
-                  aria-label={`View development roadmap for ${name} system`}
-                >
-                  <span className="break-words">Roadmap</span>{" "}
-                  <Calendar className="ml-1 h-3 w-3 flex-shrink-0" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-            {selectedSystem === slug && (
-              <motion.div
-                id={`system-${slug}-details`}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4 pt-4 border-t border-gray-200"
-                role="region"
-                aria-label={`Expanded details for ${name} system`}
-              >
-                <p className="text-gray-600 mb-4 break-words">
-                  Explore the comprehensive capabilities and development roadmap for {name}.
-                </p>
-                <div
-                  className="flex flex-col sm:flex-row gap-2 flex-wrap"
-                  role="group"
-                  aria-label={`Action buttons for ${name} system`}
-                >
-                  <Link href={`/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
-                    <button
-                      className={`w-full sm:w-auto px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 bg-gradient-to-r ${layerStyles.gradientText} hover:shadow-lg`}
-                      aria-label={`View detailed information and features of ${name} system`}
-                    >
-                      <span className="flex items-center justify-center gap-1 break-words">
-                        <Sparkles className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-                        View Details
-                      </span>
-                    </button>
-                  </Link>
-                  <Link
-                    href={slug === "eatoagent" ? "/eatoagent-lab" : `/eatosystems/${slug}-lab`}
-                    onClick={() => window.scrollTo(0, 0)}
-                    className="w-full sm:w-auto"
-                  >
-                    <button
-                      className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300"
-                      aria-label={`Access developer laboratory and tools for ${name} system`}
-                    >
-                      <span className="flex items-center justify-center gap-1 break-words">
-                        <Zap className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-                        Developer Lab
-                      </span>
-                    </button>
-                  </Link>
-                  <Link href={`/roadmap/${slug}`} onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
-                    <button
-                      className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300"
-                      aria-label={`View development timeline and milestones for ${name} system`}
-                    >
-                      <span className="flex items-center justify-center gap-1 break-words">
-                        <Calendar className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-                        System Roadmap
-                      </span>
-                    </button>
-                  </Link>
-                  <a
-                    href={getWebsiteUrl(slug)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button
-                      className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-all duration-300"
-                      aria-label={`Visit ${name} official website`}
-                    >
-                      <span className="flex items-center justify-center gap-1 break-words">
-                        <ExternalLink className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-                        Visit {name}.com
-                      </span>
-                    </button>
-                  </a>
+                  {name}
+                </h3>
+                <div className="flex items-center gap-4 text-gray-600">
+                  <div className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    <span className="font-medium">{city}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    <span>{quarter}</span>
+                  </div>
                 </div>
-              </motion.div>
-            )}
-          </div>
-        </div>
+              </div>
+
+              <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
+
+              <div className="flex justify-center mb-4">
+                <Button
+                  className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fillRule="evenodd"
+                      d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Apply for Hackathon
+                </Button>
+              </div>
+
+              <div className="text-center">
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 hover:underline"
+                >
+                  Visit {name}.com <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Expandable Content */}
+              {expandedCards.includes(index) && (
+                <div className="border-t pt-6 mt-6 space-y-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    Join developers, innovators, and food system experts in {city} to build {name} - a key component of
+                    the regenerative food ecosystem.
+                  </p>
+
+                  <div className="text-center py-4">
+                    <div className="text-2xl font-bold text-gray-900">{participants}</div>
+                    <div className="text-sm text-gray-600">Expected Participants</div>
+                  </div>
+
+                  <div className="flex justify-center pt-4">
+                    <Button
+                      size="sm"
+                      className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
+                    >
+                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fillRule="evenodd"
+                          d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Apply for Hackathon
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              {/* Toggle Button */}
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => toggleCard(index)}
+                  className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 font-medium"
+                >
+                  {expandedCards.includes(index) ? (
+                    <>
+                      Show Less <ChevronUp className="w-4 h-4" />
+                    </>
+                  ) : (
+                    <>
+                      Learn More <ChevronDown className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-    </motion.div>
+
+      {/* Empty space for alternating layout */}
+      <div className="w-5/12" />
+    </div>
   )
 }
 
@@ -389,6 +315,9 @@ export default function SystemsSection() {
       slug: "eatoglobal",
       launchDate: "September 2025",
       quarter: "September 2025",
+      city: "Copenhagen",
+      participants: "1000+ global contributors",
+      website: "https://eatoglobal.com",
     },
     {
       version: "v1.0",
@@ -399,6 +328,9 @@ export default function SystemsSection() {
       slug: "eatoagent",
       launchDate: "October 2025",
       quarter: "October 2025",
+      city: "Berlin",
+      participants: "800+ AI developers",
+      website: "https://eatoagent.com",
     },
     {
       version: "v2.0",
@@ -409,6 +341,9 @@ export default function SystemsSection() {
       slug: "eatoindex",
       launchDate: "November 2025",
       quarter: "November 2025",
+      city: "New York",
+      participants: "1200+ fintech developers",
+      website: "https://eatoindex.com",
     },
     {
       version: "v3.0",
@@ -419,6 +354,9 @@ export default function SystemsSection() {
       slug: "eatoverse",
       launchDate: "December 2025",
       quarter: "December 2025",
+      city: "Dubai",
+      participants: "900+ metaverse developers",
+      website: "https://eatoverse.com",
     },
     {
       version: "v4.0",
@@ -429,6 +367,9 @@ export default function SystemsSection() {
       slug: "eatobotics",
       launchDate: "January 2026",
       quarter: "January 2026",
+      city: "Tokyo",
+      participants: "750+ robotics engineers",
+      website: "https://eatobotics.com",
     },
     {
       version: "v5.0",
@@ -439,6 +380,9 @@ export default function SystemsSection() {
       slug: "eatotransit",
       launchDate: "February 2026",
       quarter: "February 2026",
+      city: "Detroit",
+      participants: "650+ logistics developers",
+      website: "https://eatotransit.com",
     },
     {
       version: "v6.0",
@@ -449,6 +393,9 @@ export default function SystemsSection() {
       slug: "eatoai",
       launchDate: "March 2026",
       quarter: "March 2026",
+      city: "Paris",
+      participants: "1100+ AI researchers",
+      website: "https://eatoai.com",
     },
     {
       version: "v7.0",
@@ -459,6 +406,9 @@ export default function SystemsSection() {
       slug: "eatofund",
       launchDate: "April 2026",
       quarter: "April 2026",
+      city: "London",
+      participants: "950+ fintech innovators",
+      website: "https://eatofund.com",
     },
     {
       version: "v8.0",
@@ -469,6 +419,9 @@ export default function SystemsSection() {
       slug: "eatosystem",
       launchDate: "May 2026",
       quarter: "May 2026",
+      city: "Amsterdam",
+      participants: "1300+ system architects",
+      website: "https://eatosystem.com",
     },
     {
       version: "v9.0",
@@ -479,6 +432,9 @@ export default function SystemsSection() {
       slug: "eatogov",
       launchDate: "June 2026",
       quarter: "June 2026",
+      city: "Singapore",
+      participants: "800+ policy developers",
+      website: "https://eatogov.com",
     },
     {
       version: "v10.0",
@@ -489,6 +445,9 @@ export default function SystemsSection() {
       slug: "eatosecure",
       launchDate: "July 2026",
       quarter: "July 2026",
+      city: "Rome",
+      participants: "1000+ security experts",
+      website: "https://eatosecure.com",
     },
     {
       version: "v11.0",
@@ -499,6 +458,9 @@ export default function SystemsSection() {
       slug: "eatofoundation",
       launchDate: "September 2026",
       quarter: "September 2026",
+      city: "Geneva",
+      participants: "1500+ foundation builders",
+      website: "https://eatofoundation.com",
     },
   ]
 
@@ -519,28 +481,40 @@ export default function SystemsSection() {
           className="text-center mb-12 sm:mb-16"
         >
           <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-orange-100 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 border border-green-200">
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-600 flex-shrink-0" aria-hidden="true" />
-            <span className="text-gray-800 font-semibold text-sm sm:text-base break-words">Interactive Systems</span>
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-600 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="text-gray-800 font-semibold text-sm sm:text-base break-words">
+              Interactive Systems & Hackathons
+            </span>
           </div>
           <h2
             id="systems-section-title"
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0"
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600 break-words">
-              12 EatoSystems
+              12 EatoSystems & Hackathons
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0 break-words">
-            From Soil to Sanctuary — Click each card to explore our interconnected ecosystem of regenerative food
-            systems.
+            From Soil to Sanctuary — Explore our interconnected ecosystem of regenerative food systems and join the
+            global hackathon series.
           </p>
         </motion.div>
         <div className="max-w-6xl mx-auto px-4 sm:px-0">
           <div className="relative">
             <div
-              className="absolute left-4 sm:left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-orange-500 to-green-500"
+              className="absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-green-500 via-orange-500 to-green-500"
               aria-hidden="true"
-            ></div>
+            />
             {systems.map((system, index) => (
               <SystemCard
                 key={system.slug}
@@ -553,6 +527,9 @@ export default function SystemsSection() {
                 isVisible={isVisible}
                 launchDate={system.launchDate}
                 quarter={system.quarter}
+                city={system.city}
+                participants={system.participants}
+                website={system.website}
               />
             ))}
           </div>
@@ -564,16 +541,28 @@ export default function SystemsSection() {
           viewport={{ once: true }}
           className="text-center mt-12 sm:mt-16 px-4 sm:px-0"
         >
-          <Link href="/eatosystems">
-            <button
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
-              aria-label="Navigate to explore all EatoSystems in detail"
-            >
-              <span className="flex items-center justify-center gap-2 break-words">
-                Explore All Systems <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
-              </span>
-            </button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/eatosystems">
+              <button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+                aria-label="Navigate to explore all EatoSystems in detail"
+              >
+                <span className="flex items-center justify-center gap-2 break-words">
+                  Explore All Systems <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
+                </span>
+              </button>
+            </Link>
+            <Link href="/hack">
+              <button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-green-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-orange-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+                aria-label="Navigate to hackathon series page"
+              >
+                <span className="flex items-center justify-center gap-2 break-words">
+                  Join Hackathons <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
+                </span>
+              </button>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
