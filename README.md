@@ -8,7 +8,7 @@ EatoSystems is a comprehensive platform that connects sustainable food systems, 
 
 ## 🚀 Features
 
-- **11 Integrated Systems**: From EatoAgent to EatoFoundation
+- **12 Integrated Systems**: From EatoGlobal to EatoFoundation
 - **Interactive System Map**: Explore how each system connects
 - **Partner Network**: Collaboration with world-renowned chefs and organizations
 - **Lab Environment**: Test and develop sustainable food solutions
