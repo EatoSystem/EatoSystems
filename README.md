@@ -1,125 +1,78 @@
-# EatoSystems - From Soil to Sanctuary
+# 🌱 EatoSystems
 
-Building the world's first full-stack sustainable food system — from cultural roots to regenerative governance.
+**From Soil to Sanctuary — Building the Future of Food**
 
-## 🌱 About
+EatoSystems is the world’s first fully integrated ecosystem of regenerative food systems — spanning AI-powered agriculture, financial indexes for regenerative capital, decentralized infrastructure, and open-source tools for national and global food sovereignty.
 
-EatoSystems is a comprehensive platform that connects sustainable food systems, agricultural innovation, and regenerative practices. Our mission is to create a seamless ecosystem from soil health to food sanctuary.
+## 🔭 Our Mission
 
-## 🚀 Features
+To transform how food is produced, moved, financed, and governed — by building an open, regenerative operating system for Earth.
 
-- **11 Integrated Systems**: From EatoAgent to EatoFoundation
-- **Interactive System Map**: Explore how each system connects
-- **Partner Network**: Collaboration with world-renowned chefs and organizations
-- **Lab Environment**: Test and develop sustainable food solutions
-- **Responsive Design**: Optimized for all devices
+## 🌍 What We're Building
 
-## 🛠 Tech Stack
+EatoSystems is a living architecture built on 12 interconnected systems:
 
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS + shadcn/ui
-- **TypeScript**: Full type safety
-- **Deployment**: Vercel
-- **Images**: Optimized with Next.js Image component
-
-## 📦 Installation
-
-1. Clone the repository:
-\`\`\`bash
-git clone https://github.com/your-username/eatosystems.git
-cd eatosystems
-\`\`\`
-
-2. Install dependencies:
-\`\`\`bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-\`\`\`
-
-3. Run the development server:
-\`\`\`bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-\`\`\`
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🌐 Deployment
-
-### Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
-
-1. Push your code to GitHub
-2. Import your repository on Vercel
-3. Vercel will automatically detect Next.js and configure the build settings
-4. Your app will be deployed and available at a Vercel URL
-
-### Environment Variables
-
-No environment variables are required for basic functionality. All images are served from blob.v0.dev.
-
-## 📁 Project Structure
-
-\`\`\`
-eatosystems/
-├── app/                    # Next.js App Router pages
-│   ├── about/             # About page
-│   ├── contribute/        # Contribution pages
-│   ├── eatosystems/       # Systems overview and individual pages
-│   ├── partners/          # Partner pages
-│   ├── start-building/    # Getting started pages
-│   └── page.tsx           # Homepage
-├── components/            # Reusable React components
-│   ├── ui/               # shadcn/ui components
-│   └── ...               # Custom components
-├── lib/                  # Utility functions and data
-├── public/               # Static assets
-└── docs/                 # Documentation
-\`\`\`
-
-## 🎨 Design System
-
-The project uses a custom design system built on Tailwind CSS with:
-
-- **Brand Colors**: Eato green (#2F8F2F), Earthy orange (#D9822B), Deep charcoal (#2A2A2A)
-- **Typography**: Inter font family
-- **Components**: shadcn/ui component library
-- **Responsive**: Mobile-first design approach
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](./app/contribute/page.tsx) for details.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🌍 Systems Overview
-
-1. **EatoCultures** - Cultural food heritage preservation
-2. **EatoAgent** - AI-powered agricultural assistance
-3. **EatoIndex** - Food system data and analytics
-4. **EatoVerse** - Virtual food system environments
-5. **EatoBotics** - Robotic farming solutions
-6. **EatoTransit** - Food distribution networks
-7. **EatoAI** - Machine learning for agriculture
-8. **EatoFund** - Sustainable food financing
-9. **EatoSystem** - Ecosystem management
-10. **EatoGov** - Food policy and governance
-11. **EatoSecure** - Food security solutions
-12. **EatoFoundation** - Educational and research foundation
-
-## 📞 Contact
-
-For questions or support, please visit our [contact page](./components/contact-section.tsx) or reach out through our partner network.
+| System | Description | Hackathon Location & Date |
+|--------|-------------|----------------------------|
+| **SOIL** | Cultural & knowledge foundation | Copenhagen · Sept 2025 |
+| **SEED** | Modular AI agents (EatoAgent) | Berlin · Oct 2025 |
+| **POLLINATION** | Regenerative food index (EatoIndex) | New York · Nov 2025 |
+| **ROOT** | Digital twin infrastructure (EatoVerse) | Dubai · Dec 2025 |
+| **SPROUT** | Regenerative robotics (EatoBotics) | Tokyo · Jan 2026 |
+| **FLOW** | Clean food logistics (EatoTransit) | Detroit · Feb 2026 |
+| **MYCELIUM** | Distributed AI coordination (EatoAI) | Paris · Mar 2026 |
+| **CROP** | Regenerative capital engine (EatoFund) | London · Apr 2026 |
+| **HARVEST** | National food system rollout (EatoSystem) | Amsterdam · May 2026 |
+| **REGENERATION** | Food governance infrastructure (EatoGov) | Singapore · Jun 2026 |
+| **CANOPY** | Global food security system (EatoSecure) | Rome · Jul 2026 |
+| **SANCTUARY** | Global trust & integrity (EatoFoundation) | Geneva · Sept 2026 |
 
 ---
 
-Built with ❤️ for a sustainable food future.
+## 🧑‍💻 Open Source & Global Collaboration
+
+We believe the future of food must be open, inclusive, and collaboratively built. This repository will host:
+
+- 🌿 Source code and documentation for EatoSystems tools and agents
+- 🧠 AI models and regenerative datasets
+- 🔧 System architecture blueprints and modular templates
+- 🎓 Resources for hackathon contributors and partner teams
+- 📡 APIs and integration guides across Eato components
+
+---
+
+## 🧬 Join the Movement
+
+👩‍🌾 Farmers. 🧑‍💻 Developers. 🧠 Researchers. 🏛️ Policymakers. 💡 Innovators.
+
+You're invited to co-create the systems that will feed our future.
+
+- 🌐 [EatoSystems.com](https://eatosystems.com)
+- 🧠 [Apply for Hackathons](https://eatosystems.com/hack)
+- 🧰 [Contribute to Open Source](#contributing)
+- ✉️ Contact: hello@eatosystems.com
+
+---
+
+## 🚀 Contributing
+
+1. Fork this repo and clone it locally.
+2. Create a new branch: `git checkout -b feature/YourFeatureName`
+3. Make your changes and commit: `git commit -m "Add: Your update"`
+4. Push the branch: `git push origin feature/YourFeatureName`
+5. Submit a pull request 🎉
+
+We welcome PRs across all 12 systems — from AI and robotics to logistics and governance.
+
+---
+
+## 📜 License
+
+All code and content in this repository is released under the [MIT License](LICENSE).
+
+---
+
+> “Regeneration is not a product. It's a process. It's how we return to harmony with the Earth — through food, technology, and community.”
+
+— **EatoSystems Team**
+
