@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 // List of paths that don't require authentication
-const publicPaths = ["/"]
+const publicPaths = ["/", "/auth/login"]
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
@@ -36,7 +36,8 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - images (public images)
+     * - public folder assets
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|images).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|images|public).*)",
   ],
 }

@@ -1,4 +1,11 @@
 import type React from "react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Login - EatoSystems",
+  description: "Access the EatoSystems platform",
+}
+
 export default function AuthLayout({
   children,
 }: {
