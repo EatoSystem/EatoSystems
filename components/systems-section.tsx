@@ -96,7 +96,7 @@ function SystemCard({
     FLOW: "from-teal-500/20 to-cyan-500/20",
     MYCELIUM: "from-violet-500/20 to-purple-500/20",
     CROP: "from-amber-500/20 to-orange-500/20",
-    HARVEST: "from-orange-500/20 to-amber-500",
+    HARVEST: "from-orange-500/20 to-amber-500/20",
     REGENERATION: "from-emerald-500/20 to-green-500/20",
     CANOPY: "from-red-500/20 to-rose-500/20",
     SANCTUARY: "from-indigo-500/20 to-blue-500/20",
@@ -200,18 +200,20 @@ function SystemCard({
               <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
 
               <div className="flex justify-center mb-4">
-                <Button
-                  className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
-                >
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Apply for Hackathon
-                </Button>
+                <Link href="/apply-hackathon">
+                  <Button
+                    className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Apply for Hackathon
+                  </Button>
+                </Link>
               </div>
 
               <div className="text-center">
@@ -239,19 +241,21 @@ function SystemCard({
                   </div>
 
                   <div className="flex justify-center pt-4">
-                    <Button
-                      size="sm"
-                      className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
-                    >
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Apply for Hackathon
-                    </Button>
+                    <Link href="/apply-hackathon">
+                      <Button
+                        size="sm"
+                        className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
+                      >
+                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fillRule="evenodd"
+                            d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        Apply for Hackathon
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               )}
