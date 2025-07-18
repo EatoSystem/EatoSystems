@@ -4,27 +4,25 @@ import type { NextRequest } from "next/server"
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Allow access to homepage and login page
-  if (pathname === "/" || pathname === "/auth/login") {
+  // Allow access to homepage and auth pages
+  if (pathname === "/" || pathname.startsWith("/auth/")) {
     return NextResponse.next()
   }
 
-  // Allow static files
+  // Allow access to static files
   if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/images") ||
-    pathname.startsWith("/public") ||
-    pathname.includes(".")
+    pathname.startsWith("/_next/") ||
+    pathname.startsWith("/api/") ||
+    pathname.includes(".") // files with extensions
   ) {
     return NextResponse.next()
   }
 
   // Check for authentication cookie
-  const authCookie = request.cookies.get("eato-auth")
+  const authCookie = request.cookies.get("eatosystems-auth")
 
   if (!authCookie || authCookie.value !== "authenticated") {
-    // Redirect to login with the current path as redirect parameter
+    // Redirect to login with the intended destination
     const loginUrl = new URL("/auth/login", request.url)
     loginUrl.searchParams.set("redirect", pathname)
     return NextResponse.redirect(loginUrl)

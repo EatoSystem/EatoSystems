@@ -71,38 +71,40 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-6 py-24 text-center text-white">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-10"
+          className="space-y-6 sm:space-y-10"
         >
           {/* Top pill badge - moved above title with proper spacing */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center pt-8"
+            className="flex justify-center pt-4 sm:pt-8"
           >
-            <div className="inline-flex items-center bg-white/15 backdrop-blur-md rounded-full px-8 py-4 border border-white/20">
-              <span className="text-white font-medium text-base uppercase tracking-wider">FROM SOIL TO SANCTUARY</span>
+            <div className="inline-flex items-center bg-white/15 backdrop-blur-md rounded-full px-4 sm:px-8 py-2 sm:py-4 border border-white/20">
+              <span className="text-white font-medium text-xs sm:text-base uppercase tracking-wider">
+                FROM SOIL TO SANCTUARY
+              </span>
             </div>
           </motion.div>
 
-          {/* Main title - made larger */}
+          {/* Main title - responsive sizing */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-6"
+            className="space-y-3 sm:space-y-6"
           >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-orange-200 to-yellow-300">
                 EatoSystems
               </span>
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white/95">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light text-white/95">
               Regenerative Food Systems for Earth
             </h2>
           </motion.div>
@@ -112,7 +114,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto"
+            className="text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto px-2"
           >
             Building the world's first comprehensive ecosystem of regenerative food systems — from AI-powered
             agriculture to global food security infrastructure.
@@ -123,10 +125,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto px-2"
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
-              <p className="text-lg md:text-xl text-white/95 leading-relaxed font-light">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20 shadow-2xl">
+              <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed font-light">
                 We're building a global food system rooted in health, community, and environmental regeneration — one
                 story, one collaboration, and one system at a time.
               </p>
@@ -138,23 +140,23 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
           >
             <Button
               size="lg"
-              className="bg-white text-green-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[200px]"
+              className="bg-white text-green-600 hover:bg-gray-100 px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto min-w-[200px]"
               onClick={() => {
                 document.getElementById("systems")?.scrollIntoView({ behavior: "smooth" })
               }}
             >
               <span>Explore Systems</span>
-              <ArrowRight className="ml-3 h-5 w-5" />
+              <ArrowRight className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5" />
             </Button>
 
             <Link href="/start-building">
               <Button
                 size="lg"
-                className="bg-green-600/90 backdrop-blur-sm text-white hover:bg-green-700/90 px-10 py-4 text-lg font-semibold rounded-full shadow-xl transition-all duration-300 min-w-[200px]"
+                className="bg-green-600/90 backdrop-blur-sm text-white hover:bg-green-700/90 px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full shadow-xl transition-all duration-300 w-full sm:w-auto min-w-[200px]"
               >
                 Start Building
               </Button>
@@ -166,24 +168,24 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto pt-6 sm:pt-8 px-2"
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-lg">
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <Users className="w-8 h-8 text-white" />
+            <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 shadow-lg">
+              <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 sm:mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <Users className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-4">Global Community</h3>
-              <p className="text-base text-white/80 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Global Community</h3>
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
                 Join thousands of developers, farmers, and innovators building the future of food systems worldwide.
               </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-lg">
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <Code className="w-8 h-8 text-white" />
+            <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 shadow-lg">
+              <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 sm:mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <Code className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-4">Open Source</h3>
-              <p className="text-base text-white/80 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Open Source</h3>
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
                 Transparent, collaborative development with full access to source code and comprehensive documentation.
               </p>
             </div>
