@@ -1,15 +1,19 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MapPin, Phone, ArrowRight } from "lucide-react"
+import { Mail, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,6 +34,39 @@ export default function ContactSection() {
       observer.disconnect()
     }
   }, [])
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    }
+
+    try {
+      // Here you would typically send to your backend API
+      // For now, we'll simulate the submission
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // In a real implementation, you'd send this to your backend:
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ ...data, to: 'info@eatosystems.com' })
+      // })
+
+      setSubmitStatus("success")
+      e.currentTarget.reset()
+    } catch (error) {
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <section ref={sectionRef} id="contact" className="py-24 md:py-32 relative overflow-hidden">
@@ -90,21 +127,6 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="flex items-start group"
-                >
-                  <div className="flex-shrink-0 mt-1 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium text-gray-800 mb-1 break-words">Location</h4>
-                    <p className="text-slate-600 break-words">123 Regenerative Way, Sustainable City, SC 12345</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   className="flex items-start group"
                 >
@@ -114,21 +136,6 @@ export default function ContactSection() {
                   <div className="ml-4">
                     <h4 className="text-lg font-medium text-gray-800 mb-1">Email</h4>
                     <p className="text-slate-600">info@eatosystems.com</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="flex items-start group"
-                >
-                  <div className="flex-shrink-0 mt-1 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium text-gray-800 mb-1">Phone</h4>
-                    <p className="text-slate-600">+1 (555) 123-4567</p>
                   </div>
                 </motion.div>
               </div>
@@ -152,7 +159,7 @@ export default function ContactSection() {
             >
               <div className="premium-card p-8 rounded-3xl shadow-xl bg-white border border-gray-100">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -160,6 +167,7 @@ export default function ContactSection() {
                       </label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="Your name"
                         className="border-gray-200 focus:border-primary rounded-xl py-4 sm:py-6 text-sm sm:text-base"
                       />
@@ -171,6 +179,7 @@ export default function ContactSection() {
                       <Input
                         id="email"
                         type="email"
+                        name="email"
                         placeholder="Your email"
                         className="border-gray-200 focus:border-primary rounded-xl py-4 sm:py-6 text-sm sm:text-base"
                       />
@@ -183,6 +192,7 @@ export default function ContactSection() {
                     </label>
                     <Input
                       id="subject"
+                      name="subject"
                       placeholder="Subject"
                       className="border-gray-200 focus:border-primary rounded-xl py-4 sm:py-6 text-sm sm:text-base"
                     />
@@ -194,6 +204,7 @@ export default function ContactSection() {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Your message"
                       rows={5}
                       className="border-gray-200 focus:border-primary rounded-xl text-sm sm:text-base"
@@ -201,12 +212,27 @@ export default function ContactSection() {
                   </div>
 
                   <div className="transform hover:scale-102 active:scale-98 transition-transform">
-                    <Button className="w-full premium-btn bg-primary hover:bg-primary/90 text-white rounded-xl py-4 sm:py-6 text-sm sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                      <span className="break-words">Send Message</span>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full premium-btn bg-primary hover:bg-primary/90 text-white rounded-xl py-4 sm:py-6 text-sm sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      <span className="break-words">{isSubmitting ? "Sending..." : "Send Message"}</span>
                       <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
                     </Button>
                   </div>
                 </form>
+                {submitStatus === "success" && (
+                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl">
+                    <p className="text-green-800">Message sent successfully! We'll get back to you soon.</p>
+                  </div>
+                )}
+
+                {submitStatus === "error" && (
+                  <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-red-800">Failed to send message. Please try again.</p>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
