@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Eye, EyeOff, Lock } from "lucide-react"
+import { Eye, EyeOff, Lock, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 
 export default function LoginPage() {
@@ -101,13 +101,27 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500">
-              Need access?{" "}
-              <a href="mailto:hello@eatosystems.com" className="text-green-600 hover:text-green-700 font-medium">
-                Contact us
-              </a>
-            </p>
+          <div className="mt-6 space-y-4">
+            <div className="text-center">
+              <Button
+                variant="ghost"
+                onClick={() => router.push("/")}
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 font-medium"
+                disabled={loading}
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Homepage
+              </Button>
+            </div>
+
+            <div className="text-center">
+              <p className="text-sm text-gray-500">
+                Need access?{" "}
+                <a href="mailto:info@eatosystems.com" className="text-green-600 hover:text-green-700 font-medium">
+                  Contact us
+                </a>
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
