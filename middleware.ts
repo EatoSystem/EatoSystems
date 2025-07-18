@@ -2,11 +2,12 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 // List of paths that don't require authentication
-const publicPaths = ["/auth/login", "/"]
+const publicPaths = ["/", "/auth/login"]
 
 export function middleware(request: NextRequest) {
-  // Check if the path is public
   const path = request.nextUrl.pathname
+
+  // Allow public paths
   if (publicPaths.includes(path)) {
     return NextResponse.next()
   }
@@ -25,12 +26,17 @@ export function middleware(request: NextRequest) {
   return NextResponse.next()
 }
 
-// Apply middleware to all routes except static files
+// Apply middleware to all routes except static files and API routes
 export const config = {
   matcher: [
     /*
-     * Match all paths except static assets and API routes
+     * Match all paths except:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - images (public images)
      */
-    "/((?!_next/static|_next/image|favicon.ico|images|api).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|images).*)",
   ],
 }

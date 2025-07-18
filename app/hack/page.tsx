@@ -231,11 +231,11 @@ const layerColors = {
   SPROUT: "from-blue-500/20 to-sky-500/20",
   FLOW: "from-teal-500/20 to-cyan-500/20",
   MYCELIUM: "from-violet-500/20 to-purple-500/20",
-  CROP: "from-amber-500/20 to-orange-500/20",
+  CROP: "from-amber-500/20 to-orange-500",
   HARVEST: "from-orange-500/20 to-amber-500/20",
   REGENERATION: "from-emerald-500/20 to-green-500/20",
   CANOPY: "from-red-500/20 to-rose-500/20",
-  SANCTUARY: "from-indigo-500/20 to-blue-500/20",
+  SANCTUARY: "from-indigo-500/20 to-blue-500",
 }
 
 const layerTextColors = {
@@ -363,151 +363,292 @@ export default function HackathonPage() {
           </div>
 
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-green-500 via-orange-500 to-green-500" />
+            {/* Desktop Timeline line */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-green-500 via-orange-500 to-green-500" />
 
             {hackathons.map((hackathon, index) => {
               const IconComponent = hackathon.icon
               const isLeft = index % 2 === 0
 
               return (
-                <div
-                  key={hackathon.id}
-                  className={`relative flex items-center mb-16 ${isLeft ? "flex-row" : "flex-row-reverse"}`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full shadow-lg z-10" />
+                <div key={hackathon.id} className="relative mb-8 md:mb-16">
+                  {/* Mobile Layout */}
+                  <div className="block md:hidden">
+                    <div className="relative pl-8">
+                      {/* Mobile timeline dot */}
+                      <div className="absolute left-0 top-6 w-3 h-3 bg-white border-2 border-orange-500 rounded-full shadow-lg z-10" />
+                      {/* Mobile timeline line */}
+                      {index < hackathons.length - 1 && (
+                        <div className="absolute left-1.5 top-9 w-0.5 h-full bg-gradient-to-b from-orange-500 to-green-500" />
+                      )}
 
-                  {/* Content */}
-                  <div className={`w-5/12 ${isLeft ? "pr-8" : "pl-8"}`}>
-                    <Card className="group cursor-pointer transition-all duration-300 hover:shadow-xl border-0 bg-white shadow-lg">
-                      <CardContent className="p-0">
-                        {/* Image and System Info */}
-                        <div className="relative h-48 overflow-hidden rounded-t-lg">
-                          <div
-                            className={`absolute inset-0 bg-gradient-to-br ${layerColors[hackathon.layer as keyof typeof layerColors]}`}
-                          />
-                          <Image
-                            src={hackathon.image || "/placeholder.svg"}
-                            alt={hackathon.title}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                          <div className="absolute top-4 left-4">
-                            <Badge
-                              className={`bg-white/90 ${layerTextColors[hackathon.layer as keyof typeof layerTextColors]} font-medium`}
-                            >
-                              {hackathon.layer}
-                            </Badge>
-                          </div>
-                          <div className="absolute top-4 right-4">
-                            <Badge variant="outline" className="bg-white/90 border-gray-200 text-gray-600 font-mono">
-                              {hackathon.version}
-                            </Badge>
-                          </div>
-                        </div>
-
-                        {/* Card Content */}
-                        <div className="p-6">
-                          <div className="mb-4">
-                            <h3
-                              className={`text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]}`}
-                            >
-                              {hackathon.title}
-                            </h3>
-                            <div className="flex items-center gap-4 text-gray-600">
-                              <div className="flex items-center gap-1">
-                                <MapPin className="w-4 h-4" />
-                                <span className="font-medium">{hackathon.city}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                <span>{hackathon.date}</span>
-                              </div>
+                      <Card className="group cursor-pointer transition-all duration-300 hover:shadow-xl border-0 bg-white shadow-lg">
+                        <CardContent className="p-0">
+                          {/* Image and System Info */}
+                          <div className="relative h-40 overflow-hidden rounded-t-lg">
+                            <div
+                              className={`absolute inset-0 bg-gradient-to-br ${layerColors[hackathon.layer as keyof typeof layerColors]}`}
+                            />
+                            <Image
+                              src={hackathon.image || "/placeholder.svg"}
+                              alt={hackathon.title}
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="absolute top-2 left-2">
+                              <Badge
+                                className={`bg-white/90 ${layerTextColors[hackathon.layer as keyof typeof layerTextColors]} font-medium text-xs`}
+                              >
+                                {hackathon.layer}
+                              </Badge>
+                            </div>
+                            <div className="absolute top-2 right-2">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/90 border-gray-200 text-gray-600 font-mono text-xs"
+                              >
+                                {hackathon.version}
+                              </Badge>
                             </div>
                           </div>
 
-                          <p className="text-gray-600 mb-6 leading-relaxed">{hackathon.description}</p>
-
-                          <div className="flex justify-center mb-4">
-                            <Button
-                              className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
-                            >
-                              <Sparkles className="w-4 h-4 mr-2" />
-                              Apply Now
-                            </Button>
-                          </div>
-
-                          <div className="text-center">
-                            <a
-                              href={hackathon.website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 hover:underline"
-                            >
-                              Visit {hackathon.title}.com <ExternalLink className="w-3 h-3" />
-                            </a>
-                          </div>
-
-                          {/* Expandable Content */}
-                          {expandedCards.includes(hackathon.id) && (
-                            <div className="border-t pt-6 mt-6 space-y-4">
-                              <p className="text-gray-600 leading-relaxed">
-                                Join developers, innovators, and food system experts in {hackathon.city} to build{" "}
-                                {hackathon.title} - a key component of the regenerative food ecosystem.
-                              </p>
-
-                              <div className="text-center py-4">
-                                <div className="text-2xl font-bold text-gray-900">{hackathon.participants}</div>
-                                <div className="text-sm text-gray-600">Expected Participants</div>
+                          {/* Card Content */}
+                          <div className="p-4">
+                            <div className="mb-3">
+                              <h3
+                                className={`text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]}`}
+                              >
+                                {hackathon.title}
+                              </h3>
+                              <div className="flex flex-col gap-1 text-gray-600 text-sm">
+                                <div className="flex items-center gap-1">
+                                  <MapPin className="w-3 h-3" />
+                                  <span className="font-medium">{hackathon.city}</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Calendar className="w-3 h-3" />
+                                  <span>{hackathon.date}</span>
+                                </div>
                               </div>
+                            </div>
 
-                              <div className="flex gap-3 justify-center pt-4">
-                                <Button
-                                  size="sm"
-                                  className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
-                                >
-                                  <Sparkles className="w-3 h-3 mr-1" />
-                                  Apply for Hackathon
-                                </Button>
-                                <Button variant="outline" size="sm" asChild>
-                                  <a
-                                    href={hackathon.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1"
+                            <p className="text-gray-600 mb-4 leading-relaxed text-sm">{hackathon.description}</p>
+
+                            <div className="flex justify-center mb-3">
+                              <Button
+                                size="sm"
+                                className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-4 py-2 text-sm`}
+                              >
+                                <Sparkles className="w-3 h-3 mr-1" />
+                                Apply Now
+                              </Button>
+                            </div>
+
+                            <div className="text-center">
+                              <a
+                                href={hackathon.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 hover:underline"
+                              >
+                                Visit {hackathon.title}.com <ExternalLink className="w-2 h-2" />
+                              </a>
+                            </div>
+
+                            {/* Expandable Content */}
+                            {expandedCards.includes(hackathon.id) && (
+                              <div className="border-t pt-4 mt-4 space-y-3">
+                                <p className="text-gray-600 leading-relaxed text-sm">
+                                  Join developers, innovators, and food system experts in {hackathon.city} to build{" "}
+                                  {hackathon.title} - a key component of the regenerative food ecosystem.
+                                </p>
+
+                                <div className="text-center py-3">
+                                  <div className="text-lg font-bold text-gray-900">{hackathon.participants}</div>
+                                  <div className="text-xs text-gray-600">Expected Participants</div>
+                                </div>
+
+                                <div className="flex gap-2 justify-center pt-3">
+                                  <Button
+                                    size="sm"
+                                    className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg text-xs`}
                                   >
-                                    Visit Website <ExternalLink className="w-3 h-3" />
-                                  </a>
-                                </Button>
+                                    <Sparkles className="w-3 h-3 mr-1" />
+                                    Apply for Hackathon
+                                  </Button>
+                                  <Button variant="outline" size="sm" asChild>
+                                    <a
+                                      href={hackathon.website}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-1 text-xs"
+                                    >
+                                      Visit Website <ExternalLink className="w-2 h-2" />
+                                    </a>
+                                  </Button>
+                                </div>
                               </div>
-                            </div>
-                          )}
+                            )}
 
-                          {/* Toggle Button */}
-                          <div className="flex justify-center mt-4">
-                            <button
-                              onClick={() => toggleCard(hackathon.id)}
-                              className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 font-medium"
-                            >
-                              {expandedCards.includes(hackathon.id) ? (
-                                <>
-                                  Show Less <ChevronUp className="w-4 h-4" />
-                                </>
-                              ) : (
-                                <>
-                                  Learn More <ChevronDown className="w-4 h-4" />
-                                </>
-                              )}
-                            </button>
+                            {/* Toggle Button */}
+                            <div className="flex justify-center mt-3">
+                              <button
+                                onClick={() => toggleCard(hackathon.id)}
+                                className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 font-medium"
+                              >
+                                {expandedCards.includes(hackathon.id) ? (
+                                  <>
+                                    Show Less <ChevronUp className="w-3 h-3" />
+                                  </>
+                                ) : (
+                                  <>
+                                    Learn More <ChevronDown className="w-3 h-3" />
+                                  </>
+                                )}
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        </CardContent>
+                      </Card>
+                    </div>
                   </div>
 
-                  {/* Empty space for alternating layout */}
-                  <div className="w-5/12" />
+                  {/* Desktop Layout */}
+                  <div className={`hidden md:flex items-center ${isLeft ? "flex-row" : "flex-row-reverse"}`}>
+                    {/* Timeline dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-orange-500 rounded-full shadow-lg z-10" />
+
+                    {/* Content */}
+                    <div className={`w-5/12 ${isLeft ? "pr-8" : "pl-8"}`}>
+                      <Card className="group cursor-pointer transition-all duration-300 hover:shadow-xl border-0 bg-white shadow-lg">
+                        <CardContent className="p-0">
+                          {/* Image and System Info */}
+                          <div className="relative h-48 overflow-hidden rounded-t-lg">
+                            <div
+                              className={`absolute inset-0 bg-gradient-to-br ${layerColors[hackathon.layer as keyof typeof layerColors]}`}
+                            />
+                            <Image
+                              src={hackathon.image || "/placeholder.svg"}
+                              alt={hackathon.title}
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="absolute top-4 left-4">
+                              <Badge
+                                className={`bg-white/90 ${layerTextColors[hackathon.layer as keyof typeof layerTextColors]} font-medium`}
+                              >
+                                {hackathon.layer}
+                              </Badge>
+                            </div>
+                            <div className="absolute top-4 right-4">
+                              <Badge variant="outline" className="bg-white/90 border-gray-200 text-gray-600 font-mono">
+                                {hackathon.version}
+                              </Badge>
+                            </div>
+                          </div>
+
+                          {/* Card Content */}
+                          <div className="p-6">
+                            <div className="mb-4">
+                              <h3
+                                className={`text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]}`}
+                              >
+                                {hackathon.title}
+                              </h3>
+                              <div className="flex items-center gap-4 text-gray-600">
+                                <div className="flex items-center gap-1">
+                                  <MapPin className="w-4 h-4" />
+                                  <span className="font-medium">{hackathon.city}</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Calendar className="w-4 h-4" />
+                                  <span>{hackathon.date}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <p className="text-gray-600 mb-6 leading-relaxed">{hackathon.description}</p>
+
+                            <div className="flex justify-center mb-4">
+                              <Button
+                                className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
+                              >
+                                <Sparkles className="w-4 h-4 mr-2" />
+                                Apply Now
+                              </Button>
+                            </div>
+
+                            <div className="text-center">
+                              <a
+                                href={hackathon.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 hover:underline"
+                              >
+                                Visit {hackathon.title}.com <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+
+                            {/* Expandable Content */}
+                            {expandedCards.includes(hackathon.id) && (
+                              <div className="border-t pt-6 mt-6 space-y-4">
+                                <p className="text-gray-600 leading-relaxed">
+                                  Join developers, innovators, and food system experts in {hackathon.city} to build{" "}
+                                  {hackathon.title} - a key component of the regenerative food ecosystem.
+                                </p>
+
+                                <div className="text-center py-4">
+                                  <div className="text-2xl font-bold text-gray-900">{hackathon.participants}</div>
+                                  <div className="text-sm text-gray-600">Expected Participants</div>
+                                </div>
+
+                                <div className="flex gap-3 justify-center pt-4">
+                                  <Button
+                                    size="sm"
+                                    className={`bg-gradient-to-r ${layerGradients[hackathon.layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
+                                  >
+                                    <Sparkles className="w-3 h-3 mr-1" />
+                                    Apply for Hackathon
+                                  </Button>
+                                  <Button variant="outline" size="sm" asChild>
+                                    <a
+                                      href={hackathon.website}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-1"
+                                    >
+                                      Visit Website <ExternalLink className="w-3 h-3" />
+                                    </a>
+                                  </Button>
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Toggle Button */}
+                            <div className="flex justify-center mt-4">
+                              <button
+                                onClick={() => toggleCard(hackathon.id)}
+                                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 font-medium"
+                              >
+                                {expandedCards.includes(hackathon.id) ? (
+                                  <>
+                                    Show Less <ChevronUp className="w-4 h-4" />
+                                  </>
+                                ) : (
+                                  <>
+                                    Learn More <ChevronDown className="w-4 h-4" />
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    {/* Empty space for alternating layout */}
+                    <div className="w-5/12" />
+                  </div>
                 </div>
               )
             })}
