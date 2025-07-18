@@ -173,7 +173,6 @@ export default function Footer() {
               <div>
                 <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800">Contact</h3>
                 <p className="text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base break-words">info@eatosystems.com</p>
-                <p className="text-gray-800 text-sm sm:text-base">+1 (555) 123-4567</p>
               </div>
 
               <div>
