@@ -481,9 +481,9 @@ export const systemsData = {
     launchDate: "May 2026",
     quarter: "May 2026",
     description:
-      "The full-stack rollout of Eato-powered food systems at the national level, connecting all layers into a living infrastructure.",
+      "The full-stack rollout of EatoSystem-powered food systems at the national level, connecting all layers into a living infrastructure.",
     content: {
-      overview: `EatoSystem represents the full-stack rollout of Eato-powered food systems at the national level,
+      overview: `EatoSystem represents the full-stack rollout of EatoSystem-powered food systems at the national level,
         connecting all layers into a living infrastructure. It provides a blueprint for comprehensive
         implementation.
         
@@ -662,7 +662,7 @@ export const systemsData = {
       "The global trust that safeguards the mission, model, and long-term integrity of the Eatosystem for future generations.",
     content: {
       overview: `The EatoFoundation is the global trust that safeguards the mission, model, and long-term integrity of the
-        Eatosystem for future generations. It ensures that the system remains true to its core values over time.
+        EatoSystem for future generations. It ensures that the system remains true to its core values over time.
         
         As the "sanctuary" layer of the EatoSystems framework, EatoFoundation provides protection and
         stewardship for the entire ecosystem. It creates structures that can endure beyond individual lifetimes

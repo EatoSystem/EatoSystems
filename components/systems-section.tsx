@@ -580,11 +580,11 @@ export default function SystemsSection() {
       name: "EatoSystem",
       layer: "HARVEST",
       description:
-        "The full-stack rollout of Eato-powered food systems at the national level, connecting all layers into a living infrastructure.",
+        "The full-stack rollout of EatoSystem-powered food systems at the national level, connecting all layers into a living infrastructure.",
       slug: "eatosystem",
       launchDate: "May 2026",
       quarter: "May 2026",
-      city: "Amsterdam",
+      city: "Dublin",
       participants: "1300+ system architects",
       website: "https://eatosystem.com",
     },
