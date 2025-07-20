@@ -25,7 +25,7 @@ export default function LoginPage() {
     setIsLoading(true)
     setError("")
 
-    if (password === "EatoVite") {
+    if (password === "EatoMe") {
       // Set authentication cookie
       document.cookie = "eatosystems-auth=authenticated; path=/; max-age=86400; secure; samesite=strict"
 
