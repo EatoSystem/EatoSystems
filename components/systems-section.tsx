@@ -476,7 +476,7 @@ export default function SystemsSection() {
       name: "EatoGlobal",
       layer: "SOIL",
       description:
-        "The knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.",
+        "The Global Kitchen, Studio & Lab, is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
       slug: "eatoglobal",
       launchDate: "September 2025",
       quarter: "September 2025",

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
@@ -161,14 +160,6 @@ export default function ApplyHackathonPage() {
     portfolio: "",
     experience: "",
     skills: [] as string[],
-    motivation: "",
-    teamPreference: "",
-    previousHackathons: "",
-    accommodation: false,
-    travelSupport: false,
-    dietaryRestrictions: "",
-    emergencyContact: "",
-    emergencyPhone: "",
   })
 
   const handleSkillToggle = (skill: string) => {
@@ -417,110 +408,6 @@ export default function ApplyHackathonPage() {
                             </Label>
                           </div>
                         ))}
-                      </div>
-                    </div>
-
-                    <Separator />
-
-                    {/* Motivation and Team */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 text-gray-800">Motivation & Team Preferences</h3>
-                      <div className="space-y-4">
-                        <div>
-                          <Label htmlFor="motivation">Why do you want to participate in this hackathon? *</Label>
-                          <Textarea
-                            id="motivation"
-                            required
-                            rows={4}
-                            placeholder="Tell us about your motivation, what you hope to achieve, and how you want to contribute to regenerative food systems..."
-                            value={formData.motivation}
-                            onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="teamPreference">Team Preference</Label>
-                          <Select
-                            value={formData.teamPreference}
-                            onValueChange={(value) => setFormData({ ...formData, teamPreference: value })}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder="How would you like to participate?" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="solo">I prefer to work solo</SelectItem>
-                              <SelectItem value="team">I want to join a team</SelectItem>
-                              <SelectItem value="lead">I want to lead a team</SelectItem>
-                              <SelectItem value="flexible">I'm flexible</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="previousHackathons">Previous Hackathon Experience</Label>
-                          <Textarea
-                            id="previousHackathons"
-                            rows={3}
-                            placeholder="Tell us about any previous hackathons you've participated in..."
-                            value={formData.previousHackathons}
-                            onChange={(e) => setFormData({ ...formData, previousHackathons: e.target.value })}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <Separator />
-
-                    {/* Additional Information */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 text-gray-800">Additional Information</h3>
-                      <div className="space-y-4">
-                        <div className="flex items-center space-x-2">
-                          <Checkbox
-                            id="accommodation"
-                            checked={formData.accommodation}
-                            onCheckedChange={(checked) =>
-                              setFormData({ ...formData, accommodation: checked as boolean })
-                            }
-                          />
-                          <Label htmlFor="accommodation">I need assistance with accommodation</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Checkbox
-                            id="travelSupport"
-                            checked={formData.travelSupport}
-                            onCheckedChange={(checked) =>
-                              setFormData({ ...formData, travelSupport: checked as boolean })
-                            }
-                          />
-                          <Label htmlFor="travelSupport">I need travel support/sponsorship</Label>
-                        </div>
-                        <div>
-                          <Label htmlFor="dietaryRestrictions">Dietary Restrictions/Allergies</Label>
-                          <Input
-                            id="dietaryRestrictions"
-                            placeholder="Any dietary restrictions we should know about?"
-                            value={formData.dietaryRestrictions}
-                            onChange={(e) => setFormData({ ...formData, dietaryRestrictions: e.target.value })}
-                          />
-                        </div>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          <div>
-                            <Label htmlFor="emergencyContact">Emergency Contact Name</Label>
-                            <Input
-                              id="emergencyContact"
-                              value={formData.emergencyContact}
-                              onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="emergencyPhone">Emergency Contact Phone</Label>
-                            <Input
-                              id="emergencyPhone"
-                              type="tel"
-                              value={formData.emergencyPhone}
-                              onChange={(e) => setFormData({ ...formData, emergencyPhone: e.target.value })}
-                            />
-                          </div>
-                        </div>
                       </div>
                     </div>
 
