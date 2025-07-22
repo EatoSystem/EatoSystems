@@ -186,14 +186,14 @@ export default function EatoGlobalPage() {
                 </span>
               </div>
               <span className="block mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white/90 font-light">
-                The Foundation Layer
+                The Global Kitchen, Studio, & Lab
               </span>
             </h1>
 
             {/* Description */}
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 max-w-5xl mx-auto leading-relaxed text-white/90 font-light">
-              The knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where
-              anyone can contribute, co-create, and help build the future of food.
+              The Global Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the
+              EatoSystem - where the world comes together to cook, create, and co-design the future of food.
             </p>
 
             {/* Action Buttons */}
@@ -318,31 +318,32 @@ export default function EatoGlobalPage() {
 
                 <div className="prose prose-lg max-w-none text-slate-600 space-y-6">
                   <p className="text-xl leading-relaxed">
-                    EatoGlobal is the knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide
-                    movement where anyone can contribute, co-create, and help build the future of food.
+                    EatoGlobal is The Global Kitchen, Studio, & Lab - the knowledge, cultural, and collaborative
+                    foundation of the EatoSystem where the world comes together to cook, create, and co-design the
+                    future of food.
                   </p>
 
                   <p>
                     It is the <strong>SOIL</strong> of EatoSystems — where every system begins with a story, a skill, or
-                    a spark of intention. EatoGlobal brings together human knowledge, collecting and preserving the food
-                    stories, practices, and traditions that define our relationship with food across cultures and
-                    generations.
+                    a spark of intention. As a global kitchen, we gather to share meals and food stories. As a studio,
+                    we create content that amplifies our mission. As a lab, we collaborate to design and prototype
+                    innovative solutions for regenerative food systems.
                   </p>
 
                   <p>
                     It empowers <strong>open collaboration</strong> — enabling contributors from around the world to
-                    co-create sustainable food solutions through storytelling, design, technology, and innovation. And
-                    it drives <strong>global action</strong> — uniting diverse voices to shape national EatoTeams,
-                    contribute to open-source development, and support the growth of intelligent, inclusive food
-                    systems.
+                    cook, create, and co-design sustainable food solutions through cultural exchange, storytelling, and
+                    innovation. And it drives <strong>global action</strong> — uniting diverse voices to shape national
+                    EatoTeams, contribute to open-source development, and support the growth of intelligent, inclusive
+                    food systems.
                   </p>
 
                   <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
                     <p className="text-green-800 font-medium mb-2">Your Role in the Global Movement</p>
                     <p className="text-green-700">
-                      Whether you're a farmer, developer, designer, chef, storyteller, student, or someone passionate
-                      about the future of food — EatoGlobal is your place to participate. Your knowledge, your culture,
-                      your skills, your story — they all feed the system.
+                      Whether you're a farmer, chef, artist, athlete, technologist, or youth leader — this is your
+                      invitation to join our Global Kitchen, Studio, & Lab. Come cook with us, create with us, and
+                      co-design the future of food with communities worldwide.
                     </p>
                   </div>
 
@@ -839,7 +840,7 @@ export default function EatoGlobalPage() {
                 <Link href="/roadmap">
                   <Button
                     variant="outline"
-                    className="border-green-600 text-green-600 hover:bg-green-50 rounded-full px-8 py-3 font-medium"
+                    className="border-green-600 text-green-600 hover:bg-green-50 rounded-full px-8 py-3 font-medium bg-transparent"
                   >
                     All System Roadmaps
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -880,7 +881,7 @@ export default function EatoGlobalPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
+                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full bg-transparent"
                 >
                   Explore All Systems
                 </Button>
