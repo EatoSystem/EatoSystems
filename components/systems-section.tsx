@@ -6,7 +6,6 @@ import Link from "next/link"
 import { ArrowRight, Calendar, Eye, ExternalLink, MapPin, ChevronDown, ChevronUp } from "lucide-react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 interface SystemProps {
@@ -99,7 +98,7 @@ function SystemCard({
     HARVEST: "from-orange-500/20 to-amber-500/20",
     REGENERATION: "from-emerald-500/20 to-green-500/20",
     CANOPY: "from-red-500/20 to-rose-500/20",
-    SANCTUARY: "from-indigo-500/20 to-blue-500",
+    SANCTUARY: "from-indigo-500/20 to-blue-500/20",
   }
 
   const layerTextColors = {
@@ -206,24 +205,6 @@ function SystemCard({
 
                 <p className="text-gray-600 mb-4 leading-relaxed text-sm">{description}</p>
 
-                <div className="flex justify-center mb-3">
-                  <Link href="/apply-hackathon">
-                    <Button
-                      size="sm"
-                      className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-4 py-2 text-sm`}
-                    >
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Apply for Hackathon
-                    </Button>
-                  </Link>
-                </div>
-
                 <div className="text-center">
                   <a
                     href={website}
@@ -239,31 +220,14 @@ function SystemCard({
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-4 mt-4 space-y-3">
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      Join developers, innovators, and food system experts in {city} to build {name} - a key component
-                      of the regenerative food ecosystem.
+                      {name} will operate from {city} as a key component of the regenerative food ecosystem, connecting
+                      stakeholders and driving innovation in sustainable food systems, after the Hackathon to launch in{" "}
+                      {quarter}.
                     </p>
 
                     <div className="text-center py-3">
                       <div className="text-lg font-bold text-gray-900">{participants}</div>
-                      <div className="text-xs text-gray-600">Expected Participants</div>
-                    </div>
-
-                    <div className="flex justify-center pt-3">
-                      <Link href="/apply-hackathon">
-                        <Button
-                          size="sm"
-                          className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg text-sm`}
-                        >
-                          <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              fillRule="evenodd"
-                              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          Apply for Hackathon
-                        </Button>
-                      </Link>
+                      <div className="text-xs text-orange-500 font-medium">Hackathon {quarter}</div>
                     </div>
                   </div>
                 )}
@@ -359,23 +323,6 @@ function SystemCard({
 
                 <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
 
-                <div className="flex justify-center mb-4">
-                  <Link href="/apply-hackathon">
-                    <Button
-                      className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg px-6 py-2`}
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Apply for Hackathon
-                    </Button>
-                  </Link>
-                </div>
-
                 <div className="text-center">
                   <a
                     href={website}
@@ -391,31 +338,14 @@ function SystemCard({
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-6 mt-6 space-y-4">
                     <p className="text-gray-600 leading-relaxed">
-                      Join developers, innovators, and food system experts in {city} to build {name} - a key component
-                      of the regenerative food ecosystem.
+                      {name} will operate from {city} as a key component of the regenerative food ecosystem, connecting
+                      stakeholders and driving innovation in sustainable food systems, after the Hackathon to launch in{" "}
+                      {quarter}.
                     </p>
 
                     <div className="text-center py-4">
                       <div className="text-2xl font-bold text-gray-900">{participants}</div>
-                      <div className="text-sm text-gray-600">Expected Participants</div>
-                    </div>
-
-                    <div className="flex justify-center pt-4">
-                      <Link href="/apply-hackathon">
-                        <Button
-                          size="sm"
-                          className={`bg-gradient-to-r ${layerGradients[layer as keyof typeof layerGradients]} text-white hover:shadow-lg`}
-                        >
-                          <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              fillRule="evenodd"
-                              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          Apply for Hackathon
-                        </Button>
-                      </Link>
+                      <div className="text-sm text-orange-500 font-medium">Hackathon {quarter}</div>
                     </div>
                   </div>
                 )}
@@ -481,7 +411,7 @@ export default function SystemsSection() {
       launchDate: "September 2025",
       quarter: "September 2025",
       city: "Copenhagen",
-      participants: "1000+ global contributors",
+      participants: "Global Contributors",
       website: "https://eatoglobal.com",
     },
     {
@@ -494,7 +424,7 @@ export default function SystemsSection() {
       launchDate: "October 2025",
       quarter: "October 2025",
       city: "Berlin",
-      participants: "800+ AI developers",
+      participants: "AI Researchers",
       website: "https://eatoagent.com",
     },
     {
@@ -507,7 +437,7 @@ export default function SystemsSection() {
       launchDate: "November 2025",
       quarter: "November 2025",
       city: "New York",
-      participants: "1200+ fintech developers",
+      participants: "Financial Innovators",
       website: "https://eatoindex.com",
     },
     {
@@ -520,7 +450,7 @@ export default function SystemsSection() {
       launchDate: "December 2025",
       quarter: "December 2025",
       city: "Dubai",
-      participants: "900+ metaverse developers",
+      participants: "Digital Architects",
       website: "https://eatoverse.com",
     },
     {
@@ -533,7 +463,7 @@ export default function SystemsSection() {
       launchDate: "January 2026",
       quarter: "January 2026",
       city: "Tokyo",
-      participants: "750+ robotics engineers",
+      participants: "Robotics Engineers",
       website: "https://eatobotics.com",
     },
     {
@@ -546,7 +476,7 @@ export default function SystemsSection() {
       launchDate: "February 2026",
       quarter: "February 2026",
       city: "Detroit",
-      participants: "650+ logistics developers",
+      participants: "Logistics Experts",
       website: "https://eatotransit.com",
     },
     {
@@ -559,7 +489,7 @@ export default function SystemsSection() {
       launchDate: "March 2026",
       quarter: "March 2026",
       city: "Paris",
-      participants: "1100+ AI researchers",
+      participants: "AI Researchers",
       website: "https://eatoai.com",
     },
     {
@@ -572,7 +502,7 @@ export default function SystemsSection() {
       launchDate: "April 2026",
       quarter: "April 2026",
       city: "London",
-      participants: "950+ fintech innovators",
+      participants: "Capital Partners",
       website: "https://eatofund.com",
     },
     {
@@ -585,7 +515,7 @@ export default function SystemsSection() {
       launchDate: "May 2026",
       quarter: "May 2026",
       city: "Dublin",
-      participants: "1300+ system architects",
+      participants: "System Architects",
       website: "https://eatosystem.com",
     },
     {
@@ -598,7 +528,7 @@ export default function SystemsSection() {
       launchDate: "June 2026",
       quarter: "June 2026",
       city: "Singapore",
-      participants: "800+ policy developers",
+      participants: "Governance Experts",
       website: "https://eatogov.com",
     },
     {
@@ -611,7 +541,7 @@ export default function SystemsSection() {
       launchDate: "July 2026",
       quarter: "July 2026",
       city: "Rome",
-      participants: "1000+ security experts",
+      participants: "Security Specialists",
       website: "https://eatosecure.com",
     },
     {
@@ -624,7 +554,7 @@ export default function SystemsSection() {
       launchDate: "September 2026",
       quarter: "September 2026",
       city: "Geneva",
-      participants: "1500+ foundation builders",
+      participants: "Foundation Stewards",
       website: "https://eatofoundation.com",
     },
   ]
@@ -653,12 +583,12 @@ export default function SystemsSection() {
             >
               <path
                 fillRule="evenodd"
-                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                 clipRule="evenodd"
               />
             </svg>
             <span className="text-gray-800 font-semibold text-sm sm:text-base break-words">
-              Interactive Systems & Hackathons
+              Regenerative Food Systems
             </span>
           </div>
           <h2
@@ -666,12 +596,12 @@ export default function SystemsSection() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-800 px-4 sm:px-0"
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-orange-500 to-green-600 break-words">
-              12 EatoSystems & Hackathons
+              12 EatoSystems
             </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0 break-words">
-            From Soil to Sanctuary — Explore our interconnected ecosystem of regenerative food systems and join the
-            global hackathon series.
+            From Soil to Sanctuary — Explore our interconnected ecosystem of regenerative food systems transforming how
+            we grow, distribute, and consume food.
           </p>
         </motion.div>
         <div className="max-w-6xl mx-auto px-4 sm:px-0">
@@ -717,13 +647,13 @@ export default function SystemsSection() {
                 </span>
               </button>
             </Link>
-            <Link href="/hack">
+            <Link href="/start-building">
               <button
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-green-600 text-white rounded-full font-semibold text-base sm:text-lg hover:from-orange-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
-                aria-label="Navigate to hackathon series page"
+                aria-label="Navigate to start building page"
               >
                 <span className="flex items-center justify-center gap-2 break-words">
-                  Join Hackathons <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
+                  Start Building <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" />
                 </span>
               </button>
             </Link>

@@ -2,15 +2,16 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "EatoSystems - Sustainable Food Systems",
-  description: "Building sustainable food systems for a better future",
-  generator: "v0.dev",
+  title: "EatoSystems - Regenerative Food Systems",
+  description: "From Soil to Sanctuary - Building the future of regenerative food systems",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -19,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <Navbar />
-        {children}
-        <ScrollToTop />
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <Navbar />
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )
