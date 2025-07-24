@@ -220,9 +220,8 @@ function SystemCard({
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-4 mt-4 space-y-3">
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      {name} will operate from {city} as a key component of the regenerative food ecosystem, connecting
-                      stakeholders and driving innovation in sustainable food systems, after the Hackathon to launch in{" "}
-                      {quarter}.
+                      {name} will launch a Hackathon from {city} in {quarter}, connecting stakeholders locally and
+                      globally and driving innovation in sustainable food systems.
                     </p>
 
                     <div className="text-center py-3">
@@ -338,9 +337,8 @@ function SystemCard({
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-6 mt-6 space-y-4">
                     <p className="text-gray-600 leading-relaxed">
-                      {name} will operate from {city} as a key component of the regenerative food ecosystem, connecting
-                      stakeholders and driving innovation in sustainable food systems, after the Hackathon to launch in{" "}
-                      {quarter}.
+                      {name} will launch a Hackathon from {city} in {quarter}, connecting stakeholders locally and
+                      globally and driving innovation in sustainable food systems.
                     </p>
 
                     <div className="text-center py-4">
