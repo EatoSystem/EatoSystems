@@ -219,15 +219,20 @@ function SystemCard({
                 {/* Expandable Content */}
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-4 mt-4 space-y-3">
+                    <div className="text-center py-3">
+                      <div className="text-sm font-bold text-orange-500">Hackathon</div>
+                      <div className="text-xs text-gray-900 font-medium">{quarter}</div>
+                      <div
+                        className={`text-sm font-medium mt-1 ${layerTextColors[layer as keyof typeof layerTextColors]}`}
+                      >
+                        {participants}
+                      </div>
+                    </div>
+
                     <p className="text-gray-600 leading-relaxed text-sm">
                       {name} will launch a Hackathon from {city} in {quarter}, connecting stakeholders locally and
                       globally and driving innovation in sustainable food systems.
                     </p>
-
-                    <div className="text-center py-3">
-                      <div className="text-lg font-bold text-gray-900">{participants}</div>
-                      <div className="text-xs text-orange-500 font-medium">Hackathon {quarter}</div>
-                    </div>
                   </div>
                 )}
 
@@ -336,15 +341,20 @@ function SystemCard({
                 {/* Expandable Content */}
                 {expandedCards.includes(index) && (
                   <div className="border-t pt-6 mt-6 space-y-4">
+                    <div className="text-center py-4">
+                      <div className="text-lg font-bold text-orange-500">Hackathon</div>
+                      <div className="text-sm text-gray-900 font-medium">{quarter}</div>
+                      <div
+                        className={`text-base font-medium mt-1 ${layerTextColors[layer as keyof typeof layerTextColors]}`}
+                      >
+                        {participants}
+                      </div>
+                    </div>
+
                     <p className="text-gray-600 leading-relaxed">
                       {name} will launch a Hackathon from {city} in {quarter}, connecting stakeholders locally and
                       globally and driving innovation in sustainable food systems.
                     </p>
-
-                    <div className="text-center py-4">
-                      <div className="text-2xl font-bold text-gray-900">{participants}</div>
-                      <div className="text-sm text-orange-500 font-medium">Hackathon {quarter}</div>
-                    </div>
                   </div>
                 )}
 
