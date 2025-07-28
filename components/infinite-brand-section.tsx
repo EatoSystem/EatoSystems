@@ -47,11 +47,12 @@ export default function InfiniteBrandSection() {
           </p>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white sm:text-white/90 font-light break-words px-4 sm:px-0">
-            Every application of Eato creates value that compounds infinitely. From{" "}
-            <span className="text-green-300 font-semibold">EatoIreland</span> transforming nations to{" "}
-            <span className="text-orange-300 font-semibold">EatoTomato</span> nourishing families to{" "}
-            <span className="text-blue-300 font-semibold">EatoMe</span> optimizing individuals - each word becomes a
-            regenerative force for healing our world.
+            Every application of Eato creates value that compounds infinitely. From Place{" "}
+            <span className="text-green-300 font-semibold">(EatoIreland)</span> to Produce{" "}
+            <span className="text-orange-300 font-semibold">(EatoTomato)</span> to Products{" "}
+            <span className="text-yellow-300 font-semibold">(EatoHoney)</span> to People{" "}
+            <span className="text-blue-300 font-semibold">(EatoMe)</span> - each word becomes a regenerative force for
+            healing our health, community, and the world.
           </p>
 
           {/* Formula Stats */}
