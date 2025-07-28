@@ -104,7 +104,7 @@ export default function HeroSection() {
                 EatoSystems
               </span>
             </h1>
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light text-white/95">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light text-white sm:text-white/95">
               Regenerative Food Systems for Earth
             </h2>
           </motion.div>
@@ -114,7 +114,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto px-2"
+            className="text-base sm:text-xl md:text-2xl text-white sm:text-white/90 font-light leading-relaxed max-w-4xl mx-auto px-2"
           >
             Building the world's first comprehensive ecosystem of regenerative food systems — from AI-powered
             agriculture to global food security infrastructure.
@@ -128,7 +128,7 @@ export default function HeroSection() {
             className="max-w-4xl mx-auto px-2"
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20 shadow-2xl">
-              <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed font-light">
+              <p className="text-base sm:text-lg md:text-xl text-white sm:text-white/95 leading-relaxed font-light">
                 We're building a global food system rooted in health, community, and environmental regeneration — one
                 story, one collaboration, and one system at a time.
               </p>
@@ -175,7 +175,7 @@ export default function HeroSection() {
                 <Users className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Global Community</h3>
-              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base text-white sm:text-white/80 leading-relaxed">
                 Join thousands of developers, farmers, and innovators building the future of food systems worldwide.
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function HeroSection() {
                 <Code className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Open Source</h3>
-              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base text-white sm:text-white/80 leading-relaxed">
                 Transparent, collaborative development with full access to source code and comprehensive documentation.
               </p>
             </div>

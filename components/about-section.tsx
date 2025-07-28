@@ -91,7 +91,7 @@ export default function AboutSection() {
           </h2>
 
           <div className="max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-12 space-y-4 sm:space-y-6 md:space-y-8 px-4 sm:px-0">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white/90 font-light break-words">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white sm:text-white/95 font-light break-words">
               Spanning from individual knowledge and behaviour to global infrastructure, EatoSystems are designed to
               transform how food is produced, moved, financed, and governed.
             </p>
@@ -118,7 +118,7 @@ export default function AboutSection() {
                 <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
                   {stat.label}
                 </div>
-                <div className="text-xs sm:text-sm text-white/80 break-words">{stat.description}</div>
+                <div className="text-xs sm:text-sm text-white sm:text-white/90 break-words">{stat.description}</div>
               </motion.div>
             ))}
           </div>
