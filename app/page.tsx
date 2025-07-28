@@ -8,6 +8,8 @@ import JoinSection from "@/components/join-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
 import SectionDivider from "@/components/section-divider"
+import InfiniteBrandSection from "@/components/infinite-brand-section"
+import TransitionSection from "@/components/transition-section"
 
 export default function Home() {
   // Smooth scroll implementation
@@ -41,6 +43,8 @@ export default function Home() {
       <HeroSection />
       <SectionDivider />
       <AboutSection />
+      <TransitionSection />
+      <InfiniteBrandSection />
       <SystemsSection />
       <JoinSection />
       <ContactSection />
