@@ -10,6 +10,7 @@ import Footer from "@/components/footer"
 import SectionDivider from "@/components/section-divider"
 import InfiniteBrandSection from "@/components/infinite-brand-section"
 import TransitionSection from "@/components/transition-section"
+import TokonomicsHeroSection from "@/components/tokonomics-hero-section"
 
 export default function Home() {
   // Smooth scroll implementation
@@ -45,6 +46,7 @@ export default function Home() {
       <AboutSection />
       <TransitionSection />
       <InfiniteBrandSection />
+      <TokonomicsHeroSection />
       <SystemsSection />
       <JoinSection />
       <ContactSection />

@@ -42,11 +42,11 @@ export default function InfiniteBrandSection() {
             <span className="text-white break-words">The Infinite Brand of Value</span>
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white sm:text-white/90 font-light break-words px-4 sm:px-0">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
             Eato + Any Word = Health Value + Community Value + Environmental Value
           </p>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white sm:text-white/90 font-light break-words px-4 sm:px-0">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
             Every application of Eato creates value that compounds infinitely. From Place{" "}
             <span className="text-green-300 font-semibold">(EatoIreland)</span> to Produce{" "}
             <span className="text-orange-300 font-semibold">(EatoTomato)</span> to Products{" "}
@@ -67,7 +67,7 @@ export default function InfiniteBrandSection() {
               <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
                 Applications
               </div>
-              <div className="text-xs sm:text-sm text-white sm:text-white/80 break-words">Infinite possibilities</div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Infinite possibilities</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
@@ -79,7 +79,7 @@ export default function InfiniteBrandSection() {
               <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
                 Countries
               </div>
-              <div className="text-xs sm:text-sm text-white sm:text-white/80 break-words">Global potential</div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Global potential</div>
             </div>
             <div className="text-center col-span-2 md:col-span-1">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
@@ -91,9 +91,7 @@ export default function InfiniteBrandSection() {
               <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
                 Value Types
               </div>
-              <div className="text-xs sm:text-sm text-white sm:text-white/80 break-words">
-                Health, Community, Environment
-              </div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Health, Community, Environment</div>
             </div>
           </div>
         </div>
