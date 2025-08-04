@@ -19,39 +19,15 @@ export default function HeroSection() {
       className="relative min-h-[100dvh] sm:min-h-screen flex items-center justify-center overflow-hidden"
       role="banner"
     >
-      {/* Background with video and gradient overlay */}
+      {/* Background with enhanced accessibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-orange-600">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-          onError={(e) => {
-            // Fallback to image if video fails to load
-            const videoElement = e.target as HTMLVideoElement
-            videoElement.style.display = "none"
-            const fallbackImage = document.getElementById("hero-fallback-image") as HTMLImageElement
-            if (fallbackImage) {
-              fallbackImage.style.display = "block"
-            }
-          }}
-        >
-          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250804_1040_Global%20Connectivity%20Visualization_remix_01k1t77nswff6bm965gpvx9d1g-4djc7o9HDKjXFPg3yNKUGZHud5NneD.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Fallback Image */}
         <Image
-          id="hero-fallback-image"
           src="/images/global-network-earth.png"
           alt="Global network visualization showing interconnected food systems across Earth, representing the worldwide regenerative agriculture movement and sustainable food technology infrastructure"
           fill
           className="object-cover opacity-20"
           priority
           sizes="100vw"
-          style={{ display: "none" }}
           onError={(e) => {
             const target = e.target as HTMLImageElement
             target.onerror = null
@@ -59,7 +35,6 @@ export default function HeroSection() {
             target.alt = "Placeholder image for global food systems network (original image unavailable)"
           }}
         />
-
         {/* Abstract flowing lines overlay */}
         <div className="absolute inset-0 opacity-40">
           <svg className="w-full h-full" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">

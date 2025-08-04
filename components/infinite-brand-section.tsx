@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { Globe, Sparkles, Leaf } from "lucide-react"
 
 export default function InfiniteBrandSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -11,157 +11,90 @@ export default function InfiniteBrandSection() {
     setIsVisible(true)
   }, [])
 
-  // Floating particles animation
-  const particles = Array.from({ length: 15 }, (_, i) => (
-    <motion.div
-      key={i}
-      className="absolute w-2 h-2 bg-white/20 rounded-full"
-      initial={{
-        x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
-        y: Math.random() * 800,
-      }}
-      animate={{
-        x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
-        y: Math.random() * 800,
-      }}
-      transition={{
-        duration: Math.random() * 15 + 10,
-        repeat: Number.POSITIVE_INFINITY,
-        repeatType: "reverse",
-        ease: "linear",
-      }}
-    />
-  ))
-
-  // Geometric shapes animation
-  const shapes = Array.from({ length: 8 }, (_, i) => (
-    <motion.div
-      key={i}
-      className={`absolute ${
-        i % 3 === 0 ? "w-4 h-4 bg-purple-400/10" : i % 3 === 1 ? "w-6 h-6 bg-orange-400/10" : "w-3 h-3 bg-pink-400/10"
-      } rounded-full`}
-      initial={{
-        x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
-        y: Math.random() * 800,
-        rotate: 0,
-      }}
-      animate={{
-        x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
-        y: Math.random() * 800,
-        rotate: 360,
-      }}
-      transition={{
-        duration: Math.random() * 20 + 15,
-        repeat: Number.POSITIVE_INFINITY,
-        repeatType: "reverse",
-        ease: "linear",
-      }}
-    />
-  ))
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <section id="infinite-brand" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background with image overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-orange-600 to-purple-600">
         <Image
           src="/images/infinite-brand-hero.jpeg"
-          alt="Infinite Brand of Value visualization showing the mathematical beauty of regenerative food systems with cosmic purple and orange gradients"
+          alt="Infinite Brand Landscape"
           fill
-          className="object-cover"
+          className="object-cover opacity-20"
           priority
           sizes="100vw"
-          quality={90}
         />
-        {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/60 via-purple-800/40 to-orange-900/60" />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">{typeof window !== "undefined" && particles}</div>
-
-      {/* Geometric Shapes */}
-      <div className="absolute inset-0 pointer-events-none">{typeof window !== "undefined" && shapes}</div>
-
-      {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8 sm:space-y-12"
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center text-white">
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+          }`}
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center bg-white/15 backdrop-blur-md rounded-full px-6 sm:px-8 py-3 sm:py-4 border border-white/20"
-          >
-            <span className="text-white font-medium text-sm sm:text-base uppercase tracking-wider">
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-yellow-200 flex-shrink-0" />
+            <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
               The Infinite Brand of Value
             </span>
-          </motion.div>
+          </div>
 
-          {/* Main Headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-4 sm:space-y-6"
-          >
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
-              Eato + Any Word =
-            </h1>
-            <div className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-              <span className="text-green-300">Health Value</span>
-              <span className="text-white mx-2 sm:mx-4">+</span>
-              <span className="text-orange-300">Community Value</span>
-              <span className="text-white mx-2 sm:mx-4">+</span>
-              <span className="text-purple-300">Environmental Value</span>
-            </div>
-          </motion.div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight">
+            <span className="text-white break-words">The Infinite Brand of Value</span>
+          </h2>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed text-white/90 font-light"
-          >
-            Every application of Eato creates value that compounds infinitely. From{" "}
-            <span className="text-green-400 font-medium">Place (EatoIreland)</span> to{" "}
-            <span className="text-orange-400 font-medium">Produce (EatoTomato)</span> to{" "}
-            <span className="text-yellow-400 font-medium">Products (EatoHoney)</span> to{" "}
-            <span className="text-blue-400 font-medium">People (EatoMe)</span> - each word becomes a regenerative force
-            for healing our health, community, and the world.
-          </motion.p>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
+            Eato + Any Word = Health Value + Community Value + Environmental Value
+          </p>
+
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
+            Every application of Eato creates value that compounds infinitely. From Place{" "}
+            <span className="text-green-300 font-semibold">(EatoIreland)</span> to Produce{" "}
+            <span className="text-orange-300 font-semibold">(EatoTomato)</span> to Products{" "}
+            <span className="text-yellow-300 font-semibold">(EatoHoney)</span> to People{" "}
+            <span className="text-blue-300 font-semibold">(EatoMe)</span> - each word becomes a regenerative force for
+            healing our health, community, and the world.
+          </p>
 
           {/* Formula Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto"
-          >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-lg">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">∞</div>
-              <div className="text-lg sm:text-xl font-semibold text-white mb-2">Applications</div>
-              <div className="text-sm sm:text-base text-white/80">Unlimited potential</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              </div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
+                ∞
+              </div>
+              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
+                Applications
+              </div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Infinite possibilities</div>
             </div>
-
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-lg">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">195</div>
-              <div className="text-lg sm:text-xl font-semibold text-white mb-2">Countries</div>
-              <div className="text-sm sm:text-base text-white/80">Global reach</div>
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              </div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
+                195
+              </div>
+              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
+                Countries
+              </div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Global potential</div>
             </div>
-
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-lg">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">3</div>
-              <div className="text-lg sm:text-xl font-semibold text-white mb-2">Value Types</div>
-              <div className="text-sm sm:text-base text-white/80">Holistic impact</div>
+            <div className="text-center col-span-2 md:col-span-1">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+                <Leaf className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              </div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
+                3
+              </div>
+              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
+                Value Types
+              </div>
+              <div className="text-xs sm:text-sm text-white/80 break-words">Health, Community, Environment</div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
