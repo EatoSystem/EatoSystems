@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Globe, Sparkles, Leaf } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function InfiniteBrandSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -12,89 +12,157 @@ export default function InfiniteBrandSection() {
   }, [])
 
   return (
-    <section id="infinite-brand" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with image overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-orange-600 to-purple-600">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-orange-50">
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <Image
           src="/images/infinite-brand-hero.jpeg"
-          alt="Infinite Brand Landscape"
+          alt="Infinite Brand of Value visualization showing the expansive potential of regenerative food systems and sustainable agriculture technology"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-30"
           priority
           sizes="100vw"
         />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/80" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center text-white">
-        <div
-          className={`transition-all duration-1000 ease-out ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-          }`}
+      {/* Floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 15 }, (_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-emerald-400/30 rounded-full"
+            initial={{
+              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
+              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1080),
+            }}
+            animate={{
+              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
+              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1080),
+            }}
+            transition={{
+              duration: Math.random() * 15 + 10,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="space-y-8 sm:space-y-12"
         >
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-yellow-200 flex-shrink-0" />
-            <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
-              The Infinite Brand of Value
-            </span>
-          </div>
-
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight">
-            <span className="text-white break-words">The Infinite Brand of Value</span>
-          </h2>
-
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
-            Eato + Any Word = Health Value + Community Value + Environmental Value
-          </p>
-
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
-            Every application of Eato creates value that compounds infinitely. From Place{" "}
-            <span className="text-green-300 font-semibold">(EatoIreland)</span> to Produce{" "}
-            <span className="text-orange-300 font-semibold">(EatoTomato)</span> to Products{" "}
-            <span className="text-yellow-300 font-semibold">(EatoHoney)</span> to People{" "}
-            <span className="text-blue-300 font-semibold">(EatoMe)</span> - each word becomes a regenerative force for
-            healing our health, community, and the world.
-          </p>
-
-          {/* Formula Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-              </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
-                ∞
-              </div>
-              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
-                Applications
-              </div>
-              <div className="text-xs sm:text-sm text-white/80 break-words">Infinite possibilities</div>
+          {/* Section Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <div className="inline-flex items-center bg-emerald-100 rounded-full px-6 sm:px-8 py-2 sm:py-3 border border-emerald-200">
+              <span className="text-emerald-800 font-medium text-sm sm:text-base uppercase tracking-wider">
+                The Infinite Brand of Value
+              </span>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-                <Globe className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="space-y-4 sm:space-y-6"
+          >
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900">
+              Every Word Creates
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-orange-500 to-red-500">
+                Infinite Value
+              </span>
+            </h2>
+          </motion.div>
+
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-5xl mx-auto"
+          >
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed font-light">
+              Every application of Eato creates value that compounds infinitely. From{" "}
+              <span className="font-semibold text-emerald-600">Place (EatoIreland)</span> to{" "}
+              <span className="font-semibold text-orange-600">Produce (EatoTomato)</span> to{" "}
+              <span className="font-semibold text-yellow-600">Products (EatoHoney)</span> to{" "}
+              <span className="font-semibold text-blue-600">People (EatoMe)</span> - each word becomes a regenerative
+              force for healing our health, community, and the world.
+            </p>
+          </motion.div>
+
+          {/* Formula Visualization */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-gray-200 shadow-2xl max-w-4xl mx-auto"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto bg-emerald-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-emerald-600">P</span>
+                </div>
+                <h3 className="font-semibold text-gray-900">Place</h3>
+                <p className="text-sm text-gray-600">EatoIreland</p>
               </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
-                195
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto bg-orange-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-orange-600">P</span>
+                </div>
+                <h3 className="font-semibold text-gray-900">Produce</h3>
+                <p className="text-sm text-gray-600">EatoTomato</p>
               </div>
-              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
-                Countries
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-yellow-600">P</span>
+                </div>
+                <h3 className="font-semibold text-gray-900">Products</h3>
+                <p className="text-sm text-gray-600">EatoHoney</p>
               </div>
-              <div className="text-xs sm:text-sm text-white/80 break-words">Global potential</div>
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-blue-600">P</span>
+                </div>
+                <h3 className="font-semibold text-gray-900">People</h3>
+                <p className="text-sm text-gray-600">EatoMe</p>
+              </div>
             </div>
-            <div className="text-center col-span-2 md:col-span-1">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-                <Leaf className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-              </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
-                3
-              </div>
-              <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
-                Value Types
-              </div>
-              <div className="text-xs sm:text-sm text-white/80 break-words">Health, Community, Environment</div>
+          </motion.div>
+
+          {/* Mathematical Formula */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center"
+          >
+            <div className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-800 space-x-4">
+              <span className="text-emerald-600 font-semibold">Eato</span>
+              <span>+</span>
+              <span className="text-orange-600 font-semibold">∞ Words</span>
+              <span>=</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-orange-600 font-bold">
+                ∞ Value
+              </span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
