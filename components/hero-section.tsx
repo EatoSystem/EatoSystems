@@ -21,20 +21,28 @@ export default function HeroSection() {
     >
       {/* Background with enhanced accessibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-orange-600">
-        <Image
-          src="/images/global-network-earth.png"
-          alt="Global network visualization showing interconnected food systems across Earth, representing the worldwide regenerative agriculture movement and sustainable food technology infrastructure"
-          fill
-          className="object-cover opacity-20"
-          priority
-          sizes="100vw"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement
-            target.onerror = null
-            target.src = "/placeholder.svg?height=1080&width=1920&text=Global+Food+Network"
-            target.alt = "Placeholder image for global food systems network (original image unavailable)"
-          }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          aria-label="Global connectivity visualization showing interconnected networks representing worldwide regenerative agriculture movement and sustainable food technology infrastructure"
+        >
+          <source
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250804_1040_Global%20Connectivity%20Visualization_remix_01k1t77nswff6bm965gpvx9d1g-6laaknuFgDGAVcdRBkuVoKuR58Wj62.mp4"
+            type="video/mp4"
+          />
+          {/* Fallback image for browsers that don't support video */}
+          <Image
+            src="/images/global-network-earth.png"
+            alt="Global network visualization showing interconnected food systems across Earth, representing the worldwide regenerative agriculture movement and sustainable food technology infrastructure"
+            fill
+            className="object-cover opacity-20"
+            priority
+            sizes="100vw"
+          />
+        </video>
         {/* Abstract flowing lines overlay */}
         <div className="absolute inset-0 opacity-40">
           <svg className="w-full h-full" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
