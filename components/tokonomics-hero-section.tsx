@@ -5,8 +5,8 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 export default function TokonomicsHeroSection() {
-  const [isVisible, setIsVisible] = useState(false)
   const [tokenCount, setTokenCount] = useState(14224900)
+  const [isVisible, setIsVisible] = useState(false)
   const [stripeLoaded, setStripeLoaded] = useState(false)
 
   useEffect(() => {
@@ -26,8 +26,8 @@ export default function TokonomicsHeroSection() {
 
     return () => {
       clearInterval(interval)
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
+      if (document.head.contains(script)) {
+        document.head.removeChild(script)
       }
     }
   }, [])
@@ -38,8 +38,8 @@ export default function TokonomicsHeroSection() {
       key={i}
       className="absolute w-1 h-1 bg-white/30 rounded-full"
       initial={{
-        x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
-        y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1080),
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
       }}
       animate={{
         x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
@@ -60,44 +60,50 @@ export default function TokonomicsHeroSection() {
       <div className="absolute inset-0">
         <Image
           src="/images/tokonomics-hero-bg.png"
-          alt="Futuristic visualization of bees interacting with holographic data displays, representing AI-powered agricultural intelligence and regenerative food systems technology"
+          alt="Futuristic bees interacting with holographic data displays showing AI and computational intelligence in a cosmic purple and orange environment"
           fill
           className="object-cover"
           priority
-          quality={95}
           sizes="100vw"
+          quality={95}
         />
-
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-transparent to-blue-900/30" />
+        {/* Clean overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
       </div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">{particles}</div>
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none">{typeof window !== "undefined" && particles}</div>
 
-      {/* Curved light effects */}
-      <div className="absolute right-0 top-0 w-1/2 h-full opacity-30">
+      {/* Curved Light Effects */}
+      <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute right-0 top-1/4 w-96 h-96 rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)",
+          className="absolute -right-20 top-1/4 w-40 h-96 bg-gradient-to-l from-purple-400/20 to-transparent rounded-full blur-3xl"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.2, 1],
           }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         />
         <motion.div
-          className="absolute right-20 top-1/2 w-64 h-64 rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(147,51,234,0.2) 0%, transparent 70%)",
+          className="absolute -right-32 top-1/2 w-60 h-80 bg-gradient-to-l from-orange-400/15 to-transparent rounded-full blur-2xl"
+          animate={{
+            rotate: [360, 0],
+            scale: [1.2, 1, 1.2],
           }}
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 25,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-20 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
@@ -111,10 +117,10 @@ export default function TokonomicsHeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-4 sm:space-y-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white drop-shadow-lg">
               Raising Intelligence.
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-orange-300 to-purple-300">
                 Regenerating Earth.
               </span>
             </h1>
@@ -125,7 +131,7 @@ export default function TokonomicsHeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light leading-relaxed max-w-5xl mx-auto drop-shadow-lg"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed text-white/95 font-light drop-shadow-md"
           >
             Please Support EatoSystems to finance AI & Compute Tokens that will Design, Build, and Grow a Global
             Regenerative Food System.
@@ -139,13 +145,13 @@ export default function TokonomicsHeroSection() {
             className="bg-white/10 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-white/20 shadow-2xl max-w-2xl mx-auto"
           >
             <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-semibold text-white uppercase tracking-wider">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white/90 uppercase tracking-wider">
                 TOKENS ACTIVATED
               </h3>
-              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-red-300">
+              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
                 {tokenCount.toLocaleString()}
               </div>
-              <p className="text-lg sm:text-xl text-white/90 font-light">and counting</p>
+              <p className="text-lg sm:text-xl text-white/80 font-light">and counting</p>
             </div>
           </motion.div>
 
@@ -162,24 +168,22 @@ export default function TokonomicsHeroSection() {
                 publishable-key="pk_live_51RqWgxERiGajeDO52BV9rZjJSIo56CgfVPvK39w2Ulu5RNtIUFoz4ZTKoZcNWEBorRhr4p2Pg2BvgyV0XuRN0KjG00yhAV4lhH"
               />
             ) : (
-              <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
-                Loading Payment...
-              </button>
+              <div className="bg-gradient-to-r from-purple-600 to-orange-600 hover:from-purple-700 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
+                Support EatoSystems
+              </div>
             )}
           </motion.div>
 
           {/* Additional Info */}
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="max-w-3xl mx-auto pb-8"
+            className="text-base sm:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed pb-8"
           >
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed">
-              Every contribution directly funds AI and Computational resources to develop all of the EatoSystems locally
-              and globally.
-            </p>
-          </motion.div>
+            Every contribution directly funds AI and Computational resources to develop all of the EatoSystems locally
+            and globally.
+          </motion.p>
         </motion.div>
       </div>
     </section>
