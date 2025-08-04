@@ -154,12 +154,12 @@ function InfiniteBrandHero() {
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
             <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-yellow-200 flex-shrink-0" />
             <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
-              The Infinite Brand of Value
+              The Brand of Infinite Value
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight">
-            <span className="text-white break-words">The Infinite Brand of Value</span>
+            <span className="text-white break-words">The Brand of Infinite Value</span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
