@@ -163,7 +163,7 @@ function InfiniteBrandHero() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
-            Eato + Any Word = Health Value + Community Value + Environmental Value
+            Eato + A Word = Health Value + Community Value + Environmental Value
           </p>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light break-words px-4 sm:px-0">
