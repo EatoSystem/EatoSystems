@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import Image from "next/image"
 
 // Particle component for floating animations
 const Particle = ({ delay = 0 }: { delay?: number }) => {
@@ -144,16 +143,11 @@ export default function TokonomicsHeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20"
       aria-labelledby="tokonomics-hero-title"
     >
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/tokonomics-hero-bg.png"
-          alt="Futuristic bees interacting with holographic data displays representing AI and regenerative intelligence"
-          fill
-          className="object-cover"
-          priority
-          quality={95}
-        />
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250803_1225_Bees%20and%20Data_simple_compose_01k1qtv0j7fgba7pjyh3t56fhr-J42LA2iuz4InXJIa79DhhS2dGo2mUK.mp4" type="video/mp4" />
+        </video>
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/70 via-purple-800/50 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>

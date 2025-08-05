@@ -46,8 +46,9 @@ export default function Home() {
       <AboutSection />
       <TransitionSection />
       <InfiniteBrandSection />
-      <TokonomicsHeroSection />
       <SystemsSection />
+      <TokonomicsHeroSection />
+      <TransitionSection />
       <JoinSection />
       <ContactSection />
       <Footer />
