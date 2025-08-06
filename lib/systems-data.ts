@@ -1,20 +1,20 @@
 export const systemsData = {
-  eatoglobal: {
+  eatoxyz: {
     version: "v0.1",
-    name: "EatoGlobal",
+    name: "EatoXYZ",
     layer: "SOIL",
     launchDate: "September 2025",
     quarter: "September 2025",
     description:
-      "The Global Kitchen, Studio & Lab, is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
+      "Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
     content: {
-      overview: `EatoGlobal is the knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.
+      overview: `EatoXYZ is the knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.
       
       It is the SOIL of EatoSystems — where every system begins with a story, a skill, or a spark of intention.
       
-      EatoGlobal brings together human knowledge — collecting and preserving the food stories, practices, and traditions that define our relationship with food across cultures and generations. It empowers open collaboration — enabling contributors from around the world to co-create sustainable food solutions through storytelling, design, technology, and innovation. And it drives global action — uniting diverse voices to shape national EatoTeams, contribute to open-source development, and support the growth of intelligent, inclusive food systems.
+      EatoXYZ brings together human knowledge — collecting and preserving the food stories, practices, and traditions that define our relationship with food across cultures and generations. It empowers open collaboration — enabling contributors from around the world to co-create sustainable food solutions through storytelling, design, technology, and innovation. And it drives global action — uniting diverse voices to shape national EatoTeams, contribute to open-source development, and support the growth of intelligent, inclusive food systems.
       
-      Whether you're a farmer, developer, designer, chef, storyteller, student, or someone passionate about the future of food — EatoGlobal is your place to participate. Your knowledge, your culture, your skills, your story — they all feed the system.`,
+      Whether you're a farmer, developer, designer, chef, storyteller, student, or someone passionate about the future of food — EatoXYZ is your place to participate. Your knowledge, your culture, your skills, your story — they all feed the system.`,
       features: [
         {
           title: "Global Knowledge Repository",
@@ -52,7 +52,7 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoGlobal is currently in early development phase, with pilot programs running in selected communities worldwide. Launch scheduled for September 2025.",
+        "EatoXYZ is currently in early development phase, with pilot programs running in selected communities worldwide. Launch scheduled for September 2025.",
     },
   },
   eatoagent: {

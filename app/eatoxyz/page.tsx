@@ -26,7 +26,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
-export default function EatoGlobalPage() {
+export default function EatoXYZPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeFeature, setActiveFeature] = useState(0)
   const [activeTab, setActiveTab] = useState<"overview" | "features" | "roadmap">("overview")
@@ -121,7 +121,7 @@ export default function EatoGlobalPage() {
   const contributionAreas = [
     {
       title: "Community Building",
-      description: "Help establish and grow local EatoGlobal communities worldwide",
+      description: "Help establish and grow local EatoXYZ communities worldwide",
       icon: <Users className="w-6 h-6" />,
       skills: ["Community Management", "Cultural Sensitivity", "Event Organization"],
     },
@@ -155,7 +155,7 @@ export default function EatoGlobalPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-600 to-blue-600">
           <Image
             src="/images/systems/eatoglobal-soil.png"
-            alt="EatoGlobal Global Network"
+            alt="EatoXYZ Global Network"
             fill
             className="object-cover opacity-20"
             priority
@@ -182,18 +182,18 @@ export default function EatoGlobalPage() {
               <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-2">
                 <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-green-300 flex-shrink-0" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-emerald-200 to-blue-300">
-                  EatoGlobal
+                  EatoXYZ
                 </span>
               </div>
               <span className="block mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white/90 font-light">
-                The Global Kitchen, Studio, & Lab
+                Kitchen, Studio, & Lab
               </span>
             </h1>
 
             {/* Description */}
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 max-w-5xl mx-auto leading-relaxed text-white/90 font-light">
-              The Global Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the
-              EatoSystem - where the world comes together to cook, create, and co-design the future of food.
+              Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the EatoSystem - where
+              the world comes together to cook, create, and co-design the future of food.
             </p>
 
             {/* Action Buttons */}
@@ -211,7 +211,7 @@ export default function EatoGlobalPage() {
               </div>
 
               <div className="transform hover:scale-105 active:scale-95 transition-transform w-full sm:w-auto">
-                <Link href="/eatoglobal-lab">
+                <Link href="/eatoxyz-lab">
                   <Button
                     size="lg"
                     className="bg-green-600 text-white border-green-600 hover:bg-green-700 px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 text-lg sm:text-xl md:text-2xl rounded-full w-full sm:w-auto"
@@ -318,15 +318,14 @@ export default function EatoGlobalPage() {
 
                 <div className="prose prose-lg max-w-none text-slate-600 space-y-6">
                   <p className="text-xl leading-relaxed">
-                    EatoGlobal is The Global Kitchen, Studio, & Lab - the knowledge, cultural, and collaborative
-                    foundation of the EatoSystem where the world comes together to cook, create, and co-design the
-                    future of food.
+                    EatoXYZ is Kitchen, Studio, & Lab - the knowledge, cultural, and collaborative foundation of the
+                    EatoSystem where the world comes together to cook, create, and co-design the future of food.
                   </p>
 
                   <p>
                     It is the <strong>SOIL</strong> of EatoSystems — where every system begins with a story, a skill, or
-                    a spark of intention. As a global kitchen, we gather to share meals and food stories. As a studio,
-                    we create content that amplifies our mission. As a lab, we collaborate to design and prototype
+                    a spark of intention. As a kitchen, we gather to share meals and food stories. As a studio, we
+                    create content that amplifies our mission. As a lab, we collaborate to design and prototype
                     innovative solutions for regenerative food systems.
                   </p>
 
@@ -342,8 +341,8 @@ export default function EatoGlobalPage() {
                     <p className="text-green-800 font-medium mb-2">Your Role in the Global Movement</p>
                     <p className="text-green-700">
                       Whether you're a farmer, chef, artist, athlete, technologist, or youth leader — this is your
-                      invitation to join our Global Kitchen, Studio, & Lab. Come cook with us, create with us, and
-                      co-design the future of food with communities worldwide.
+                      invitation to join our Kitchen, Studio, & Lab. Come cook with us, create with us, and co-design
+                      the future of food with communities worldwide.
                     </p>
                   </div>
 
@@ -418,7 +417,7 @@ export default function EatoGlobalPage() {
                 </span>
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                EatoGlobal provides the foundational infrastructure for global food system transformation through
+                EatoXYZ provides the foundational infrastructure for global food system transformation through
                 community-driven initiatives and regenerative practices.
               </p>
             </motion.div>
@@ -532,7 +531,7 @@ export default function EatoGlobalPage() {
                 </span>
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Key milestones in the development and global deployment of EatoGlobal as the foundation layer of the
+                Key milestones in the development and global deployment of EatoXYZ as the foundation layer of the
                 EatoSystems ecosystem.
               </p>
             </motion.div>
@@ -606,7 +605,7 @@ export default function EatoGlobalPage() {
               viewport={{ once: true }}
               className="text-center mt-12"
             >
-              <Link href="/roadmap/eatoglobal">
+              <Link href="/roadmap/eatoxyz">
                 <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl transition-all duration-300">
                   <Calendar className="mr-2 h-5 w-5" />
                   View Detailed Roadmap
@@ -684,9 +683,9 @@ export default function EatoGlobalPage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
                   <Code className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">EatoGlobal Lab</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">EatoXYZ Lab</h3>
                 <p className="text-gray-600 mb-6">
-                  Access development resources, APIs, and collaborative tools to build applications on the EatoGlobal
+                  Access development resources, APIs, and collaborative tools to build applications on the EatoXYZ
                   platform. Join our global community of developers creating sustainable food solutions.
                 </p>
                 <div className="space-y-3 mb-6">
@@ -707,7 +706,7 @@ export default function EatoGlobalPage() {
                     Knowledge Repository
                   </div>
                 </div>
-                <Link href="/eatoglobal-lab">
+                <Link href="/eatoxyz-lab">
                   <Button className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300">
                     <Code className="mr-2 h-5 w-5" />
                     Enter Lab
@@ -727,7 +726,7 @@ export default function EatoGlobalPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-gray-800">Documentation Hub</h3>
                 <p className="text-gray-600 mb-6">
-                  Comprehensive guides, tutorials, and documentation to help you understand and implement EatoGlobal
+                  Comprehensive guides, tutorials, and documentation to help you understand and implement EatoXYZ
                   solutions in your community or organization.
                 </p>
                 <div className="space-y-3 mb-6">
@@ -771,7 +770,7 @@ export default function EatoGlobalPage() {
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">
-                  EatoGlobal Roadmap
+                  EatoXYZ Roadmap
                 </span>
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -828,10 +827,10 @@ export default function EatoGlobalPage() {
               <h3 className="text-2xl font-bold mb-4 text-gray-800">Explore the Complete Roadmap</h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                 Get detailed insights into our development timeline, key milestones, technical specifications, and how
-                you can contribute to each phase of EatoGlobal's evolution.
+                you can contribute to each phase of EatoXYZ's evolution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/roadmap/eatoglobal">
+                <Link href="/roadmap/eatoxyz">
                   <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl transition-all duration-300">
                     <Calendar className="mr-2 h-5 w-5" />
                     View Full Roadmap
@@ -865,7 +864,7 @@ export default function EatoGlobalPage() {
               Ready to Transform Global Food Systems?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Join the EatoGlobal community and help build the foundation for sustainable food systems worldwide. Your
+              Join the EatoXYZ community and help build the foundation for sustainable food systems worldwide. Your
               knowledge, culture, and skills can make a difference.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

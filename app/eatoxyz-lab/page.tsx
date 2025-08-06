@@ -33,7 +33,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
-export default function EatoGlobalLabPage() {
+export default function EatoXYZLabPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeStep, setActiveStep] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
@@ -229,7 +229,7 @@ export default function EatoGlobalLabPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
             <Image
               src="/images/systems/eatoglobal-soil.png"
-              alt="EatoGlobal Laboratory"
+              alt="EatoXYZ Laboratory"
               fill
               className="object-cover opacity-20"
               priority
@@ -244,13 +244,13 @@ export default function EatoGlobalLabPage() {
             >
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-8 py-4 mb-12 border border-white/30">
                 <Globe className="w-6 h-6 mr-3 text-blue-200" />
-                <span className="text-white font-semibold text-lg">EatoGlobal Research Laboratory</span>
+                <span className="text-white font-semibold text-lg">EatoXYZ Research Laboratory</span>
                 <Badge className="ml-3 bg-orange-500 text-white border-0">Alpha</Badge>
               </div>
 
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight tracking-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-indigo-200 to-purple-300">
-                  EatoGlobal
+                  EatoXYZ
                 </span>
                 <br />
                 <span className="text-4xl md:text-5xl lg:text-6xl font-light text-white/90">Laboratory</span>
@@ -268,11 +268,11 @@ export default function EatoGlobalLabPage() {
                 >
                   Join Research Lab <ArrowRight className="ml-3 h-6 w-6" />
                 </Button>
-                <Link href="/eatoglobal">
+                <Link href="/eatoxyz">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white text-white hover:bg-white/10 px-10 py-5 text-xl rounded-full"
+                    className="border-white text-white hover:bg-white/10 px-10 py-5 text-xl rounded-full bg-transparent"
                   >
                     View System Details
                   </Button>
@@ -475,7 +475,7 @@ export default function EatoGlobalLabPage() {
                 <span className="gradient-text from-blue-600 to-indigo-500">Development Resources</span>
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Everything you need to start building and contributing to EatoGlobal
+                Everything you need to start building and contributing to EatoXYZ
               </p>
             </motion.div>
 
@@ -575,7 +575,7 @@ export default function EatoGlobalLabPage() {
                 <span className="text-white font-semibold">Ready to Connect the World?</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Join the EatoGlobal Research Lab</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Join the EatoXYZ Research Lab</h2>
 
               <p className="text-xl text-white/90 mb-12 leading-relaxed">
                 Be part of the global community building connections that preserve local autonomy while enabling
@@ -590,11 +590,11 @@ export default function EatoGlobalLabPage() {
                   Start Contributing Today
                   <ArrowRight className="ml-3 h-6 w-6" />
                 </Button>
-                <Link href="/roadmap/eatoglobal">
+                <Link href="/roadmap/eatoxyz">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white text-white hover:bg-white/10 px-10 py-5 text-xl rounded-full"
+                    className="border-white text-white hover:bg-white/10 px-10 py-5 text-xl rounded-full bg-transparent"
                   >
                     View Development Roadmap
                   </Button>

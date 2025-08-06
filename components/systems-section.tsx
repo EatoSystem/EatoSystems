@@ -58,6 +58,7 @@ function SystemCard({
       eatogov: "/images/systems/eatogov-regeneration.png",
       eatosecure: "/images/systems/eatosecure-canopy.png",
       eatofoundation: "/images/systems/eatofoundation-sanctuary.png",
+      eatoxyz: "/images/systems/eatoglobal-soil.png",
     }
     return imageMap[slug] || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(name)}`
   }
@@ -79,6 +80,7 @@ function SystemCard({
       eatosecure: "Protective forest canopy representing global food security ensuring sustained access to nutrition",
       eatofoundation:
         "Pristine natural sanctuary symbolizing the trust safeguarding EatoSystem integrity for future generations",
+      eatoxyz: "Rich fertile soil representing the foundational knowledge and cultural layer of EatoGlobal system",
     }
     return (
       altTextMap[name.toLowerCase().replace("eato", "eato")] ||
@@ -411,16 +413,16 @@ export default function SystemsSection() {
   const systems = [
     {
       version: "v0.1",
-      name: "EatoGlobal",
+      name: "EatoXYZ",
       layer: "SOIL",
       description:
-        "The Global Kitchen, Studio & Lab, is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
-      slug: "eatoglobal",
+        "Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
+      slug: "eatoxyz",
       launchDate: "September 2025",
       quarter: "September 2025",
       city: "Copenhagen",
       participants: "Global Contributors",
-      website: "https://eatoglobal.com",
+      website: "https://eatoxyz.com",
     },
     {
       version: "v1.0",

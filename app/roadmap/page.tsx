@@ -12,7 +12,7 @@ import Navbar from "@/components/navbar"
 // Roadmap data with launch dates
 const roadmapData = [
   {
-    slug: "eatoglobal",
+    slug: "eatoxyz",
     launchDate: "September 2025",
     quarter: "September 2025",
     status: "upcoming",
@@ -219,7 +219,7 @@ function RoadmapHero() {
               <div className="text-xs sm:text-sm text-white/80 break-words">2025-2026</div>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:w-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 break-words">
@@ -626,7 +626,7 @@ function getLayerStyles(layer: string) {
 // Helper function to get the layer for a system
 function getSystemLayer(systemSlug: string): string {
   const layerMap: Record<string, string> = {
-    eatoglobal: "soil",
+    eatoxyz: "soil",
     eatoagent: "seed",
     eatoindex: "pollination",
     eatoverse: "root",

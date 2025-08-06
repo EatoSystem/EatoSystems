@@ -2,10 +2,10 @@
 
 import SystemRoadmapTemplate from "@/components/system-roadmap-template"
 
-export default function EatoGlobalRoadmapPage() {
+export default function EatoXYZRoadmapPage() {
   const system = {
-    slug: "eatoglobal",
-    name: "EatoGlobal",
+    slug: "eatoxyz",
+    name: "EatoXYZ",
     layer: "SOIL",
     version: "v0.1",
     description:
@@ -49,14 +49,14 @@ export default function EatoGlobalRoadmapPage() {
       date: "September 2025",
       quarter: "Q3 2025",
       status: "upcoming",
-      description: "Official launch of EatoGlobal as the foundation layer of the EatoSystems framework.",
+      description: "Official launch of EatoXYZ as the foundation layer of the EatoSystems framework.",
     },
     {
       title: "First Global Summit",
       date: "November 2025",
       quarter: "Q4 2025",
       status: "upcoming",
-      description: "First global gathering of EatoGlobal contributors and regional EatoTeams.",
+      description: "First global gathering of EatoXYZ contributors and regional EatoTeams.",
     },
   ]
 
@@ -85,13 +85,13 @@ export default function EatoGlobalRoadmapPage() {
   const nextSteps = [
     {
       title: "Join the Community",
-      description: "Become part of the global EatoGlobal community and start contributing your knowledge and skills.",
+      description: "Become part of the global EatoXYZ community and start contributing your knowledge and skills.",
       link: "/contribute/community",
     },
     {
       title: "Explore the Knowledge Base",
       description: "Access the growing repository of food stories, practices, and traditions from around the world.",
-      link: "/eatoglobal",
+      link: "/eatoxyz",
     },
     {
       title: "Start a Regional EatoTeam",
