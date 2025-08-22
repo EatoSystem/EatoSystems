@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "EatoSystems - Regenerative Food Systems",
   description: "From Soil to Sanctuary - Building the future of regenerative food systems",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

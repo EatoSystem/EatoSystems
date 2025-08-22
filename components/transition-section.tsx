@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import { Leaf } from 'lucide-react'
 
 export default function TransitionSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -62,18 +63,6 @@ export default function TransitionSection() {
             transition={{ duration: 0.4, delay: 0.8, ease: "easeOut" }}
           />
         </div>
-
-        {/* Subtle text element */}
-        <motion.div
-          className="text-center mt-8"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-        >
-          <p className="text-sm text-gray-400 font-light tracking-wider uppercase">
-            EATO means to Eat Optimal for Health, Community, and the Environment
-          </p>
-        </motion.div>
 
         {/* Floating geometric shapes for visual interest */}
         <div className="absolute inset-0 pointer-events-none">

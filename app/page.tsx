@@ -1,18 +1,20 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import HeroSection from "@/components/hero-section"
 import AboutSection from "@/components/about-section"
 import SystemsSection from "@/components/systems-section"
-import JoinSection from "@/components/join-section"
-import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
 import SectionDivider from "@/components/section-divider"
 import InfiniteBrandSection from "@/components/infinite-brand-section"
-import TransitionSection from "@/components/transition-section"
 import TokonomicsHeroSection from "@/components/tokonomics-hero-section"
+import EatoXYZSection from "@/components/eatoxyz-section"
+import EatoAIModal from "@/components/eatoai-modal"
+import EatoSystemsModal from "@/components/eatosystems-modal"
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false)
+
   // Smooth scroll implementation
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -39,19 +41,28 @@ export default function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    // Show modal after a short delay to ensure smooth page load
+    const timer = setTimeout(() => {
+      setShowModal(true)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <main className="min-h-screen fade-in overflow-x-hidden">
       <HeroSection />
       <SectionDivider />
       <AboutSection />
-      <TransitionSection />
+      <EatoXYZSection />
       <InfiniteBrandSection />
       <SystemsSection />
       <TokonomicsHeroSection />
-      <TransitionSection />
-      <JoinSection />
-      <ContactSection />
       <Footer />
+
+      <EatoAIModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <EatoSystemsModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </main>
   )
 }

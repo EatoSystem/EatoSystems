@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowUp } from "lucide-react"
+import { ArrowUp } from 'lucide-react'
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null)
@@ -81,7 +81,7 @@ export default function Footer() {
             className="text-center lg:text-left"
           >
             <p className="text-gray-800 mb-4 sm:mb-6 max-w-md mx-auto lg:mx-0 text-sm sm:text-base break-words">
-              EatoSystems is a regenerative operating system for food, community, and planet. Spanning from individual
+              EatoSystem is a regenerative operating system for food, community, and planet. Spanning from individual
               behavior to global infrastructure.
             </p>
             <div className="flex justify-center lg:justify-start space-x-2 sm:space-x-3 md:space-x-4">
@@ -172,7 +172,7 @@ export default function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               <div>
                 <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800">Contact</h3>
-                <p className="text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base break-words">info@eatosystems.com</p>
+                <p className="text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base break-words">info@eatosystem.com</p>
               </div>
 
               <div>
@@ -204,7 +204,7 @@ export default function Footer() {
         >
           <div className="mb-2 sm:mb-0">
             <p className="text-xs sm:text-sm md:text-base break-words">
-              &copy; {new Date().getFullYear()} EatoSystems. All rights reserved.
+              &copy; {new Date().getFullYear()} EatoSystem. All rights reserved.
             </p>
           </div>
         </motion.div>

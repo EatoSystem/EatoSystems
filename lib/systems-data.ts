@@ -1,20 +1,20 @@
 export const systemsData = {
-  eatoxyz: {
+  eatox: {
     version: "v0.1",
-    name: "EatoXYZ",
+    name: "EatoX",
     layer: "SOIL",
     launchDate: "September 2025",
     quarter: "September 2025",
     description:
-      "Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the EatoSystem - where the world comes together to cook, create, and co-design the future of food.",
+      "Kitchen, Studio, & Lab is the knowledge, cultural, and collaborative foundation of the EatoSystems - where the world comes together to cook, create, and co-design the future of food.",
     content: {
-      overview: `EatoXYZ is the knowledge, cultural, and collaborative foundation of the EatoSystem — a worldwide movement where anyone can contribute, co-create, and help build the future of food.
+      overview: `EatoX is the knowledge, cultural, and collaborative foundation of the EatoSystems — a worldwide movement where anyone can contribute, co-create, and help build the future of food.
       
       It is the SOIL of EatoSystems — where every system begins with a story, a skill, or a spark of intention.
       
-      EatoXYZ brings together human knowledge — collecting and preserving the food stories, practices, and traditions that define our relationship with food across cultures and generations. It empowers open collaboration — enabling contributors from around the world to co-create sustainable food solutions through storytelling, design, technology, and innovation. And it drives global action — uniting diverse voices to shape national EatoTeams, contribute to open-source development, and support the growth of intelligent, inclusive food systems.
+      EatoX brings together human knowledge — collecting and preserving the food stories, practices, and traditions that define our relationship with food across cultures and generations. It empowers open collaboration — enabling contributors from around the world to co-create sustainable food solutions through storytelling, design, technology, and innovation. And it drives global action — uniting diverse voices to shape national EatoTeams, contribute to open-source development, and support the growth of intelligent, inclusive food systems.
       
-      Whether you're a farmer, developer, designer, chef, storyteller, student, or someone passionate about the future of food — EatoXYZ is your place to participate. Your knowledge, your culture, your skills, your story — they all feed the system.`,
+      Whether you're a farmer, developer, designer, chef, storyteller, student, or someone passionate about the future of food — EatoX is your place to participate. Your knowledge, your culture, your skills, your story — they all feed the system.`,
       features: [
         {
           title: "Global Knowledge Repository",
@@ -52,7 +52,7 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoXYZ is currently in early development phase, with pilot programs running in selected communities worldwide. Launch scheduled for September 2025.",
+        "EatoX is currently in early development phase, with pilot programs running in selected communities worldwide. Launch scheduled for September 2025.",
     },
   },
   eatoagent: {
@@ -301,10 +301,10 @@ export const systemsData = {
     launchDate: "February 2026",
     quarter: "February 2026",
     description:
-      "A clean energy-powered logistics and traceability system moving food with integrity across the Eatosystem.",
+      "A clean energy-powered logistics and traceability system moving food with integrity across the EatoSystems.",
     content: {
       overview: `EatoTransit is a clean energy-powered logistics and traceability system moving food with integrity
-        across the Eatosystem. It ensures transparency in the supply chain while minimizing environmental
+        across the EatoSystems. It ensures transparency in the supply chain while minimizing environmental
         impact.
         
         As the "flow" layer of the EatoSystems framework, EatoTransit facilitates the efficient and sustainable
@@ -474,24 +474,24 @@ export const systemsData = {
         "EatoFund is currently in development with pilot funding mechanisms being tested in select markets. Launch scheduled for April 2026.",
     },
   },
-  eatosystem: {
+  eatosystems: {
     version: "v8.0",
-    name: "EatoSystem",
+    name: "EatoSystems",
     layer: "HARVEST",
     launchDate: "May 2026",
     quarter: "May 2026",
     description:
-      "The full-stack rollout of EatoSystem-powered food systems at the national level, connecting all layers into a living infrastructure.",
+      "The full-stack rollout of EatoSystems-powered food systems at the national level, connecting all layers into a living infrastructure.",
     content: {
-      overview: `EatoSystem represents the full-stack rollout of EatoSystem-powered food systems at the national level,
+      overview: `EatoSystems represents the full-stack rollout of EatoSystems-powered food systems at the national level,
         connecting all layers into a living infrastructure. It provides a blueprint for comprehensive
         implementation.
         
-        As the "harvest" layer of the EatoSystems framework, EatoSystem brings together all the components into
+        As the "harvest" layer of the EatoSystems framework, EatoSystems brings together all the components into
         a cohesive whole that can be implemented at scale. It represents the realization of the vision in
         real-world contexts.
         
-        EatoSystem is designed to be adaptable to diverse contexts while maintaining core principles and
+        EatoSystems is designed to be adaptable to diverse contexts while maintaining core principles and
         standards. It creates a framework for implementation that can be customized to the unique needs,
         resources, and cultures of different regions.`,
       features: [
@@ -531,7 +531,7 @@ export const systemsData = {
         },
       ],
       status:
-        "EatoSystem is currently in planning phase with conceptual frameworks being developed. Launch scheduled for May 2026.",
+        "EatoSystems is currently in planning phase with conceptual frameworks being developed. Launch scheduled for May 2026.",
     },
   },
   eatogov: {
@@ -659,10 +659,10 @@ export const systemsData = {
     launchDate: "September 2026",
     quarter: "September 2026",
     description:
-      "The global trust that safeguards the mission, model, and long-term integrity of the Eatosystem for future generations.",
+      "The global trust that safeguards the mission, model, and long-term integrity of the EatoSystems for future generations.",
     content: {
       overview: `The EatoFoundation is the global trust that safeguards the mission, model, and long-term integrity of the
-        EatoSystem for future generations. It ensures that the system remains true to its core values over time.
+        EatoSystems for future generations. It ensures that the system remains true to its core values over time.
         
         As the "sanctuary" layer of the EatoSystems framework, EatoFoundation provides protection and
         stewardship for the entire ecosystem. It creates structures that can endure beyond individual lifetimes

@@ -1,11 +1,13 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Leaf } from "lucide-react"
 
-export default function AboutSection() {
+const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -64,7 +66,7 @@ export default function AboutSection() {
           src="/images/organic-produce-field.png"
           alt="Organic Produce Field"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-30"
           priority
           sizes="100vw"
         />
@@ -77,28 +79,32 @@ export default function AboutSection() {
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/30">
-            <Leaf className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-orange-200 flex-shrink-0" />
-            <span className="text-white font-semibold text-sm sm:text-base md:text-lg break-words">
+          <div className="inline-flex items-center bg-white/30 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 mb-8 sm:mb-10 md:mb-12 border border-white/40">
+            <Leaf className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3 text-orange-100 flex-shrink-0" />
+            <span className="text-gray-50 font-semibold text-sm sm:text-base md:text-lg break-words">
               A Regenerative Operating System
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-orange-200 to-yellow-300 break-words">
-              About EatoSystems
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-orange-100 to-yellow-50 break-words drop-shadow-2xl">
+              About EatoSystem
             </span>
           </h2>
 
           <div className="max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-12 space-y-4 sm:space-y-6 md:space-y-8 px-4 sm:px-0">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white sm:text-white/95 font-light break-words">
-              Spanning from individual knowledge and behaviour to global infrastructure, EatoSystems are designed to
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-gray-50 font-light break-words drop-shadow-2xl">
+              Spanning from individual knowledge and behaviour to global infrastructure, EatoSystem is designed to
               transform how food is produced, moved, financed, and governed.
             </p>
 
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white font-medium break-words">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-gray-50 font-medium break-words drop-shadow-2xl">
               This is not just a vision. It's a living architecture — designed for rollout at the national and global
-              level.
+              level through EatoSystem.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-gray-50 font-medium break-words drop-shadow-2xl">
+              Eato means to Eat Optimal for Health, Community, and the Environment.
             </p>
           </div>
 
@@ -112,13 +118,13 @@ export default function AboutSection() {
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2 md:mb-3 break-words">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-50 mb-1 sm:mb-2 md:mb-3 break-words drop-shadow-2xl">
                   {stat.number}
                 </div>
-                <div className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1 sm:mb-2 break-words">
+                <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-50 mb-1 sm:mb-2 break-words drop-shadow-lg">
                   {stat.label}
                 </div>
-                <div className="text-xs sm:text-sm text-white sm:text-white/90 break-words">{stat.description}</div>
+                <div className="text-xs sm:text-sm text-gray-100 break-words drop-shadow-lg">{stat.description}</div>
               </motion.div>
             ))}
           </div>
@@ -127,3 +133,5 @@ export default function AboutSection() {
     </section>
   )
 }
+
+export default AboutSection

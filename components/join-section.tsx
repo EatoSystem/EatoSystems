@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { Code, Figma, Github, Server, Users, FileCode, Bot, Map, Shield, ArrowRight } from "lucide-react"
+import { Code, Figma, Github, Server, Users, FileCode, Bot, Map, Shield, ArrowRight } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 
@@ -74,7 +74,7 @@ export default function JoinSection() {
             </span>
             <br />
             <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-light text-white sm:text-white/95 break-words">
-              EatoSystems{" "}
+              EatoSystem{" "}
             </span>
           </h2>
 
@@ -118,7 +118,7 @@ export default function JoinSection() {
             <ContributionCard
               icon={<Code size={20} className="sm:w-6 sm:h-6" />}
               title="v0.dev"
-              description="Design and build interfaces for data visualization, system monitoring, and user interaction with the EatoSystems platform."
+              description="Design and build interfaces for data visualization, system monitoring, and user interaction with the EatoSystem platform."
               link="/contribute/v0"
               router={router}
               delay={0.1}
@@ -127,7 +127,7 @@ export default function JoinSection() {
             <ContributionCard
               icon={<Server size={20} className="sm:w-6 sm:h-6" />}
               title="Vercel"
-              description="Deploy and scale the distributed components of EatoSystems with optimized edge functions and serverless architecture."
+              description="Deploy and scale the distributed components of EatoSystem with optimized edge functions and serverless architecture."
               link="/contribute/vercel"
               router={router}
               delay={0.2}
@@ -192,7 +192,7 @@ export default function JoinSection() {
             <ResourceCard
               icon={<Figma size={20} className="sm:w-6 sm:h-6" />}
               title="Design System"
-              description="Explore the UI components, design patterns, and visual language for building consistent EatoSystems interfaces."
+              description="Explore the UI components, design patterns, and visual language for building consistent EatoSystem interfaces."
               buttonText="Open Figma"
               link="#"
               router={router}
@@ -202,7 +202,7 @@ export default function JoinSection() {
             <ResourceCard
               icon={<FileCode size={20} className="sm:w-6 sm:h-6" />}
               title="Documentation"
-              description="Comprehensive guides, API references, and tutorials for working with the EatoSystems platform."
+              description="Comprehensive guides, API references, and tutorials for working with the EatoSystem platform."
               buttonText="Read Docs"
               link="#"
               router={router}
@@ -212,7 +212,7 @@ export default function JoinSection() {
             <ResourceCard
               icon={<Map size={20} className="sm:w-6 sm:h-6" />}
               title="Implementation Blueprints"
-              description="Detailed guides for adapting and implementing EatoSystems in diverse contexts and scales."
+              description="Detailed guides for adapting and implementing EatoSystem in diverse contexts and scales."
               buttonText="View Blueprints"
               link="#"
               router={router}
@@ -232,7 +232,7 @@ export default function JoinSection() {
             <ResourceCard
               icon={<Server size={20} className="sm:w-6 sm:h-6" />}
               title="Demo Environment"
-              description="Test your integrations and experiment with EatoSystems capabilities in a sandboxed environment."
+              description="Test your integrations and experiment with EatoSystem capabilities in a sandboxed environment."
               buttonText="Launch Demo"
               link="#"
               router={router}

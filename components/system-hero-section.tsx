@@ -112,7 +112,7 @@ export default function SystemHeroSection({ systemSlug, systemData }: SystemHero
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-snug tracking-tight"
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-orange-200 to-yellow-300 break-words">
               {systemData.name}
@@ -163,7 +163,7 @@ export default function SystemHeroSection({ systemSlug, systemData }: SystemHero
               >
                 <span className="break-words">Explore System</span>
                 <ArrowRight
-                  className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 flex-shrink-0"
+                  className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-8 lg:w-8 flex-shrink-0"
                   aria-hidden="true"
                 />
               </Button>
