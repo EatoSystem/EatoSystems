@@ -18,18 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    /* Added proper font variable setup for CSS variables */
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-      style={
-        {
-          "--font-geist-sans": GeistSans.style.fontFamily,
-          "--font-geist-mono": GeistMono.style.fontFamily,
-        } as React.CSSProperties
-      }
-    >
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className="font-sans">
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>

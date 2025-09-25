@@ -75,7 +75,7 @@
 }
 
 @theme inline {
-  /* Fixed font variable references to match Geist font setup */
+  /* Updated font variables to use correct Geist font variable names */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
